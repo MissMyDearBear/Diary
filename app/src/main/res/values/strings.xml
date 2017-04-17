@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">小熊日记</string>
+    <!--===================navTitle========================-->
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <!--===================activityName========================-->
+    <string name="activity_splash">开屏页</string>
+    <string name="activity_main">主页</string>
+    <string name="activity_login">登录</string>
+
+
+    <!--===================tips========================-->
+    <string name="tip_exit">再按一次退出小熊日记</string>
+
+    <!--===================error========================-->
+    <string name="error_login">您输入的账号或密码错误！</string>
+</resources>

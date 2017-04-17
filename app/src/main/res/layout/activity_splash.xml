@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+ <Button
+     android:id="@+id/btn_skip"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:text="跳过"
+     android:layout_margin="5dp"
+     android:layout_alignParentRight="true"/>
+    <TextView
+        android:id="@+id/tv_slogan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:layout_centerInParent="true"
+        tools:text="slogan"
+        android:gravity="center"
+        android:textColor="@color/colorBlack"/>
+</RelativeLayout>
