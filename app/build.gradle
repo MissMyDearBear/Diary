@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.jakewharton.butterknife'
 apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'org.greenrobot.greendao'
 
 android {
     compileSdkVersion 25
@@ -50,4 +51,6 @@ dependencies {
 // Because RxAndroid releases are few and far between, it is recommended you also
 // explicitly depend on RxJava's latest version for bug fixes and new features.
     compile 'io.reactivex.rxjava2:rxjava:2.0.1'
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:latest.release'
+    compile 'org.greenrobot:greendao:3.2.2'
 }
