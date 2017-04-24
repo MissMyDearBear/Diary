@@ -99,8 +99,6 @@ public class RoomResult {
 ## 其它
 最近也是自己在研究App框架的搭建，也是准备做个一个全新的App Demo出来。现在采用的是的MVP+retrofit+rxjava+greenDao+butterKnif
 
-项目地址` https://github.com/MissMyDearBear/Diary`
-
 非常感谢大家的反馈和建议：
 
 QQ：2280885690
