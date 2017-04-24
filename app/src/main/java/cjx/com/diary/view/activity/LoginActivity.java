@@ -13,8 +13,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cjx.com.diary.R;
+import cjx.com.diary.api.ApiService;
+import cjx.com.diary.api.HttpInterface;
 import cjx.com.diary.base.BaseActivity;
 import cjx.com.diary.presenter.impl.LoginPresenterImpl;
+import cjx.com.diary.util.Utils;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by bear on 2017/4/17.
@@ -31,6 +36,7 @@ public class LoginActivity extends BaseActivity {
     Button mRegisterBtn;
 
     private LoginPresenterImpl mLoginPresenter;
+    private HttpInterface api;
 
     public static void action(Context context) {
         context.startActivity(new Intent(context, LoginActivity.class));
@@ -43,15 +49,22 @@ public class LoginActivity extends BaseActivity {
         ButterKnife.bind(this);
         mLoginPresenter = new LoginPresenterImpl();
         mLoginPresenter.bindView(LoginActivity.this, null);
+        api = ApiService.getApiService();
     }
 
     @OnClick({R.id.btn_login, R.id.btn_register})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_login:
-                String account=mAccountAct.getText().toString();
-                String psd=mPsdEt.getText().toString();
-                mLoginPresenter.login(account,psd);
+                String account = mAccountAct.getText().toString();
+                String psd = mPsdEt.getText().toString();
+//                mLoginPresenter.login(account,psd);
+                    api.search(account)
+                            .subscribeOn(Schedulers.newThread())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe(roomResult -> {
+                                Utils.showToast(mActivity,roomResult.prompWord);
+                            });
                 break;
             case R.id.btn_register:
                 mLoginPresenter.jumpToRegister(mActivity);

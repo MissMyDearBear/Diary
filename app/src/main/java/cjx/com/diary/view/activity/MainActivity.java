@@ -12,13 +12,9 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cjx.com.diary.R;
-import cjx.com.diary.api.ApiService;
-import cjx.com.diary.api.HttpInterface;
 import cjx.com.diary.base.BaseActivity;
+import cjx.com.diary.util.ImageUtils;
 import cjx.com.diary.util.Utils;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends BaseActivity {
     public static void action(Context context) {
@@ -31,7 +27,6 @@ public class MainActivity extends BaseActivity {
     BottomNavigationView navigation;
     @BindView(R.id.iv_photo)
     ImageView mPhotoIv;
-    HttpInterface api;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -60,12 +55,11 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        api = ApiService.getInstance();
 
         mTextMessage = (TextView) findViewById(R.id.message);
         navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-//        ImageUtils.getInstance().displayImage(mActivity, mPhotoIv, url);
+        ImageUtils.getInstance().displayImage(mActivity, mPhotoIv, url);
         mTextMessage.setOnClickListener(view -> {
             Utils.showToast(mActivity, mTextMessage.getText().toString());
         });
@@ -91,17 +85,7 @@ public class MainActivity extends BaseActivity {
 //
 //                    }
 //                });
-        api.getString().enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                Utils.showToast(mActivity, response.body());
-            }
 
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
-
-            }
-        });
     }
 
     private long mLastBackPress = 0;
