@@ -16,6 +16,8 @@ import cjx.com.diary.R;
 import cjx.com.diary.api.ApiService;
 import cjx.com.diary.api.HttpInterface;
 import cjx.com.diary.base.BaseActivity;
+import cjx.com.diary.db.GreenDao;
+import cjx.com.diary.mode.user.UserBeanDao;
 import cjx.com.diary.presenter.impl.LoginPresenterImpl;
 import cjx.com.diary.util.Utils;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -47,9 +49,11 @@ public class LoginActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+        initTitleBar("登录");
         mLoginPresenter = new LoginPresenterImpl();
         mLoginPresenter.bindView(LoginActivity.this, null);
         api = ApiService.getApiService();
+
     }
 
     @OnClick({R.id.btn_login, R.id.btn_register})
@@ -58,13 +62,13 @@ public class LoginActivity extends BaseActivity {
             case R.id.btn_login:
                 String account = mAccountAct.getText().toString();
                 String psd = mPsdEt.getText().toString();
-//                mLoginPresenter.login(account,psd);
-                    api.search(account)
-                            .subscribeOn(Schedulers.newThread())
-                            .observeOn(AndroidSchedulers.mainThread())
-                            .subscribe(roomResult -> {
-                                Utils.showToast(mActivity,roomResult.prompWord);
-                            });
+                mLoginPresenter.login(account,psd);
+//                api.search(account)
+//                        .subscribeOn(Schedulers.newThread())
+//                        .observeOn(AndroidSchedulers.mainThread())
+//                        .subscribe(roomResult -> {
+//                            Utils.showToast(mActivity, roomResult.prompWord);
+//                        });
                 break;
             case R.id.btn_register:
                 mLoginPresenter.jumpToRegister(mActivity);
