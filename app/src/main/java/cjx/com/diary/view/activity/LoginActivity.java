@@ -16,12 +16,7 @@ import cjx.com.diary.R;
 import cjx.com.diary.api.ApiService;
 import cjx.com.diary.api.HttpInterface;
 import cjx.com.diary.base.BaseActivity;
-import cjx.com.diary.db.GreenDao;
-import cjx.com.diary.mode.user.UserBeanDao;
 import cjx.com.diary.presenter.impl.LoginPresenterImpl;
-import cjx.com.diary.util.Utils;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by bear on 2017/4/17.

@@ -23,6 +23,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
 
     public void initTitleBar(String title){
         Toolbar toolbar= (Toolbar) findViewById(R.id.tb_title_bar);
+        setSupportActionBar(toolbar);
         toolbar.setTitle(title);
     }
 }

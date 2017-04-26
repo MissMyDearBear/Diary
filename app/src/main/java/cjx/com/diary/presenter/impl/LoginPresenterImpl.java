@@ -3,14 +3,12 @@ package cjx.com.diary.presenter.impl;
 import android.content.Context;
 import android.text.TextUtils;
 
-import org.greenrobot.greendao.query.Query;
 import org.greenrobot.greendao.query.QueryBuilder;
 
 import java.util.List;
 
 import cjx.com.diary.base.BaseActivity;
 import cjx.com.diary.base.MyApplication;
-import cjx.com.diary.db.GreenDao;
 import cjx.com.diary.mode.user.UserBean;
 import cjx.com.diary.mode.user.UserBeanDao;
 import cjx.com.diary.presenter.LoginPresenter;

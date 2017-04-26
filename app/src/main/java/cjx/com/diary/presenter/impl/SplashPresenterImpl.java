@@ -2,6 +2,13 @@ package cjx.com.diary.presenter.impl;
 
 import android.os.CountDownTimer;
 
+import org.greenrobot.greendao.query.QueryBuilder;
+
+import java.util.List;
+
+import cjx.com.diary.base.MyApplication;
+import cjx.com.diary.mode.user.UserBean;
+import cjx.com.diary.mode.user.UserBeanDao;
 import cjx.com.diary.presenter.SplashPresenter;
 import cjx.com.diary.view.activity.SplashActivity;
 
@@ -16,6 +23,19 @@ private final String mSloganStr="欢\n迎\n来\n到\n小\n熊\n日\n记\n!";
 
     @Override
     public void setData() {
+        //创建用户信息
+        UserBean userBean = new UserBean();
+        userBean.setId((long)1);
+        userBean.setAccount("18262282215");
+        userBean.setPassWord("111111qq");
+        userBean.setEmail("bear@berdatata.com");
+        userBean.setMobile("18262282215");
+        UserBeanDao dao = MyApplication.INSTANCE.getDaoSession().getUserBeanDao();
+        QueryBuilder queryBuilder = dao.queryBuilder();
+        List<UserBean> list = queryBuilder.where(UserBeanDao.Properties.Account.eq("18262282215")).list();
+        if (list == null || (list != null && list.size() == 0)) {
+            dao.insert(userBean);
+        }
         SplashActivity mSplashActivity= (SplashActivity) mView;
         mSplashActivity.showSlogan(mSloganStr);
         mTimer.start();

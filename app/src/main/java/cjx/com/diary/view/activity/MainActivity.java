@@ -3,14 +3,13 @@ package cjx.com.diary.view.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.view.MenuItem;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import org.greenrobot.greendao.query.Query;
-import org.greenrobot.greendao.query.QueryBuilder;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.view.View;
 
 import java.util.List;
 
@@ -18,94 +17,50 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import cjx.com.diary.R;
 import cjx.com.diary.base.BaseActivity;
-import cjx.com.diary.base.MyApplication;
-import cjx.com.diary.mode.user.UserBean;
-import cjx.com.diary.mode.user.UserBeanDao;
-import cjx.com.diary.util.ImageUtils;
+import cjx.com.diary.presenter.MainPresenter;
+import cjx.com.diary.presenter.impl.MainPresenterImp;
 import cjx.com.diary.util.Utils;
 
 public class MainActivity extends BaseActivity {
+    @BindView(R.id.view_pager)
+    ViewPager mViewPager;
+    @BindView(R.id.navigation)
+    BottomNavigationView mNavigationView;
+
     public static void action(Context context) {
         context.startActivity(new Intent(context, MainActivity.class));
     }
 
-    @BindView(R.id.message)
-    TextView mTextMessage;
-    @BindView(R.id.navigation)
-    BottomNavigationView navigation;
-    @BindView(R.id.iv_photo)
-    ImageView mPhotoIv;
+    private MainPresenterImp mPresenter;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
-                    return true;
-                case R.id.navigation_dashboard:
-                    getData();
-                    return true;
-                case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
-                    LoginActivity.action(mActivity);
-                    return true;
-            }
-            return false;
-        }
-    };
-    private String url = "https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1492049578&di=d83c271d96ddb3ed2f84b99ab11049ea&src=http://npic7.edushi.com/cn/zixun/zh-chs/2017-03/03/3824368-2017030316251198.jpg";
+            = item -> {
+                switch (item.getItemId()) {
+                    case R.id.navigation_home:
+                        mViewPager.setCurrentItem(0);
+                        return true;
+                    case R.id.navigation_dashboard:
+                        mViewPager.setCurrentItem(1);
+                        return true;
+                    case R.id.navigation_notifications:
+//                        LoginActivity.action(mActivity);
+                        mViewPager.setCurrentItem(2);
+                        return true;
+                }
+                return false;
+            };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
-        mTextMessage = (TextView) findViewById(R.id.message);
-        navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        ImageUtils.getInstance().displayImage(mActivity, mPhotoIv, url);
-        mTextMessage.setOnClickListener(view -> {
-            Utils.showToast(mActivity, mTextMessage.getText().toString());
-        });
-        UserBean userBean = new UserBean();
-        userBean.setId((long)1);
-        userBean.setAccount("18262282215");
-        userBean.setPassWord("111111qq");
-        userBean.setEmail("bear@berdatata.com");
-        userBean.setMobile("18262282215");
-        UserBeanDao dao = MyApplication.INSTANCE.getDaoSession().getUserBeanDao();
-        QueryBuilder queryBuilder = dao.queryBuilder();
-        List<UserBean> list = queryBuilder.where(UserBeanDao.Properties.Account.eq("18262282215")).list();
-        if (list == null || (list != null && list.size() == 0)) {
-            dao.insert(userBean);
-        }
-    }
-
-    private void getData() {
-//        api.getData()
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribeWith(new DisposableObserver<String>() {
-//                    @Override
-//                    public void onNext(String value) {
-//                        Utils.showToast(mActivity,value);
-//                    }
-//
-//                    @Override
-//                    public void onError(Throwable e) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onComplete() {
-//
-//                    }
-//                });
-
+        mPresenter=new MainPresenterImp();
+        mPresenter.bindView(this,null);
+        mNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        mViewPager.setAdapter(new MyAdapter(getSupportFragmentManager(),mPresenter.getFragmentList()));
+        mViewPager.setCurrentItem(0);
+        mViewPager.addOnPageChangeListener(listener);
     }
 
     private long mLastBackPress = 0;
@@ -120,4 +75,42 @@ public class MainActivity extends BaseActivity {
             Utils.showToast(mActivity, getString(R.string.tip_exit));
         }
     }
+    private class MyAdapter extends FragmentPagerAdapter {
+        private List<Fragment>fragments;
+        public MyAdapter(FragmentManager fm, List<Fragment>mList) {
+            super(fm);
+            fragments=mList;
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return fragments.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return fragments.size();
+        }
+
+        @Override
+        public int getItemPosition(Object object) {
+            return super.getItemPosition(object);
+        }
+    }
+    private ViewPager.OnPageChangeListener listener=new ViewPager.OnPageChangeListener() {
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+        }
+
+        @Override
+        public void onPageSelected(int position) {
+          mNavigationView.getMenu().getItem(position).setChecked(true);
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int state) {
+
+        }
+    };
 }
