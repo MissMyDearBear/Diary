@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -13,6 +14,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import cjx.com.diary.R;
 import cjx.com.diary.base.BaseFragment;
+import cjx.com.diary.util.ImageUtils;
 
 /**
  * Created by bear on 2017/4/26.
@@ -23,6 +25,8 @@ public class HomePageFragment extends BaseFragment {
     @BindView(R.id.tv_text)
     TextView mTextView;
     Unbinder unbinder;
+    @BindView(R.id.image)
+    ImageView imageView;
 
     public static Fragment newInstance() {
         return new HomePageFragment();
@@ -39,6 +43,7 @@ public class HomePageFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+//        ImageUtils.getInstance().displayImage(mActivity,imageView,"");
     }
 
     @Override

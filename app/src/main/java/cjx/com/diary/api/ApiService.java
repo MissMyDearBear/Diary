@@ -29,10 +29,12 @@ public class ApiService {
 
     private ApiService() {
         Retrofit retrofit = new Retrofit.Builder().
-                baseUrl("http://ent.sipmch.com.cn").
+                baseUrl(BASE_URL).
                 addConverterFactory(GsonConverterFactory.create()).
                 addCallAdapterFactory(RxJava2CallAdapterFactory.create()).
                 build();
         mHttpInterface = retrofit.create(HttpInterface.class);
     }
+
+    private final String BASE_URL="http://192.168.40.241:1377";
 }

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cjx.com.diary.presenter.MainPresenter;
+import cjx.com.diary.view.fragment.FindFragment;
 import cjx.com.diary.view.fragment.HomePageFragment;
 
 /**
@@ -19,7 +20,7 @@ public class MainPresenterImp extends MyPresenterImpl implements MainPresenter {
     public List<Fragment> getFragmentList() {
         List<Fragment> list=new ArrayList<>();
         list.add(HomePageFragment.newInstance());
-        list.add(HomePageFragment.newInstance());
+        list.add(FindFragment.newInstance());
         list.add(HomePageFragment.newInstance());
         return list;
     }
