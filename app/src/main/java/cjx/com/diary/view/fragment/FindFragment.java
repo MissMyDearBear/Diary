@@ -3,16 +3,13 @@ package cjx.com.diary.view.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -47,7 +44,7 @@ public class FindFragment extends BaseFragment {
 
     private MyAdapter mAdapter;
 
-    private List<String>imageList=new ArrayList<>();
+    private List<String> imageList = new ArrayList<>();
 
     @Nullable
     @Override
@@ -66,17 +63,15 @@ public class FindFragment extends BaseFragment {
         recycleView.setLayoutManager(new LinearLayoutManager(mActivity, LinearLayoutManager.VERTICAL, false));
         mAdapter = new MyAdapter(imageList);
         recycleView.setAdapter(mAdapter);
-        imageList.addAll(mPresenter.getImageList());
-        mAdapter.notifyDataSetChanged();
+        mPresenter.getImageList();
     }
 
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        imageList.clear();
-        imageList.addAll(mPresenter.getImageList());
-        mAdapter.notifyDataSetChanged();
+    public void onRefresh(List<String> tem) {
+        if (null != tem && tem.size() > 0) {
+            imageList.clear();
+            imageList.addAll(tem);
+            mAdapter.notifyDataSetChanged();
+        }
     }
 
     private class MyAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
@@ -87,7 +82,7 @@ public class FindFragment extends BaseFragment {
         @Override
         protected void convert(BaseViewHolder baseViewHolder, String s) {
             ImageView mImageView = baseViewHolder.getView(R.id.image);
-            ImageUtils.getInstance().displayImage(mActivity, mImageView,s);
+            ImageUtils.getInstance().displayImage(mActivity, mImageView, s);
         }
     }
 

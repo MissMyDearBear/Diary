@@ -16,10 +16,17 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cjx.com.diary.R;
+import cjx.com.diary.api.ApiService;
 import cjx.com.diary.base.BaseActivity;
+import cjx.com.diary.common.MyObserver;
 import cjx.com.diary.presenter.MainPresenter;
 import cjx.com.diary.presenter.impl.MainPresenterImp;
 import cjx.com.diary.util.Utils;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Function;
+import io.reactivex.schedulers.Schedulers;
 
 public class MainActivity extends BaseActivity {
     @BindView(R.id.view_pager)
@@ -49,6 +56,23 @@ public class MainActivity extends BaseActivity {
                 }
                 return false;
             };
+
+    private void getData(){
+        ApiService.getApiService().getImages()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new MyObserver<List<String>>() {
+                    @Override
+                    public void onSuccess(List<String> strings) {
+                        Utils.showToast(mActivity,strings.size()+"");
+                    }
+
+                    @Override
+                    public void onError(String msg) {
+
+                    }
+                });
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

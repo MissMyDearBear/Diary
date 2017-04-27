@@ -1,7 +1,5 @@
 package cjx.com.diary.presenter;
 
-import java.util.List;
-
 import cjx.com.diary.base.BasePresenter;
 
 /**
@@ -9,5 +7,5 @@ import cjx.com.diary.base.BasePresenter;
  */
 
 public interface FindPresenter extends BasePresenter {
-    List<String>getImageList();
+    void getImageList();
 }
