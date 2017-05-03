@@ -21,6 +21,6 @@ public interface HttpInterface {
     @POST("/ModuleDefaultCompany/RentManage/SearchRentNo/")
     Observable<RoomResult> search(@Field("CertNo") String idNo);
 
-    @GET(value = "http://192.168.40.241:1377")
+    @GET(value = "http://192.168.40.137:1377")
     Observable<List<String>>getImages();
 }

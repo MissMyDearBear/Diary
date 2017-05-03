@@ -3,6 +3,7 @@ package cjx.com.diary.view.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -33,7 +34,8 @@ public class FindFragment extends BaseFragment {
     public static Fragment newInstance() {
         return new FindFragment();
     }
-
+@BindView(R.id.sw_layout)
+    SwipeRefreshLayout mSwl;
     @BindView(R.id.tb_title_bar)
     Toolbar tbTitleBar;
     @BindView(R.id.recycle_view)
@@ -60,6 +62,9 @@ public class FindFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         tbTitleBar.setTitle("萌宠");
+        mSwl.setOnRefreshListener(() -> {
+            mPresenter.getImageList();
+        });
         recycleView.setLayoutManager(new LinearLayoutManager(mActivity, LinearLayoutManager.VERTICAL, false));
         mAdapter = new MyAdapter(imageList);
         recycleView.setAdapter(mAdapter);
@@ -67,12 +72,14 @@ public class FindFragment extends BaseFragment {
     }
 
     public void onRefresh(List<String> tem) {
+        mSwl.setRefreshing(false);
         if (null != tem && tem.size() > 0) {
             imageList.clear();
             imageList.addAll(tem);
             mAdapter.notifyDataSetChanged();
         }
     }
+
 
     private class MyAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
         public MyAdapter(List<String> data) {

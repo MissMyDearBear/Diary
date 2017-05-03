@@ -1,14 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<TextView
-    android:id="@+id/tv_text"
-    android:layout_width="wrap_content"
-    android:text="@string/title_home"
-    android:layout_height="wrap_content" />
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_title_bar" />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:padding="5dp"
+        android:background="@drawable/bg_edit_stroke"
+        android:layout_marginRight="15dp">
+
+        <EditText
+            android:drawablePadding="5dp"
+            android:id="@+id/et_search"
+            android:drawableLeft="@drawable/ic_search_black_24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/color_grayB"
+            android:textColor="@color/color_grayA"
+            android:textSize="16sp"
+            android:background="@null"
+            android:hint="搜索" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/sw_layout"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycle_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>

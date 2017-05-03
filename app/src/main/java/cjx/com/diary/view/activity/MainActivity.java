@@ -57,23 +57,6 @@ public class MainActivity extends BaseActivity {
                 return false;
             };
 
-    private void getData(){
-        ApiService.getApiService().getImages()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(new MyObserver<List<String>>() {
-                    @Override
-                    public void onSuccess(List<String> strings) {
-                        Utils.showToast(mActivity,strings.size()+"");
-                    }
-
-                    @Override
-                    public void onError(String msg) {
-
-                    }
-                });
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

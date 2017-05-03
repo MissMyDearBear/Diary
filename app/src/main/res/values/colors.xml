@@ -5,4 +5,29 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorBlack">#000000</color>
     <color name="colorWhite">#FFFFFF</color>
+
+    <color name="color_grayA">#43464f</color>
+    <!-- 二级字体颜色 -->
+    <color name="color_grayB">#7a808f</color>
+    <!-- 内容颜色（三级字体颜色） -->
+    <color name="color_grayC">#a6acbc</color>
+    <color name="color_grayD">#f5f5f5</color>
+    <color name="color_grayE">#e3e3e3</color>
+    <color name="color_grayF">#fbfbfb</color>
+    <color name="color_grayG">#b6b9c1</color>
+    <!--蓝色高亮字体颜色-->
+    <color name="color_blueA">#0fbbe9</color>
+    <color name="color_blueA_alpha">#ee0fbbe9</color>
+    <!--绿色高亮字体颜色-->
+    <color name="color_font_green">#44df6c</color>
+    <!--红色高亮字体颜色-->
+    <color name="color_redA">#f5573e</color>
+    <!--其他辅助色-->
+    <color name="color_redB">#f47161</color>
+    <color name="color_orangeA">#ff934a</color>
+    <color name="color_yellowA">#fabb54</color>
+    <color name="color_purpleA">#7686de</color>
+    <color name="color_purpleB">#a4afe8</color>
+    <color name="color_greenA">#3ec95c</color>
+    <color name="color_greenB">#23bfb1</color>
 </resources>
