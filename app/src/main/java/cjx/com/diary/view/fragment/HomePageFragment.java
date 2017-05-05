@@ -47,6 +47,7 @@ public class HomePageFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mTitleBar.setTitle("日记列表");
+        mSearchEt.clearFocus();
     }
 
     @Override

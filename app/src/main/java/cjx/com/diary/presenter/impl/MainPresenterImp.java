@@ -9,6 +9,7 @@ import java.util.List;
 import cjx.com.diary.presenter.MainPresenter;
 import cjx.com.diary.view.fragment.FindFragment;
 import cjx.com.diary.view.fragment.HomePageFragment;
+import cjx.com.diary.view.fragment.PersonalFragment;
 
 /**
  * Created by bear on 2017/4/26.
@@ -21,7 +22,7 @@ public class MainPresenterImp extends MyPresenterImpl implements MainPresenter {
         List<Fragment> list=new ArrayList<>();
         list.add(HomePageFragment.newInstance());
         list.add(FindFragment.newInstance());
-        list.add(HomePageFragment.newInstance());
+        list.add(PersonalFragment.newInstance());
         return list;
     }
 }

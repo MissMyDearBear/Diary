@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_title_bar" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/nes_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_header"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                tools:src="@drawable/ic_head" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                style="@style/style_front_grayA_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="20sp"
+                tools:text="bear" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/ripple_white_gray"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <TextView
+                    style="@style/style_front_grayA_14"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_website"
+                    android:drawablePadding="5dp"
+                    android:text="主页" />
+
+                <TextView
+                    android:id="@+id/tv_homepage_website"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:autoLink="web" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginTop="2px"
+                android:background="@drawable/ripple_white_gray"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <TextView
+                    style="@style/style_front_grayA_14"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_email_black"
+                    android:drawablePadding="5dp"
+                    android:text="邮箱" />
+
+                <TextView
+                    android:id="@+id/tv_email"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:autoLink="email" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginTop="2px"
+                android:background="@drawable/ripple_white_gray"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <TextView
+                    style="@style/style_front_grayA_14"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_email_black"
+                    android:drawablePadding="5dp"
+                    android:text="Github" />
+
+                <TextView
+                    android:id="@+id/tv_git"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:autoLink="web" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>

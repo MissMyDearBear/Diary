@@ -30,4 +30,5 @@
     <color name="color_purpleB">#a4afe8</color>
     <color name="color_greenA">#3ec95c</color>
     <color name="color_greenB">#23bfb1</color>
+    <color name="color_item_pressed">#eeeeee</color>
 </resources>
