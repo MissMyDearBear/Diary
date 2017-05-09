@@ -4,8 +4,9 @@ import android.app.Application;
 
 import org.greenrobot.greendao.database.Database;
 
-import cjx.com.diary.mode.user.DaoMaster;
-import cjx.com.diary.mode.user.DaoSession;
+import cjx.com.diary.mode.diary.DaoMaster;
+import cjx.com.diary.mode.diary.DaoSession;
+
 
 /**
  * Created by bear on 2017/4/17.

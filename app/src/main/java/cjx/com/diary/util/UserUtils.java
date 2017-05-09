@@ -1,7 +1,7 @@
 package cjx.com.diary.util;
 
 import cjx.com.diary.base.MyApplication;
-import cjx.com.diary.mode.user.DaoSession;
+import cjx.com.diary.mode.diary.DaoSession;
 import cjx.com.diary.mode.user.UserBean;
 
 /**

@@ -3,8 +3,9 @@ package cjx.com.diary.db;
 import org.greenrobot.greendao.database.Database;
 
 import cjx.com.diary.base.MyApplication;
-import cjx.com.diary.mode.user.DaoMaster;
-import cjx.com.diary.mode.user.DaoSession;
+import cjx.com.diary.mode.diary.DaoMaster;
+import cjx.com.diary.mode.diary.DaoSession;
+
 
 /**
  * Created by bear on 2017/4/25.

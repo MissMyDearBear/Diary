@@ -73,11 +73,13 @@ public class HomePageFragment extends BaseFragment {
         mBackIv.setVisibility(View.GONE);
         mExtendTv.setText("添加");
         mExtendTv.setOnClickListener(v -> add());
-        mSearchEt.clearFocus();
+        mSearchEt.setFocusable(false);
+        mSearchEt.setEnabled(false);
         mSwLayout.setOnRefreshListener(() -> onRefreshData());
         mRecycleView.setLayoutManager(new LinearLayoutManager(mActivity,LinearLayoutManager.VERTICAL,false));
         mAdapter =new MyAdapter(mList);
         mRecycleView.setAdapter(mAdapter);
+        onRefreshData();
     }
 
     private void onRefreshData() {
