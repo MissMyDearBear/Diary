@@ -72,6 +72,7 @@ public class FindFragment extends BaseFragment {
     }
 
     public void onRefresh(List<String> tem) {
+        if(mActivity==null||mActivity.isFinishing())return;
         mSwl.setRefreshing(false);
         if (null != tem && tem.size() > 0) {
             imageList.clear();

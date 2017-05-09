@@ -7,7 +7,7 @@ package cjx.com.diary.common;
 
 public class Const {
 
-    public static final String MY_EMAIL = "bear@bertadata.com";
+    public static final String MY_EMAIL = "2280885690@qq.com";
     public static final String MY_WEBSITE = "http://www.jianshu.com/u/9be0df6428d5";
     public static final String MY_NAME="AlenBear";
     public static final String MY_GIT_HUB ="https://github.com/MissMyDearBear";

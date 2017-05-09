@@ -28,7 +28,7 @@ private final String mSloganStr="欢\n迎\n来\n到\n小\n熊\n日\n记\n!";
         userBean.setId((long)1);
         userBean.setAccount("18262282215");
         userBean.setPassWord("111111qq");
-        userBean.setEmail("bear@berdatata.com");
+        userBean.setEmail("2280885690@qq.com");
         userBean.setMobile("18262282215");
         UserBeanDao dao = MyApplication.INSTANCE.getDaoSession().getUserBeanDao();
         QueryBuilder queryBuilder = dao.queryBuilder();
