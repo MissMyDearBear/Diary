@@ -5,7 +5,11 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Created by bear on 2017/4/13.
+ * @author: bear
+ *
+ * @Description: HttpServer
+ *
+ * @date: 2017/5/10
  */
 
 public class ApiService {

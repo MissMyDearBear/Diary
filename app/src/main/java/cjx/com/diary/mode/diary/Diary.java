@@ -5,7 +5,11 @@ import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
 
 /**
- * Created by bear on 2017/5/9.
+ * @author: bear
+ *
+ * @Description: 日记表
+ *
+ * @date: 2017/5/10
  */
 @Entity
 public class Diary {

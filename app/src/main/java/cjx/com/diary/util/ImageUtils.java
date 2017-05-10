@@ -4,7 +4,11 @@ import cjx.com.diary.thirdtools.glide.GlideImp;
 import cjx.com.diary.thirdtools.ImageInterface;
 
 /**
- * Created by bear on 2017/4/13.
+ * @author: bear
+ *
+ * @Description: 图片相关工具类
+ *
+ * @date: 2017/5/10
  */
 
 public class ImageUtils {

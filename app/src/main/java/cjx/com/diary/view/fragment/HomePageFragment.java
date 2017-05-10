@@ -38,9 +38,12 @@ import cjx.com.diary.util.DiaryUtils;
 import cjx.com.diary.util.Utils;
 
 /**
- * Created by bear on 2017/4/26.
- */
-
+ * @author: bear
+ *
+ * @Description: 主页
+ *
+ * @date: 2017/5/10
+**/
 public class HomePageFragment extends BaseFragment {
     @BindView(R.id.tb_title_bar)
     Toolbar mTitleBar;

@@ -10,7 +10,11 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 /**
- * Created by bear on 2017/4/13.
+ * @author: bear
+ *
+ * @Description: API接口定义
+ *
+ * @date: 2017/5/10
  */
 
 public interface HttpInterface {

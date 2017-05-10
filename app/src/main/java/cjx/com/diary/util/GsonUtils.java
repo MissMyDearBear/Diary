@@ -8,7 +8,11 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 /**
- * Created by bear on 2017/4/24.
+ * @author: bear
+ *
+ * @Description: json 解析工具类
+ *
+ * @date: 2017/5/10
  */
 
 public class GsonUtils {

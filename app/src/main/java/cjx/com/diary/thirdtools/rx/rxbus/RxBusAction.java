@@ -1,10 +1,12 @@
 package cjx.com.diary.thirdtools.rx.rxbus;
 
 /**
- * rx 事件名
- * Created by bear on 2017/5/10.
- */
-
+ * @author: bear
+ *
+ * @Description: rx 事件名
+ *
+ * @date: 2017/5/10
+**/
 public class RxBusAction {
     /**
      * add diary

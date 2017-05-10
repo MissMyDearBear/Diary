@@ -12,9 +12,12 @@ import android.widget.TextView;
 import cjx.com.diary.R;
 
 /**
- * Created by bear on 2017/4/13.
+ * @author: bear
+ *
+ * @Description: baseActivity
+ *
+ * @date: 2017/5/10
  */
-
 public abstract class BaseActivity extends AppCompatActivity implements BaseView{
     public BaseActivity mActivity;
 

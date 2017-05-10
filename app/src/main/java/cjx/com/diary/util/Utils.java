@@ -6,7 +6,11 @@ import android.widget.Toast;
 import java.util.UUID;
 
 /**
- * Created by bear on 2017/4/13.
+ * @author: bear
+ *
+ * @Description: 常用工具类
+ *
+ * @date: 2017/5/10
  */
 
 public class Utils {

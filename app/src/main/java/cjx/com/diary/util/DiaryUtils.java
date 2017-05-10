@@ -10,8 +10,12 @@ import cjx.com.diary.mode.diary.Diary;
 import cjx.com.diary.mode.diary.DiaryDao;
 
 /**
- * Created by bear on 2017/5/9.
- */
+ * @author: bear
+ *
+ * @Description: 日记相关工具类
+ *
+ * @date: 2017/5/10
+**/
 
 public class DiaryUtils {
     /**

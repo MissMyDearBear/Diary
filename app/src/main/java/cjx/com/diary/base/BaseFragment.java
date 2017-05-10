@@ -4,9 +4,12 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 
 /**
- * Created by bear on 2017/4/26.
+ * @author: bear
+ *
+ * @Description: BaseFragments
+ *
+ * @date: 2017/5/10
  */
-
 public abstract class BaseFragment extends Fragment implements BaseView {
     public BaseActivity mActivity;
 

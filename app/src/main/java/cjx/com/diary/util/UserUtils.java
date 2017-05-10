@@ -5,8 +5,11 @@ import cjx.com.diary.mode.diary.DaoSession;
 import cjx.com.diary.mode.user.UserBean;
 
 /**
- * 用户相关
- * Created by bear on 2017/5/5.
+ * @author: bear
+ *
+ * @Description: 用户相关工具类
+ *
+ * @date: 2017/5/10
  */
 
 public class UserUtils {

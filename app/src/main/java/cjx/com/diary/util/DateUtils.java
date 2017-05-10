@@ -5,9 +5,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by bear on 2017/5/9.
+ * @author: bear
+ *
+ * @Description: 时间相关的工具类
+ *
+ * @date: 2017/5/10
  */
-
 public class DateUtils {
     public static String getCurrentTime(){
         return convertDate(new Date(),"yyyy-MM-dd HH:mm:ss");
