@@ -55,4 +55,5 @@ dependencies {
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:latest.release'
     compile 'org.greenrobot:greendao:3.2.2'
     compile 'net.zetetic:android-database-sqlcipher:3.5.1@aar'
+    compile 'com.hwangjr.rxbus:rxbus:1.0.5'
 }

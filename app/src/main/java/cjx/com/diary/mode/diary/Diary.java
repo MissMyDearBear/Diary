@@ -1,22 +1,22 @@
 package cjx.com.diary.mode.diary;
 
 import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.annotation.Generated;
 
 /**
  * Created by bear on 2017/5/9.
  */
 @Entity
 public class Diary {
-    @Id(autoincrement = true)
-    public long id;
+    @Id
+    public String uid;
     public String title;
     public String content;
     public String createDate;
-    @Generated(hash = 1849712061)
-    public Diary(long id, String title, String content, String createDate) {
-        this.id = id;
+    @Generated(hash = 521700532)
+    public Diary(String uid, String title, String content, String createDate) {
+        this.uid = uid;
         this.title = title;
         this.content = content;
         this.createDate = createDate;
@@ -24,11 +24,11 @@ public class Diary {
     @Generated(hash = 112123061)
     public Diary() {
     }
-    public long getId() {
-        return this.id;
+    public String getUid() {
+        return this.uid;
     }
-    public void setId(long id) {
-        this.id = id;
+    public void setUid(String uid) {
+        this.uid = uid;
     }
     public String getTitle() {
         return this.title;
@@ -48,5 +48,4 @@ public class Diary {
     public void setCreateDate(String createDate) {
         this.createDate = createDate;
     }
-
 }
