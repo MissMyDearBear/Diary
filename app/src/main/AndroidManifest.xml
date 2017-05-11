@@ -33,6 +33,11 @@
             android:name=".view.activity.LoginActivity"
             android:label="@string/activity_login"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.activity.DiaryDetailActivity"
+            android:label="@string/activity_diary_detail"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask"/>
     </application>
 
 </manifest>

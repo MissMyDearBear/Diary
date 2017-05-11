@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <EditText
+        android:id="@+id/et_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入标题"
+        android:background="@null"
+        android:textColor="@color/color_grayA"
+        android:textColorHint="@color/color_grayC"
+        android:textSize="16sp" />
+    <TextView
+        android:layout_marginTop="5dp"
+        style="@style/Divider_Horizontal_2px" />
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/color_grayB"
+        android:textSize="12sp"
+        tools:text="2017/05/11" />
+
+    <ScrollView
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/et_content"
+            android:lineSpacingExtra="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@null"
+            android:hint="请输入内容"
+            android:textColor="@color/color_grayA"
+            android:textSize="14sp" />
+    </ScrollView>
+</LinearLayout>

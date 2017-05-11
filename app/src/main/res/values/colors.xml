@@ -31,4 +31,8 @@
     <color name="color_greenA">#3ec95c</color>
     <color name="color_greenB">#23bfb1</color>
     <color name="color_item_pressed">#eeeeee</color>
+    <!--分割线颜色-->
+    <color name="color_divider_gray">#e5e5e5</color>
+    <!--线框颜色(搜索框等)-->
+    <color name="color_box_line">#fbfbfb</color>
 </resources>

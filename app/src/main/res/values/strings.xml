@@ -9,6 +9,7 @@
     <string name="activity_splash">开屏页</string>
     <string name="activity_main">主页</string>
     <string name="activity_login">登录</string>
+    <string name="activity_diary_detail">日记详情</string>
 
 
     <!--===================tips========================-->

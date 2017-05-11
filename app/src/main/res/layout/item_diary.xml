@@ -22,6 +22,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
+        android:maxLines="2"
+        android:ellipsize="end"
         android:textColor="@color/color_grayA"
         android:textSize="14sp"
         tools:text="我的日记内容" />

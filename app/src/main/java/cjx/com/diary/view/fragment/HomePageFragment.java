@@ -33,17 +33,15 @@ import cjx.com.diary.base.BaseFragment;
 import cjx.com.diary.mode.diary.Diary;
 import cjx.com.diary.thirdtools.rx.rxbus.RxBus;
 import cjx.com.diary.thirdtools.rx.rxbus.RxBusAction;
-import cjx.com.diary.util.DateUtils;
 import cjx.com.diary.util.DiaryUtils;
 import cjx.com.diary.util.Utils;
+import cjx.com.diary.view.activity.DiaryDetailActivity;
 
 /**
  * @author: bear
- *
  * @Description: 主页
- *
  * @date: 2017/5/10
-**/
+ **/
 public class HomePageFragment extends BaseFragment {
     @BindView(R.id.tb_title_bar)
     Toolbar mTitleBar;
@@ -84,8 +82,6 @@ public class HomePageFragment extends BaseFragment {
         mBackIv.setVisibility(View.GONE);
         mExtendTv.setText("添加");
         mExtendTv.setOnClickListener(v -> add());
-        mSearchEt.setFocusable(false);
-        mSearchEt.setEnabled(false);
         mSwLayout.setOnRefreshListener(() -> onRefreshData());
         mRecycleView.setLayoutManager(new LinearLayoutManager(mActivity, LinearLayoutManager.VERTICAL, false));
         mAdapter = new MyAdapter(mList);
@@ -99,21 +95,22 @@ public class HomePageFragment extends BaseFragment {
 
     /**
      * 显示删除弹框
+     *
      * @param diary
      */
-    private void showDeleteDialog(final Diary diary){
+    private void showDeleteDialog(final Diary diary) {
         new AlertDialog.Builder(mActivity)
                 .setTitle("提示")
                 .setMessage("确定删除吗？")
                 .setPositiveButton("确定", (dialog, which) -> {
-                    if(DiaryUtils.delete(diary)){
-                        Utils.showToast(mActivity,"删除成功");
+                    if (DiaryUtils.delete(diary)) {
+                        Utils.showToast(mActivity, "删除成功");
                         onRefreshData();
-                    } else{
-                        Utils.showToast(mActivity,"删除失败");
+                    } else {
+                        Utils.showToast(mActivity, "删除失败");
                     }
                 })
-                .setNegativeButton("取消",null)
+                .setNegativeButton("取消", null)
                 .create().show();
     }
 
@@ -129,32 +126,34 @@ public class HomePageFragment extends BaseFragment {
 
     /**
      * 添加日记
+     *
      * @param diary
      */
     @Subscribe(
             thread = EventThread.MAIN_THREAD,
-            tags ={@Tag(RxBusAction.DIARY_ADD)}
+            tags = {@Tag(RxBusAction.DIARY_ADD)}
     )
-    public void onEvent_addDiary(Diary diary){
-        if(mList!=null){
-            if(!mList.contains(diary)){
-               mList.add(0,diary);
-               mAdapter.notifyDataSetChanged();
+    public void onEvent_addDiary(Diary diary) {
+        if (mList != null) {
+            if (!mList.contains(diary)) {
+                mList.add(0, diary);
+                mAdapter.notifyDataSetChanged();
             }
         }
     }
 
     /**
      * 删除日记
+     *
      * @param diary
      */
     @Subscribe(
             thread = EventThread.MAIN_THREAD,
-            tags ={@Tag(RxBusAction.DIARY_DELETE)}
+            tags = {@Tag(RxBusAction.DIARY_DELETE)}
     )
-    public void onEvent_deleteDiary(Diary diary){
-        if(mList!=null){
-            if(mList.contains(diary)){
+    public void onEvent_deleteDiary(Diary diary) {
+        if (mList != null) {
+            if (mList.contains(diary)) {
                 mList.remove(diary);
                 mAdapter.notifyDataSetChanged();
             }
@@ -163,20 +162,21 @@ public class HomePageFragment extends BaseFragment {
 
     /**
      * 更新日记
+     *
      * @param diary
      */
     @Subscribe(
             thread = EventThread.MAIN_THREAD,
-            tags ={@Tag(RxBusAction.DIARY_UPDATE)}
+            tags = {@Tag(RxBusAction.DIARY_UPDATE)}
     )
-    public void onEvent_updateDiary(Diary diary){
-        if(mList!=null){
-            if(mList.contains(diary)){
-                for(int i=0;i<mList.size();i++){
-                    if(TextUtils.equals(diary.uid,mList.get(i).uid)){
-                        mList.get(i).title=diary.title;
-                        mList.get(i).createDate=diary.createDate;
-                        mList.get(i).content=diary.content;
+    public void onEvent_updateDiary(Diary diary) {
+        if (mList != null) {
+            if (mList.contains(diary)) {
+                for (int i = 0; i < mList.size(); i++) {
+                    if (TextUtils.equals(diary.uid, mList.get(i).uid)) {
+                        mList.get(i).title = diary.title;
+                        mList.get(i).createDate = diary.createDate;
+                        mList.get(i).content = diary.content;
                         mAdapter.notifyItemChanged(i);
                     }
                 }
@@ -185,22 +185,11 @@ public class HomePageFragment extends BaseFragment {
     }
 
 
-
-
     /**
      * 添加日记
      */
     private void add() {
-        Diary diary = new Diary();
-        diary.uid = Utils.getUUID();
-        diary.title = "我的日记一";
-        diary.content = "我的日记内容";
-        diary.createDate = DateUtils.getCurrentTime();
-        if (DiaryUtils.addDiary(diary)) {
-            Utils.showToast(mActivity, "添加成功！");
-//            onRefreshData();
-            RxBus.get().post(RxBusAction.DIARY_ADD,diary);
-        }
+        DiaryDetailActivity.addDiary(mActivity);
     }
 
     @Override
