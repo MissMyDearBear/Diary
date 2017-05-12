@@ -31,4 +31,7 @@ public interface DiaryDetailPresenter extends BasePresenter {
      */
     boolean update(Diary diary);
 
+
+    Diary query(String id);
+
 }

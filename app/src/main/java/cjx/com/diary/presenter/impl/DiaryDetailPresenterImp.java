@@ -4,6 +4,7 @@ import cjx.com.diary.mode.diary.Diary;
 import cjx.com.diary.presenter.DiaryDetailPresenter;
 import cjx.com.diary.thirdtools.rx.rxbus.RxBus;
 import cjx.com.diary.thirdtools.rx.rxbus.RxBusAction;
+import cjx.com.diary.util.DateUtils;
 import cjx.com.diary.util.DiaryUtils;
 
 /**
@@ -40,5 +41,10 @@ public class DiaryDetailPresenterImp extends MyPresenterImpl implements DiaryDet
             RxBus.get().post(RxBusAction.DIARY_UPDATE,diary);
         }
         return isSuccess;
+    }
+
+    @Override
+    public Diary query(String id) {
+        return DiaryUtils.queryDiaryByUid(id);
     }
 }

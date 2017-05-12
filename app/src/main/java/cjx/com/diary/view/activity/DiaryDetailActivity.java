@@ -11,8 +11,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import cjx.com.diary.R;
 import cjx.com.diary.base.BaseActivity;
-import cjx.com.diary.mode.diary.Diary;
 import cjx.com.diary.view.fragment.DiaryAddFrag;
+import cjx.com.diary.view.fragment.DiaryPreviewFrag;
 
 /**
  * description: 日记详情
@@ -24,10 +24,6 @@ public class DiaryDetailActivity extends BaseActivity {
      * 预览动作
      */
     public static final int ACTION_PREVIEW = 0x101;
-    /**
-     * 编辑动作
-     */
-    public static final int ACTION_EDITOR = 0x102;
     /**
      * 添加动作
      */
@@ -45,23 +41,13 @@ public class DiaryDetailActivity extends BaseActivity {
      *
      * @param context 上下文
      * @param diaryId 日记ID
-     * @param title 标题
      */
-    public static void previewDiary(Context context, String title,String diaryId) {
-
+    public static void previewDiary(Context context,String diaryId) {
+        Intent intent = new Intent(context, DiaryDetailActivity.class);
+        intent.putExtra("action", ACTION_PREVIEW);
+        intent.putExtra("diaryId", diaryId);
+        context.startActivity(intent);
     }
-
-    /**
-     * 编辑
-     *
-     * @param context 上下文
-     * @param title  标题
-     * @param diary 日记
-     */
-    public static void eidtorDiary(Context context, String title, Diary diary) {
-
-    }
-
 
     public static void addDiary(Context context) {
         Intent intent = new Intent(context, DiaryDetailActivity.class);
@@ -74,6 +60,8 @@ public class DiaryDetailActivity extends BaseActivity {
      */
     private int mAction;
 
+    private String id;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +69,7 @@ public class DiaryDetailActivity extends BaseActivity {
         ButterKnife.bind(this);
 
         mAction = getIntent().getIntExtra("action", 0);
+        id = getIntent().getStringExtra("diaryId");
         initViewByAction();
     }
 
@@ -90,9 +79,7 @@ public class DiaryDetailActivity extends BaseActivity {
     private void initViewByAction() {
         if (mAction == ACTION_ADD) {
             initAddView();
-        } else if (mAction == ACTION_EDITOR) {
-            initEditView();
-        } else if (mAction == ACTION_PREVIEW) {
+        }  else if (mAction == ACTION_PREVIEW) {
             initPreview();
         }
         if(mFragment!=null){
@@ -106,11 +93,9 @@ public class DiaryDetailActivity extends BaseActivity {
         mFragment= DiaryAddFrag.newInstance();
     }
 
-
-    private void initEditView() {
-    }
-
     private void initPreview() {
+        initTitleBar("我的日记");
+        mFragment= DiaryPreviewFrag.newInstance(id);
     }
 
 }

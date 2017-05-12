@@ -8,7 +8,9 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,6 +65,9 @@ public class HomePageFragment extends BaseFragment {
 
     private MyAdapter mAdapter;
 
+
+    private String key="";
+
     public static Fragment newInstance() {
         return new HomePageFragment();
     }
@@ -78,6 +83,24 @@ public class HomePageFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mSearchEt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                key=s.toString().trim();
+                onRefreshData();
+
+            }
+        });
         mTitleTv.setText("日记列表");
         mBackIv.setVisibility(View.GONE);
         mExtendTv.setText("添加");
@@ -90,6 +113,9 @@ public class HomePageFragment extends BaseFragment {
             showDeleteDialog(mList.get(i));
             return true;
         });
+        mAdapter.setOnItemClickListener(((baseQuickAdapter, view1, i) -> {
+            DiaryDetailActivity.previewDiary(mActivity,mList.get(i).uid);
+        }));
         onRefreshData();
     }
 
@@ -117,8 +143,8 @@ public class HomePageFragment extends BaseFragment {
     private void onRefreshData() {
         mList.clear();
         mAdapter.notifyDataSetChanged();
-        if (DiaryUtils.getDiaryList() != null) {
-            mList.addAll(DiaryUtils.getDiaryList());
+        if (DiaryUtils.queryByTitle(key) != null) {
+            mList.addAll(DiaryUtils.queryByTitle(key) );
             mAdapter.notifyDataSetChanged();
         }
         mSwLayout.setRefreshing(false);
@@ -171,17 +197,16 @@ public class HomePageFragment extends BaseFragment {
     )
     public void onEvent_updateDiary(Diary diary) {
         if (mList != null) {
-            if (mList.contains(diary)) {
                 for (int i = 0; i < mList.size(); i++) {
                     if (TextUtils.equals(diary.uid, mList.get(i).uid)) {
                         mList.get(i).title = diary.title;
                         mList.get(i).createDate = diary.createDate;
                         mList.get(i).content = diary.content;
                         mAdapter.notifyItemChanged(i);
+                        break;
                     }
                 }
             }
-        }
     }
 
 

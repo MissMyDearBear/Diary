@@ -1,5 +1,7 @@
 package cjx.com.diary.util;
 
+import android.text.TextUtils;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -11,11 +13,9 @@ import cjx.com.diary.mode.diary.DiaryDao;
 
 /**
  * @author: bear
- *
  * @Description: 日记相关工具类
- *
  * @date: 2017/5/10
-**/
+ **/
 
 public class DiaryUtils {
     /**
@@ -34,6 +34,7 @@ public class DiaryUtils {
         }
         return list;
     }
+
     /**
      * 添加日记
      *
@@ -52,14 +53,14 @@ public class DiaryUtils {
     }
 
 
-
     /**
      * 删除日记
+     *
      * @param diary
      * @return
      */
     public static boolean delete(Diary diary) {
-        boolean isDeleted ;
+        boolean isDeleted;
         try {
             DaoSession dao = MyApplication.INSTANCE.getDaoSession();
             DiaryDao diaryDao = dao.getDiaryDao();
@@ -74,37 +75,56 @@ public class DiaryUtils {
 
     /**
      * 更新日记
+     *
      * @param diary
      * @return
      */
-    public static boolean update(Diary diary){
+    public static boolean update(Diary diary) {
         boolean isUpdate;
         try {
             DaoSession dao = MyApplication.INSTANCE.getDaoSession();
             DiaryDao diaryDao = dao.getDiaryDao();
             diaryDao.update(diary);
-            isUpdate=true;
+            isUpdate = true;
         } catch (Exception e) {
             e.printStackTrace();
-            isUpdate=false;
+            isUpdate = false;
         }
         return isUpdate;
     }
 
     /**
      * 根据uid查询对应的日记
+     *
      * @param uid
      * @return
      */
-     public static Diary queryDiaryByUid(String uid){
-         DaoSession dao = MyApplication.INSTANCE.getDaoSession();
-         DiaryDao diaryDao = dao.getDiaryDao();
-         List<Diary> diary = diaryDao.queryBuilder().where(DiaryDao.Properties.Uid
-                 .eq(uid)).list();
-         if(diary!=null&&diary.size()==1){
-             return diary.get(0);
-         }else{
-             return null;
-         }
-     }
+    public static Diary queryDiaryByUid(String uid) {
+        DaoSession dao = MyApplication.INSTANCE.getDaoSession();
+        DiaryDao diaryDao = dao.getDiaryDao();
+        List<Diary> diary = diaryDao.queryBuilder().where(DiaryDao.Properties.Uid
+                .eq(uid)).list();
+        if (diary != null && diary.size() == 1) {
+            return diary.get(0);
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * 根据title模糊查询
+     *
+     * @param title
+     * @return
+     */
+    public static List<Diary> queryByTitle(String title) {
+        if (TextUtils.isEmpty(title)) {
+            return getDiaryList();
+        }
+        DaoSession dao = MyApplication.INSTANCE.getDaoSession();
+        DiaryDao diaryDao = dao.getDiaryDao();
+        List<Diary> list = diaryDao.queryBuilder().where(DiaryDao.Properties.Title
+                .like("%"+title+"%")).orderDesc(DiaryDao.Properties.CreateDate).list();
+        return list;
+    }
 }
