@@ -16,6 +16,11 @@ android {
         vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
+        greendao{
+            schemaVersion 1
+//            这个地方是自动生成的配置文件存放在哪个位置的
+            targetGenDir 'src/main/java'
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'

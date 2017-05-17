@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:padding="5dp"
+        android:padding="2dp"
         android:background="@drawable/bg_edit_stroke"
         android:layout_marginRight="15dp">
 
@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:textColorHint="@color/color_grayB"
             android:textColor="@color/color_grayA"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:background="@null"
             android:hint="搜索" />
     </android.support.design.widget.TextInputLayout>

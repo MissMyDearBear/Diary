@@ -18,14 +18,16 @@ public class UserBean {
     public String passWord;
     public String mobile;
     public String email;
-@Generated(hash = 1328729131)
+    public String name;
+@Generated(hash = 1114111486)
 public UserBean(long id, String account, String passWord, String mobile,
-        String email) {
+        String email, String name) {
     this.id = id;
     this.account = account;
     this.passWord = passWord;
     this.mobile = mobile;
     this.email = email;
+    this.name = name;
 }
 @Generated(hash = 1203313951)
 public UserBean() {
@@ -60,5 +62,10 @@ public String getEmail() {
 public void setEmail(String email) {
     this.email = email;
 }
-
+public String getName() {
+    return this.name;
+}
+public void setName(String name) {
+    this.name = name;
+}
 }

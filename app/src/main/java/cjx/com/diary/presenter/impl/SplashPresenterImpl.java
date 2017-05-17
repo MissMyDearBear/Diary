@@ -2,11 +2,14 @@ package cjx.com.diary.presenter.impl;
 
 import android.os.CountDownTimer;
 
+import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.query.QueryBuilder;
 
 import java.util.List;
 
 import cjx.com.diary.base.MyApplication;
+import cjx.com.diary.mode.diary.DaoMaster;
+import cjx.com.diary.mode.diary.DaoSession;
 import cjx.com.diary.mode.user.UserBean;
 import cjx.com.diary.mode.user.UserBeanDao;
 import cjx.com.diary.presenter.SplashPresenter;
@@ -30,7 +33,10 @@ private final String mSloganStr="欢\n迎\n来\n到\n小\n熊\n日\n记\n!";
         userBean.setPassWord("111111qq");
         userBean.setEmail("2280885690@qq.com");
         userBean.setMobile("18262282215");
+        userBean.setName("AlenBear");
         UserBeanDao dao = MyApplication.INSTANCE.getDaoSession().getUserBeanDao();
+        UserBeanDao.dropTable(dao.getDatabase(),true);
+        UserBeanDao.createTable(dao.getDatabase(),true);
         QueryBuilder queryBuilder = dao.queryBuilder();
         List<UserBean> list = queryBuilder.where(UserBeanDao.Properties.Account.eq("18262282215")).list();
         if (list == null || (list != null && list.size() == 0)) {

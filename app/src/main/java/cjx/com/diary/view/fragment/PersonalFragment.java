@@ -19,6 +19,7 @@ import cjx.com.diary.base.BaseFragment;
 import cjx.com.diary.common.Const;
 import cjx.com.diary.mode.user.UserBean;
 import cjx.com.diary.util.UserUtils;
+import cjx.com.diary.util.Utils;
 
 /**
  * Created by bear on 2017/5/5.
@@ -28,6 +29,12 @@ public class PersonalFragment extends BaseFragment {
 
     @BindView(R.id.tv_git)
     TextView mGitTv;
+    @BindView(R.id.tv_title)
+    TextView mTitleTv;
+    @BindView(R.id.tv_extend)
+    TextView mExtendTv;
+    @BindView(R.id.iv_back)
+    ImageView mBackIv;
 
     public static Fragment newInstance() {
         Fragment fragment = new PersonalFragment();
@@ -59,7 +66,7 @@ public class PersonalFragment extends BaseFragment {
         UserBean userBean = UserUtils.getAccountInfo();
         if (userBean != null) {
             mEmail = userBean.email;
-            mName = userBean.account;
+            mName = userBean.name;
         }
         return rootView;
     }
@@ -68,6 +75,10 @@ public class PersonalFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mBackIv.setVisibility(View.GONE);
+        mTitleTv.setText("关于我");
+        mExtendTv.setText("分享");
+        mExtendTv.setOnClickListener((view1)-> Utils.showToast(mActivity,"分享"));
         mWebsiteTv.setText(Const.MY_WEBSITE);
         mEmailTv.setText(mEmail);
         mNameTv.setText(mName);
@@ -80,4 +91,5 @@ public class PersonalFragment extends BaseFragment {
         super.onDestroyView();
         unbinder.unbind();
     }
+
 }

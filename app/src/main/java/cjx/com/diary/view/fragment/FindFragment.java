@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -31,10 +32,18 @@ import cjx.com.diary.util.ImageUtils;
  */
 
 public class FindFragment extends BaseFragment {
+    @BindView(R.id.iv_back)
+    ImageView mBackIv;
+    @BindView(R.id.tv_title)
+    TextView mTitleTv;
+    @BindView(R.id.tv_extend)
+    TextView mExtendTv;
+
     public static Fragment newInstance() {
         return new FindFragment();
     }
-@BindView(R.id.sw_layout)
+
+    @BindView(R.id.sw_layout)
     SwipeRefreshLayout mSwl;
     @BindView(R.id.tb_title_bar)
     Toolbar tbTitleBar;
@@ -61,7 +70,8 @@ public class FindFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        tbTitleBar.setTitle("萌宠");
+        mBackIv.setVisibility(View.GONE);
+        mTitleTv.setText("趣闻");
         mSwl.setOnRefreshListener(() -> {
             mPresenter.getImageList();
         });
@@ -72,7 +82,7 @@ public class FindFragment extends BaseFragment {
     }
 
     public void onRefresh(List<String> tem) {
-        if(mActivity==null||mActivity.isFinishing())return;
+        if (mActivity == null || mActivity.isFinishing()) return;
         mSwl.setRefreshing(false);
         if (null != tem && tem.size() > 0) {
             imageList.clear();

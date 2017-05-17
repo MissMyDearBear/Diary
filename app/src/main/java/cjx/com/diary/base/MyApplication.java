@@ -4,6 +4,7 @@ import android.app.Application;
 
 import org.greenrobot.greendao.database.Database;
 
+import cjx.com.diary.db.MyOpenHelper;
 import cjx.com.diary.mode.diary.DaoMaster;
 import cjx.com.diary.mode.diary.DaoSession;
 
@@ -22,9 +23,11 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         INSTANCE = this;
-        DaoMaster.DevOpenHelper help = new DaoMaster.DevOpenHelper(this, ENCRYPTED ? "bear-db-encrypted" : "bear-db");
+        DaoMaster.DevOpenHelper help = new MyOpenHelper(this, ENCRYPTED ? "bear-db-encrypted" : "bear-db");
         Database db = ENCRYPTED ? help.getEncryptedWritableDb("admin") : help.getWritableDb();
-        mDaoSession = new DaoMaster(db).newSession();
+        DaoMaster master=new DaoMaster(db);
+        System.out.print("当前数据库版本号-->"+master.getSchemaVersion());
+        mDaoSession = master.newSession();
     }
 
     public DaoSession getDaoSession() {
