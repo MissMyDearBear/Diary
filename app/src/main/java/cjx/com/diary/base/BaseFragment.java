@@ -18,4 +18,5 @@ public abstract class BaseFragment extends Fragment implements BaseView {
         super.onAttach(context);
         mActivity = (BaseActivity) context;
     }
+
 }

@@ -3,9 +3,10 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/color_grayC</item>
+        <item name="colorPrimaryDark">@color/colorBlack</item>
+        <item name="colorAccent">@color/color_blueA</item>
+        <item name="android:textColorSecondary">@color/color_grayA</item>
     </style>
 
     <style name="style_front_grayA_14">
@@ -23,5 +24,13 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">2px</item>
         <item name="android:background">@color/color_divider_gray</item>
+    </style>
+    <!--标题与NavigationIcon的距离-->
+    <style name="ToolBar_MyStyle" parent="Base.Widget.AppCompat.Toolbar">
+        <item name="contentInsetStart">15dp</item>
+        <item name="contentInsetStartWithNavigation">0dp</item>
+    </style>
+    <style name="ToolBar_Title" parent="Base.TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">15sp</item>
     </style>
 </resources>

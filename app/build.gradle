@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 apply plugin: 'com.jakewharton.butterknife'
 apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'org.greenrobot.greendao'
@@ -16,7 +17,7 @@ android {
         vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
-        greendao{
+        greendao {
             schemaVersion 1
 //            这个地方是自动生成的配置文件存放在哪个位置的
             targetGenDir 'src/main/java'
@@ -62,4 +63,8 @@ dependencies {
     compile 'org.greenrobot:greendao:3.2.2'
     compile 'net.zetetic:android-database-sqlcipher:3.5.1@aar'
     compile 'com.zzhoujay.markdown:markdown:1.0.4'
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }
