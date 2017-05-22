@@ -119,6 +119,7 @@ public class HomePageFragment extends BaseFragment {
     private void initTitleBar() {
         mTitleBar.setTitle("我的日记");
         mTitleBar.setNavigationIcon(null);
+        mTitleBar.setLogo(R.drawable.ic_diary_title);
         //不写的话不会运行onCreateOptionsMenu方法
         mActivity.setSupportActionBar(mTitleBar);
     }
@@ -128,6 +129,8 @@ public class HomePageFragment extends BaseFragment {
         inflater.inflate(R.menu.toolbar_menu, menu);
         MenuItem searchItem = menu.findItem(R.id.toolbar_search);
         mSearchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        SearchView.SearchAutoComplete autoComplete= (SearchView.SearchAutoComplete) mSearchView.findViewById(R.id.search_src_text);
+        autoComplete.setTextSize(15);
         mSearchView.setIconified(true);
         mSearchView.setSubmitButtonEnabled(true);
         mSearchView.setQueryHint("请输入标题");

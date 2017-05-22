@@ -2,7 +2,7 @@
     <string name="app_name">小熊日记</string>
     <!--===================navTitle========================-->
     <string name="title_home">首页</string>
-    <string name="title_dashboard">发现</string>
+    <string name="title_dashboard">趣闻</string>
     <string name="title_notifications">我</string>
 
     <!--===================activityName========================-->

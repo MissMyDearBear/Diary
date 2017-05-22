@@ -21,7 +21,7 @@ import cjx.com.diary.view.activity.SplashActivity;
 
 public class SplashPresenterImpl extends MyPresenterImpl implements SplashPresenter {
 
-private final String mSloganStr="欢\n迎\n来\n到\n小\n熊\n日\n记\n!";
+private final String mSloganStr="Bear Diary";
 
 
     @Override
