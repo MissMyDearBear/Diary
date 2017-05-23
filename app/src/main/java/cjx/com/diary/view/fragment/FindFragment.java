@@ -24,6 +24,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import cjx.com.diary.R;
 import cjx.com.diary.base.BaseFragment;
+import cjx.com.diary.mode.QiuBaiBean;
 import cjx.com.diary.presenter.impl.FindPresenterImp;
 import cjx.com.diary.util.ImageUtils;
 
@@ -54,8 +55,7 @@ public class FindFragment extends BaseFragment {
     private FindPresenterImp mPresenter;
 
     private MyAdapter mAdapter;
-
-    private List<String> imageList = new ArrayList<>();
+    List<QiuBaiBean.DataBean.ItemBean> mData = new ArrayList<>();
 
     @Nullable
     @Override
@@ -76,31 +76,33 @@ public class FindFragment extends BaseFragment {
             mPresenter.getImageList();
         });
         recycleView.setLayoutManager(new LinearLayoutManager(mActivity, LinearLayoutManager.VERTICAL, false));
-        mAdapter = new MyAdapter(imageList);
+        mAdapter = new MyAdapter(mData);
         recycleView.setAdapter(mAdapter);
         mPresenter.getImageList();
     }
 
-    public void onRefresh(List<String> tem) {
+    public void onRefresh(List<QiuBaiBean.DataBean.ItemBean> tem) {
         if (mActivity == null || mActivity.isFinishing()) return;
         mSwl.setRefreshing(false);
         if (null != tem && tem.size() > 0) {
-            imageList.clear();
-            imageList.addAll(tem);
+            mData.clear();
+            mData.addAll(tem);
             mAdapter.notifyDataSetChanged();
         }
     }
 
 
-    private class MyAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
-        public MyAdapter(List<String> data) {
+    private class MyAdapter extends BaseQuickAdapter<QiuBaiBean.DataBean.ItemBean, BaseViewHolder> {
+        public MyAdapter(List<QiuBaiBean.DataBean.ItemBean> data) {
             super(R.layout.item_find_images, data);
         }
 
         @Override
-        protected void convert(BaseViewHolder baseViewHolder, String s) {
+        protected void convert(BaseViewHolder baseViewHolder, QiuBaiBean.DataBean.ItemBean s) {
             ImageView mImageView = baseViewHolder.getView(R.id.image);
-            ImageUtils.getInstance().displayImage(mActivity, mImageView, s);
+            ImageUtils.getInstance().displayImage(mActivity, mImageView, s.image_url);
+            baseViewHolder.setText(R.id.tv_user_name, s.user_name);
+            baseViewHolder.setText(R.id.tv_content, s.content);
         }
     }
 

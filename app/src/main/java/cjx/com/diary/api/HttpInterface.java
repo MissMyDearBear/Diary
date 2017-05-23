@@ -2,6 +2,7 @@ package cjx.com.diary.api;
 
 
 import cjx.com.diary.mode.ImagesResult;
+import cjx.com.diary.mode.QiuBaiBean;
 import cjx.com.diary.mode.test.RoomResult;
 import io.reactivex.Observable;
 import retrofit2.http.Field;
@@ -24,4 +25,7 @@ public interface HttpInterface {
 
     @GET(value = "http://192.168.40.137:1377")
     Observable<ImagesResult>getImages();
+
+    @GET(value = "http://192.168.40.69:1377")
+    Observable<QiuBaiBean>getQiuBai();
 }
