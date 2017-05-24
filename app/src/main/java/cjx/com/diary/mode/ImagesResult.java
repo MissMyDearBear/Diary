@@ -11,12 +11,36 @@ import cjx.com.diary.common.CommonResult;
 public class ImagesResult extends CommonResult {
 
     /**
-     * data : {"images":["http://img1.3lian.com/gif/more/11/2012/03/ac2aa48cd57f9b9c355cb9c7ba7e9dad.jpg","http://img1.3lian.com/gif/more/11/2012/03/fb8f4cdc908e9006287b279cb1f0e4b5.jpg","http://img1.3lian.com/gif/more/11/2012/03/09d1f2fde648b26fa57507486e1a301c.jpg","http://img1.3lian.com/gif/more/11/2012/03/d270d41b055ff815a56c7c616bd62216.jpg","http://img1.3lian.com/gif/more/11/2012/03/f01e619a06370fed7d00c14e77d0c79e.jpg","http://img1.3lian.com/gif/more/11/2012/03/0170991af5a7703eaeb30bdde49b9bcf.jpg"]}
+     * status : true
+     * total : 5
+     * tngou : [{"count":6,"fcount":0,"galleryclass":1,"id":18,"img":"/ext/150714/e76407c9a23da57a0f30690aa7917f3e.jpg","rcount":0,"size":6,"time":1436878500000,"title":"MiStar苏小曼姿势性感诱人私房照"}]
      */
 
-    public DataBean data;
+    public boolean status;
+    public int total;
+    public List<TngouBean> tngou;
 
-    public static class DataBean {
-        public List<String> images;
+    public static class TngouBean {
+        /**
+         * count : 6
+         * fcount : 0
+         * galleryclass : 1
+         * id : 18
+         * img : /ext/150714/e76407c9a23da57a0f30690aa7917f3e.jpg
+         * rcount : 0
+         * size : 6
+         * time : 1436878500000
+         * title : MiStar苏小曼姿势性感诱人私房照
+         */
+
+        public int count;
+        public int fcount;
+        public int galleryclass;
+        public int id;
+        public String img;
+        public int rcount;
+        public int size;
+        public long time;
+        public String title;
     }
 }

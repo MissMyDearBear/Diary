@@ -23,8 +23,9 @@ public interface HttpInterface {
     @POST("/ModuleDefaultCompany/RentManage/SearchRentNo/")
     Observable<RoomResult> search(@Field("CertNo") String idNo);
 
-    @GET(value = "http://192.168.40.137:1377")
-    Observable<ImagesResult>getImages();
+    @FormUrlEncoded
+    @POST(value = "http://www.tngou.net/tnfs/api/list")
+    Observable<ImagesResult>getImages(@Field("id")int id,@Field("page")int index,@Field("rows")int rows);
 
     @GET(value = "http://192.168.40.69:1377")
     Observable<QiuBaiBean>getQiuBai();

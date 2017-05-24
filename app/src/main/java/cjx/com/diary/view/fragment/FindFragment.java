@@ -31,7 +31,6 @@ import cjx.com.diary.R;
 import cjx.com.diary.base.BaseFragment;
 import cjx.com.diary.mode.QiuBaiBean;
 import cjx.com.diary.presenter.impl.FindPresenterImp;
-import cjx.com.diary.util.ImageUtils;
 
 /**
  * Created by bear on 2017/4/27.
@@ -72,18 +71,24 @@ public class FindFragment extends BaseFragment {
         return contView;
     }
 
+    public void setRefresh(boolean refresh){
+        if(mSwl!=null){
+            mSwl.setRefreshing(refresh);
+        }
+    }
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mBackIv.setVisibility(View.GONE);
         mTitleTv.setText("趣闻");
         mSwl.setOnRefreshListener(() -> {
-            mPresenter.getImageList();
+            mPresenter.getQiuBai();
         });
         recycleView.setLayoutManager(new LinearLayoutManager(mActivity, LinearLayoutManager.VERTICAL, false));
         mAdapter = new MyAdapter(mData);
         recycleView.setAdapter(mAdapter);
-        mPresenter.getImageList();
+        mPresenter.getQiuBai();
     }
 
     public void onRefresh(List<QiuBaiBean.DataBean.ItemBean> tem) {

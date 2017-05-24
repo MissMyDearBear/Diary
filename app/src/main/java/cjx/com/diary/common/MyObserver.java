@@ -11,6 +11,7 @@ public abstract class MyObserver<T> implements Observer<T> {
 
     public abstract void onSuccess(T t);
     public abstract void onError(String msg);
+    public abstract void onFinish();
     @Override
     public void onSubscribe(Disposable disposable) {
 
@@ -28,6 +29,6 @@ public abstract class MyObserver<T> implements Observer<T> {
 
     @Override
     public void onComplete() {
-
+        onFinish();
     }
 }

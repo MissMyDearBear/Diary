@@ -7,5 +7,5 @@ import cjx.com.diary.base.BasePresenter;
  */
 
 public interface FindPresenter extends BasePresenter {
-    void getImageList();
+    void getQiuBai();
 }

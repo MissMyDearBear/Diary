@@ -38,7 +38,9 @@
             android:label="@string/activity_diary_detail"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
-        <activity android:name=".view.activity.kotlinTestActivity"></activity>
+        <activity
+            android:name=".view.activity.ImageDetailActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
