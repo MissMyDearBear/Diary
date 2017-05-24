@@ -1,8 +1,11 @@
 package cjx.com.diary.view.fragment;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +16,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 
@@ -100,7 +105,15 @@ public class FindFragment extends BaseFragment {
         @Override
         protected void convert(BaseViewHolder baseViewHolder, QiuBaiBean.DataBean.ItemBean s) {
             ImageView mImageView = baseViewHolder.getView(R.id.image);
-            ImageUtils.getInstance().displayImage(mActivity, mImageView, s.image_url);
+            Glide.with(mActivity).load(s.image_url).asBitmap().centerCrop().into(new BitmapImageViewTarget(mImageView) {
+                @Override
+                protected void setResource(Bitmap resource) {
+                    RoundedBitmapDrawable circularBitmapDrawable =
+                            RoundedBitmapDrawableFactory.create(mActivity.getResources(), resource);
+                    circularBitmapDrawable.setCircular(true);
+                    mImageView.setImageDrawable(circularBitmapDrawable);
+                }
+            });
             baseViewHolder.setText(R.id.tv_user_name, s.user_name);
             baseViewHolder.setText(R.id.tv_content, s.content);
         }

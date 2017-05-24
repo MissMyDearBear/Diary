@@ -25,6 +25,8 @@
     <!--其他辅助色-->
     <color name="color_redB">#f47161</color>
     <color name="color_orangeA">#ff934a</color>
+    <color name="color_orangeB">#C16030</color>
+
     <color name="color_yellowA">#fabb54</color>
     <color name="color_purpleA">#7686de</color>
     <color name="color_purpleB">#a4afe8</color>

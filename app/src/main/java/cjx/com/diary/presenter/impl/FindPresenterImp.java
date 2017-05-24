@@ -1,9 +1,11 @@
 package cjx.com.diary.presenter.impl;
 
 import cjx.com.diary.api.ApiService;
+import cjx.com.diary.common.Mock;
 import cjx.com.diary.common.MyObserver;
 import cjx.com.diary.mode.QiuBaiBean;
 import cjx.com.diary.presenter.FindPresenter;
+import cjx.com.diary.util.GsonUtils;
 import cjx.com.diary.util.Utils;
 import cjx.com.diary.view.fragment.FindFragment;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -54,7 +56,8 @@ public class FindPresenterImp extends MyPresenterImpl implements FindPresenter {
 
                     @Override
                     public void onError(String msg) {
-                        Utils.showToast(findFragment.getContext(), msg);
+                        QiuBaiBean bean = GsonUtils.jsonToClass(Mock.getQiuBai(),QiuBaiBean.class);
+                        findFragment.onRefresh(bean.data.items);
                     }
                 });
     }

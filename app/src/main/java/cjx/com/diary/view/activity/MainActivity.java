@@ -4,33 +4,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.view.View;
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cjx.com.diary.R;
-import cjx.com.diary.api.ApiService;
 import cjx.com.diary.base.BaseActivity;
-import cjx.com.diary.common.MyObserver;
-import cjx.com.diary.presenter.MainPresenter;
 import cjx.com.diary.presenter.impl.MainPresenterImp;
 import cjx.com.diary.util.Utils;
 import cjx.com.diary.view.fragment.FindFragment;
 import cjx.com.diary.view.fragment.HomePageFragment;
 import cjx.com.diary.view.fragment.PersonalFragment;
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Function;
-import io.reactivex.schedulers.Schedulers;
+import cjx.com.diary.view.fragment.PhotoFragment;
 
 public class MainActivity extends BaseActivity {
     @BindView(R.id.navigation)
@@ -42,9 +28,11 @@ public class MainActivity extends BaseActivity {
 
     FindFragment findFragment;
 
+    PhotoFragment photoFragment;
+
     PersonalFragment personalFragment;
 
-    int mCurrentFragmentIndex=0;
+    int mCurrentFragmentIndex = 0;
 
     public static void action(Context context) {
         context.startActivity(new Intent(context, MainActivity.class));
@@ -54,27 +42,30 @@ public class MainActivity extends BaseActivity {
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = item -> {
-                switch (item.getItemId()) {
-                    case R.id.navigation_home:
-                        switchFragment(0);
-                        return true;
-                    case R.id.navigation_dashboard:
-                        switchFragment(1);
-                        return true;
-                    case R.id.navigation_notifications:
-                        switchFragment(2);
-                        return true;
-                }
-                return false;
-            };
+        switch (item.getItemId()) {
+            case R.id.navigation_home:
+                switchFragment(0);
+                return true;
+            case R.id.navigation_dashboard:
+                switchFragment(1);
+                return true;
+            case R.id.navigation_photo:
+                switchFragment(2);
+                return true;
+            case R.id.navigation_notifications:
+                switchFragment(3);
+                return true;
+        }
+        return false;
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        mPresenter=new MainPresenterImp();
-        mPresenter.bindView(this,null);
+        mPresenter = new MainPresenterImp();
+        mPresenter.bindView(this, null);
         mNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         switchFragment(0);
     }
@@ -101,11 +92,15 @@ public class MainActivity extends BaseActivity {
             findFragment = (FindFragment) FindFragment.newInstance();
             transaction.add(R.id.fl_container, findFragment);
         }
+        if (photoFragment == null) {
+            photoFragment = (PhotoFragment) PhotoFragment.newInstance();
+            transaction.add(R.id.fl_container, photoFragment);
+        }
         if (personalFragment == null) {
             personalFragment = (PersonalFragment) PersonalFragment.newInstance();
             transaction.add(R.id.fl_container, personalFragment);
         }
-        transaction.hide(homePageFragment).hide(findFragment).hide(personalFragment);
+        transaction.hide(homePageFragment).hide(findFragment).hide(photoFragment).hide(personalFragment);
         switch (fragmentIndex) {
             case 0:
                 transaction.show(homePageFragment);
@@ -114,13 +109,15 @@ public class MainActivity extends BaseActivity {
                 transaction.show(findFragment);
                 break;
             case 2:
+                transaction.show(photoFragment);
+                break;
+            case 3:
                 transaction.show(personalFragment);
                 break;
         }
         transaction.commitAllowingStateLoss();
         mNavigationView.getMenu().getItem(mCurrentFragmentIndex).setChecked(true);
     }
-
 
 
     private long mLastBackPress = 0;
