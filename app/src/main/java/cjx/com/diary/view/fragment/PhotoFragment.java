@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import cjx.com.diary.base.BaseFragment;
-
 /**
  * description: 图片
  * author: bear .

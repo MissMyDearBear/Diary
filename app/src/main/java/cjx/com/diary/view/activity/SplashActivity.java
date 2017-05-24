@@ -20,8 +20,6 @@ import cjx.com.diary.view.SplashView;
 public class SplashActivity extends BaseActivity implements SplashView {
     @BindView(R.id.btn_skip)
     Button mSkipBtn;
-    @BindView(R.id.tv_slogan)
-    TextView mSloganTv;
 
     private SplashPresenterImpl mSplashPresenter;
 
@@ -46,10 +44,6 @@ public class SplashActivity extends BaseActivity implements SplashView {
         finish();
     }
 
-    @Override
-    public void showSlogan(String slogan) {
-        mSloganTv.setText(slogan);
-    }
 
     @Override
     protected void onDestroy() {

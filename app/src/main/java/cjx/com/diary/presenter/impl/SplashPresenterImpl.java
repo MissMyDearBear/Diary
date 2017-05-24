@@ -2,14 +2,11 @@ package cjx.com.diary.presenter.impl;
 
 import android.os.CountDownTimer;
 
-import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.query.QueryBuilder;
 
 import java.util.List;
 
 import cjx.com.diary.base.MyApplication;
-import cjx.com.diary.mode.diary.DaoMaster;
-import cjx.com.diary.mode.diary.DaoSession;
 import cjx.com.diary.mode.user.UserBean;
 import cjx.com.diary.mode.user.UserBeanDao;
 import cjx.com.diary.presenter.SplashPresenter;
@@ -21,40 +18,36 @@ import cjx.com.diary.view.activity.SplashActivity;
 
 public class SplashPresenterImpl extends MyPresenterImpl implements SplashPresenter {
 
-private final String mSloganStr="Bear Diary";
-
 
     @Override
     public void setData() {
         //创建用户信息
         UserBean userBean = new UserBean();
-        userBean.setId((long)1);
-        userBean.setAccount("18262282215");
+        userBean.setId((long) 1);
+        userBean.setAccount("13700000000");
         userBean.setPassWord("111111qq");
         userBean.setEmail("2280885690@qq.com");
-        userBean.setMobile("18262282215");
+        userBean.setMobile("13700000000");
         userBean.setName("AlenBear");
         UserBeanDao dao = MyApplication.INSTANCE.getDaoSession().getUserBeanDao();
-        UserBeanDao.dropTable(dao.getDatabase(),true);
-        UserBeanDao.createTable(dao.getDatabase(),true);
+        UserBeanDao.dropTable(dao.getDatabase(), true);
+        UserBeanDao.createTable(dao.getDatabase(), true);
         QueryBuilder queryBuilder = dao.queryBuilder();
         List<UserBean> list = queryBuilder.where(UserBeanDao.Properties.Account.eq("18262282215")).list();
         if (list == null || (list != null && list.size() == 0)) {
             dao.insert(userBean);
         }
-        SplashActivity mSplashActivity= (SplashActivity) mView;
-        mSplashActivity.showSlogan(mSloganStr);
         mTimer.start();
     }
 
     @Override
     public void clearTimer() {
-        if(null!=mTimer){
+        if (null != mTimer) {
             mTimer.cancel();
         }
     }
 
-    private CountDownTimer mTimer=new CountDownTimer(3000,1000) {
+    private CountDownTimer mTimer = new CountDownTimer(3000, 1000) {
         @Override
         public void onTick(long l) {
 
@@ -62,7 +55,7 @@ private final String mSloganStr="Bear Diary";
 
         @Override
         public void onFinish() {
-            ((SplashActivity)mView).jumpToMainActivity();
+            ((SplashActivity) mView).jumpToMainActivity();
 
         }
     };

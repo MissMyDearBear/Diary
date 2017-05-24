@@ -11,10 +11,4 @@ public interface SplashView extends BaseView{
      * 跳转至主页
      */
     void jumpToMainActivity();
-
-    /**
-     * 显示标语
-     * @param slogan
-     */
-    void showSlogan(String slogan);
 }
