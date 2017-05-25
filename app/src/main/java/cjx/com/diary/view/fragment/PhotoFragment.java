@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.chad.library.adapter.base.loadmore.LoadMoreView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,10 +23,10 @@ import cjx.com.diary.R;
 import cjx.com.diary.api.ApiService;
 import cjx.com.diary.base.BaseFragment;
 import cjx.com.diary.common.MyObserver;
-import cjx.com.diary.mode.ImagesResult;
+import cjx.com.diary.mode.BaiDuImageBean;
 import cjx.com.diary.util.ImageUtils;
-import cjx.com.diary.util.Utils;
 import cjx.com.diary.view.activity.ImageDetailActivity;
+import cjx.com.diary.widget.CustomLoadMoreView;
 import cjx.com.diary.widget.SwipeRefreshRecyclerView;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -50,12 +51,11 @@ public class PhotoFragment extends BaseFragment {
 
     MyAdapter adapter;
 
-    List<ImagesResult.TngouBean> mList = new ArrayList<>();
+    List<BaiDuImageBean.DataBean> mList = new ArrayList<>();
 
-        final String PREFIX="http://tnfs.tngou.net/image";
-//    final String PREFIX = "http://tnfs.tngou.net/img";
-//    final String SUFFIX = "_400x600";
     int index = 1;
+    int curCount = 0;
+    boolean isLoadMore = false;
 
     public static Fragment newInstance() {
         return new PhotoFragment();
@@ -74,55 +74,56 @@ public class PhotoFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         initTitleBar();
         mSwpRecycleView.setOnRefreshListener(() -> {
+            isLoadMore = false;
             index = 1;
             mList.clear();
             adapter.notifyDataSetChanged();
             getData();
         });
         adapter = new MyAdapter(mList);
-        adapter.setOnItemClickListener((baseQuickAdapter, view1, i) -> {
-            ImageDetailActivity.action(mActivity,mList.get(i).title,PREFIX+mList.get(i).img);
-        });
+        adapter.setOnItemClickListener((baseQuickAdapter, view1, i) -> ImageDetailActivity.action(mActivity, mList.get(i).abs, mList.get(i).image_url));
+        adapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
+        adapter.setOnLoadMoreListener(() -> {
+            mSwpRecycleView.setRefreshing(false);
+            isLoadMore = true;
+            index += 1;
+            getData();
+        }, mSwpRecycleView.recyclerView);
+        adapter.setLoadMoreView(new CustomLoadMoreView());
         mSwpRecycleView.setAdapter(adapter);
         getData();
     }
 
     private void getData() {
-        ApiService.getApiService().getImages(2, index, 10)
+        curCount = mList.size();
+        ApiService.getApiService().getBaiDuImage(index - 1, "美女", "全部")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .map(info -> {
-                    if (info != null && info.status) {
-                        return info.tngou;
-                    } else {
-                        return null;
+                .map(baiDuImageBean -> baiDuImageBean)
+                .subscribeWith(new MyObserver<BaiDuImageBean>() {
+                    @Override
+                    public void onSuccess(BaiDuImageBean baiDuImageBean) {
+                        if (curCount >= baiDuImageBean.totalNum) {
+                            adapter.loadMoreEnd(true);
+                        }
+                        if (baiDuImageBean != null && baiDuImageBean.data != null) {
+                            adapter.addData(baiDuImageBean.data);
+                            curCount = adapter.getData().size();
+                            adapter.loadMoreComplete();
+                        }
                     }
-                }).subscribeWith(new MyObserver<List<ImagesResult.TngouBean>>() {
-            @Override
-            public void onSuccess(List<ImagesResult.TngouBean> list) {
-                if (list != null) {
-                    mList.addAll(list);
-                    if (index == 1) {
-                        adapter.setOnLoadMoreListener(() -> {
-                            index += 1;
-                            getData();
-                        }, mSwpRecycleView.recyclerView);
+
+                    @Override
+                    public void onError(String msg) {
+                        mSwpRecycleView.setRefreshing(false);
+                        adapter.setEnableLoadMore(false);
                     }
-                    adapter.disableLoadMoreIfNotFullPage();
-                    adapter.notifyDataSetChanged();
-                }
-            }
 
-            @Override
-            public void onError(String msg) {
-                Utils.showToast(mActivity, msg);
-            }
-
-            @Override
-            public void onFinish() {
-                mSwpRecycleView.setRefreshing(false);
-            }
-        });
+                    @Override
+                    public void onFinish() {
+                        mSwpRecycleView.setRefreshing(false);
+                    }
+                });
     }
 
     private void initTitleBar() {
@@ -130,16 +131,16 @@ public class PhotoFragment extends BaseFragment {
         mTitleTv.setText(R.string.title_photo);
     }
 
-    private class MyAdapter extends BaseQuickAdapter<ImagesResult.TngouBean, BaseViewHolder> {
-        public MyAdapter(@Nullable List<ImagesResult.TngouBean> data) {
+    private class MyAdapter extends BaseQuickAdapter<BaiDuImageBean.DataBean, BaseViewHolder> {
+        public MyAdapter(@Nullable List<BaiDuImageBean.DataBean> data) {
             super(R.layout.item_photo, data);
         }
 
         @Override
-        protected void convert(BaseViewHolder baseViewHolder, ImagesResult.TngouBean imagesResult) {
+        protected void convert(BaseViewHolder baseViewHolder, BaiDuImageBean.DataBean imagesResult) {
             ImageView imageView = baseViewHolder.getView(R.id.iv_photo);
-            ImageUtils.getInstance().displayImage(mActivity, imageView, PREFIX + imagesResult.img);
-            baseViewHolder.setText(R.id.tv_name, imagesResult.title);
+            ImageUtils.getInstance().displayImage(mActivity, imageView, imagesResult.thumbnail_url);
+            baseViewHolder.setText(R.id.tv_name, imagesResult.abs);
         }
     }
 

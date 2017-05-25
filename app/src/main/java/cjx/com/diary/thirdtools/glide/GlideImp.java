@@ -19,7 +19,7 @@ public class GlideImp implements ImageInterface {
 
     private void display(Context context, ImageView imageView, String url) {
 
-        Glide.with(context).load(url).dontAnimate().into(imageView);
+        Glide.with(context).load(url).dontAnimate().diskCacheStrategy(DiskCacheStrategy.SOURCE).into(imageView);
     }
 
     @Override
