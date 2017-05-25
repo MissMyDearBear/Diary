@@ -77,6 +77,7 @@ public class PersonalFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         mBackIv.setVisibility(View.GONE);
         mTitleTv.setText("关于我");
+        mExtendTv.setVisibility(View.GONE);
         mExtendTv.setText("分享");
         mExtendTv.setOnClickListener((view1)-> Utils.showToast(mActivity,"分享"));
         mWebsiteTv.setText(Const.MY_WEBSITE);
