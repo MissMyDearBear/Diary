@@ -23,10 +23,10 @@ class WeightManagerFragment : BaseFragment() {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-       tv_title.text = "体重管理"
-        tv_extend.text="更新数据"
-       iv_back.visibility = View.GONE
-       tv_extend.visibility = View.VISIBLE
-        tv_extend.setOnClickListener { Utils.showToast(mActivity,"更新数据") }
+        tv_title.text = "体重管理"
+        tv_extend.text = "更新数据"
+        iv_back.visibility = View.GONE
+        tv_extend.visibility = View.VISIBLE
+        tv_extend.setOnClickListener { Utils.showToast(mActivity, "更新数据") }
     }
 }

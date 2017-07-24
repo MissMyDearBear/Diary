@@ -13,6 +13,7 @@
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/color_grayA</item>
     </style>
+
     <style name="style_front_grayB_14">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/color_grayB</item>
@@ -35,6 +36,7 @@
         <item name="contentInsetStartWithNavigation">0dp</item>
         <item name="android:contentInsetLeft" tools:targetApi="lollipop">5dp</item>
     </style>
+
     <style name="ToolBar_Title" parent="Base.TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textSize">15sp</item>
     </style>

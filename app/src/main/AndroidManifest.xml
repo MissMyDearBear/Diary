@@ -40,7 +40,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".view.activity.ImageDetailActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

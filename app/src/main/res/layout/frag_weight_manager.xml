@@ -39,10 +39,10 @@
             style="@style/style_front_grayA_14"
             android:layout_width="70dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            />
+            android:layout_marginLeft="10dp" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -61,8 +61,7 @@
             style="@style/style_front_grayB_14"
             android:layout_width="70dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            />
+            android:layout_marginLeft="10dp" />
     </LinearLayout>
 
 </LinearLayout>

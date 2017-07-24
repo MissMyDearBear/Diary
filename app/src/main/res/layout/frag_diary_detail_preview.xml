@@ -16,6 +16,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/color_grayA"
         android:textSize="16sp" />
+
     <TextView
         android:layout_marginTop="5dp"
         style="@style/Divider_Horizontal_2px" />

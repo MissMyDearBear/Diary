@@ -10,13 +10,15 @@
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
         android:background="@color/colorWhite"
-        app:titleTextColor="@color/colorBlack" >
+        app:titleTextColor="@color/colorBlack">
+
         <RelativeLayout
             android:gravity="center_vertical"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <ImageView
                 android:padding="7dp"
                 android:id="@+id/iv_back"
@@ -26,6 +28,7 @@
                 app:srcCompat="@drawable/ic_arrow_back_black_24dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true" />
+
             <TextView
                 android:layout_centerVertical="true"
                 android:id="@+id/tv_title"
@@ -36,7 +39,8 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:textColor="@color/color_grayA"
-                tools:text="标题"/>
+                tools:text="标题" />
+
             <TextView
                 android:layout_centerVertical="true"
                 android:background="@drawable/ripple_white_gray"
@@ -47,7 +51,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="extend"/>
+                tools:text="extend" />
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
 </android.support.design.widget.AppBarLayout>
