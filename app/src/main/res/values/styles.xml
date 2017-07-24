@@ -13,6 +13,10 @@
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/color_grayA</item>
     </style>
+    <style name="style_front_grayB_14">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/color_grayB</item>
+    </style>
     <!-- 横向的 1px的分割线 -->
     <style name="Divider_Horizontal_1px">
         <item name="android:layout_width">match_parent</item>
