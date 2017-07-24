@@ -49,7 +49,7 @@ dependencies {
     compile 'com.android.support:support-vector-drawable:25.3.1'
     compile 'com.jakewharton:butterknife:8.5.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
-    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.github.bumptech.glide:glide:3.8.0'
     compile 'com.squareup.retrofit2:retrofit:2.2.0'
     compile 'com.squareup.retrofit2:converter-gson:2.2.0'
     compile 'com.squareup.retrofit2:retrofit-adapters:2.2.0'
@@ -57,7 +57,7 @@ dependencies {
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
 // Because RxAndroid releases are few and far between, it is recommended you also
 // explicitly depend on RxJava's latest version for bug fixes and new features.
-    compile 'io.reactivex.rxjava2:rxjava:2.0.9'
+    compile 'io.reactivex.rxjava2:rxjava:2.1.0'
     compile 'com.hwangjr.rxbus:rxbus:1.0.5'
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:latest.release'
     compile 'org.greenrobot:greendao:3.2.2'
