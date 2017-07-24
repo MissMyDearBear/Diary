@@ -6,6 +6,8 @@
 
     <item android:id="@+id/navigation_dashboard" android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="@string/title_dashboard" />
+    <item android:id="@+id/navigation_weight" android:icon="@drawable/ic_nav_weight"
+        android:title="@string/title_weight" />
     <item android:id="@+id/navigation_photo" android:icon="@drawable/ic_nav_photo"
         android:title="@string/title_photo" />
 

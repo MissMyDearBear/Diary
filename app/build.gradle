@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.jakewharton.butterknife'
 apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'org.greenrobot.greendao'
@@ -64,6 +65,7 @@ dependencies {
     compile 'net.zetetic:android-database-sqlcipher:3.5.1@aar'
     compile 'com.zzhoujay.markdown:markdown:1.0.4'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'
 }
 repositories {
     mavenCentral()
