@@ -13,14 +13,19 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
+    <TextView style="@style/Divider_Horizontal_2px" />
+
     <TextView
+        android:id="@+id/tv_today"
         style="@style/style_front_grayA_14"
         android:layout_width="wrap_content"
-        android:textSize="15sp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_margin="10dp"
+        android:textSize="15sp"
         tools:text="今日体重（2017-07-24）" />
+
+    <TextView style="@style/Divider_Horizontal_2px" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,20 +40,21 @@
             android:text="上午：" />
 
         <EditText
-            android:hint="单位kg"
+            android:id="@+id/et_morning"
             style="@style/style_front_grayA_14"
             android:layout_width="70dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp" />
+            android:layout_marginLeft="10dp"
+            android:hint="单位kg" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
         android:orientation="horizontal"
-        android:padding="10dp"
-        android:layout_marginBottom="30dp">
+        android:padding="10dp">
 
         <TextView
             style="@style/style_front_grayB_14"
@@ -57,11 +63,12 @@
             android:text="晚上：" />
 
         <EditText
-            android:hint="单位kg"
+            android:id="@+id/et_night"
             style="@style/style_front_grayB_14"
             android:layout_width="70dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp" />
+            android:layout_marginLeft="10dp"
+            android:hint="单位kg" />
     </LinearLayout>
 
 </LinearLayout>

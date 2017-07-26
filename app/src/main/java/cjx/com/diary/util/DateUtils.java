@@ -16,12 +16,15 @@ public class DateUtils {
         return convertDate(new Date(),"yyyy-MM-dd HH:mm:ss");
     }
 
-    public static String convertDate(Date date, String format){
+    private static String convertDate(Date date, String format){
         if(date!=null){
             DateFormat format1=new SimpleDateFormat(format);
             String s=format1.format(date);
             return s;
         }
         return "";
+    }
+    public static String getCurrentDate(){
+        return convertDate(new Date(),"yyyy-MM-dd");
     }
 }

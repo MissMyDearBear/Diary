@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import cjx.com.diary.R
 import cjx.com.diary.base.BaseFragment
-import cjx.com.diary.util.Utils
+import cjx.com.diary.mode.weight.BodyWeightBean
+import cjx.com.diary.util.*
+import kotlinx.android.synthetic.main.frag_weight_manager.*
 import kotlinx.android.synthetic.main.view_title_bar.*
 
 /**
@@ -27,6 +29,18 @@ class WeightManagerFragment : BaseFragment() {
         tv_extend.text = "更新数据"
         iv_back.visibility = View.GONE
         tv_extend.visibility = View.VISIBLE
-        tv_extend.setOnClickListener { Utils.showToast(mActivity, "更新数据") }
+        tv_extend.setOnClickListener { updateData() }
+        tv_today.text="今日("+DateUtils.getCurrentDate()+")"
+
+    }
+
+    fun updateData(){
+        if(et_morning.text.isNullOrEmpty()&&et_night.text.isNullOrEmpty()){
+            Utils.showToast(mActivity,"请输入要更新的数据")
+            return
+        }
+        WeightUtils.insert(BodyWeightBean(et_morning.text.toString(),et_night.text.toString(),DateUtils.getCurrentDate()))
+        var list=WeightUtils.getWeightList()
+        Utils.showToast(mActivity,list.toString())
     }
 }
