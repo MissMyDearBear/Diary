@@ -2,6 +2,9 @@ package cjx.com.diary.util;
 
 import android.text.TextUtils;
 
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,7 +63,7 @@ public class WeightUtils {
     }
 
 
-    public static void upDate(BodyWeightBean bodyWeightBean) {
+    private static void upDate(BodyWeightBean bodyWeightBean) {
         try {
             DaoSession daoSession = MyApplication.INSTANCE.getDaoSession();
             BodyWeightBeanDao dao = daoSession.getBodyWeightBeanDao();
@@ -70,5 +73,37 @@ public class WeightUtils {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static String TYPE_MORNING = "type_morning";
+    public static String TYPE_NIGHT = "type_night";
+
+    private static final String[] weeks = new String[]{
+            "周日", "周一", "周二", "周三", "周四", "周五"
+    };
+
+    public static final IAxisValueFormatter formatter = (value, axis) -> weeks[Integer.valueOf((int) value)];
+
+    public static List<Entry> getMAndNList(String type) {
+        List<BodyWeightBean> weightList = getWeightList();
+        List<Entry> rList = new ArrayList<>();
+        if (weightList != null && weightList.size() > 0) {
+            float count;
+            for (BodyWeightBean bean : weightList) {
+                count = DateUtils.getWeek(bean.createdDate);
+                float weight = 0f;
+                try {
+                    if (TextUtils.equals(type, TYPE_MORNING)) {
+                        weight = Float.parseFloat(bean.morningWeight);
+                    } else if (TextUtils.equals(type, TYPE_NIGHT)) {
+                        weight = Float.parseFloat(bean.nightWeight);
+                    }
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                }
+                rList.add(new Entry(count, weight));
+            }
+        }
+        return rList;
     }
 }
