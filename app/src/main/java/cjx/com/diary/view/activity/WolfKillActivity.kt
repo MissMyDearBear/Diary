@@ -27,7 +27,7 @@ import kotlinx.android.synthetic.main.view_title_bar.*
  */
 class WolfKillActivity : BaseActivity() {
     var count = 10
-    val role: Array<String> = arrayOf("平民", "狼人", "预言家", "女巫", "猎人")
+    val role: Array<String> = arrayOf("平民", "狼人", "预言家", "女巫", "猎人","白狼王","白痴神")
     val roleList: ArrayList<Role> = ArrayList()
      var adapter: MyAdapter ?= null
     override fun onCreate(savedInstanceState: Bundle?) {
