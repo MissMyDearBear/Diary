@@ -69,6 +69,8 @@ class WeightManagerFragment : BaseFragment() {
         val xAxis:XAxis=chart.xAxis
         xAxis.granularity=1f
         xAxis.valueFormatter=WeightUtils.formatter
+        xAxis.textColor=R.color.color_orangeB
+        xAxis.position=XAxis.XAxisPosition.BOTTOM
         chart.invalidate()
     }
 }
