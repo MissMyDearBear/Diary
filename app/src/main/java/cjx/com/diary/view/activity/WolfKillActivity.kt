@@ -33,7 +33,7 @@ class WolfKillActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_wolf_kill)
-        initTitleBar("狼人杀助手")
+        initTitleBar("狼人杀法官助手")
         tv_extend.text = "配置"
         tv_extend.visibility = View.VISIBLE
         tv_extend.setOnClickListener { setPeopleCount() }
