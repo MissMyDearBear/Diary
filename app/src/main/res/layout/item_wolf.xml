@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="2dp"
+    android:padding="10dp"
+    android:background="@color/color_grayG"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_position"
+        android:textSize="20sp"
+        android:textColor="@color/color_grayA"
+        tools:text="1号玩家"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:id="@+id/tv_identity"
+        android:textSize="18sp"
+        android:textColor="@color/color_redA"
+        tools:text="平民"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:id="@+id/tv_status"
+        android:textSize="20sp"
+        android:textColor="@color/color_greenA"
+        tools:text="死亡"
+        android:padding="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"/>
+
+
+</LinearLayout>
