@@ -50,6 +50,7 @@ class WeightManagerFragment : BaseFragment() {
     }
 
     private fun showChart() {
+        if(WeightUtils.getMAndNList(WeightUtils.TYPE_MORNING)==null||WeightUtils.getMAndNList(WeightUtils.TYPE_MORNING).size==0)return
         val morningDataSet: LineDataSet = LineDataSet(WeightUtils.getMAndNList(WeightUtils.TYPE_MORNING), "上午体重chart")
         val nightDataSet: LineDataSet = LineDataSet(WeightUtils.getMAndNList(WeightUtils.TYPE_NIGHT), "下午体重chart")
         morningDataSet.color = R.color.color_blueA
