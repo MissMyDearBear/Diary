@@ -99,7 +99,7 @@ class WolfKillActivity : BaseActivity() {
             var status: TextView = helper.getView(R.id.tv_status)
             if (item!!.isAlive) {
                 status!!.setText("生")
-                status!!.setTextColor(ContextCompat.getColor(MyApplication.INSTANCE, R.color.color_greenA))
+                status!!.setTextColor(ContextCompat.getColor(MyApplication.INSTANCE, R.color.color_greenB))
             } else {
                 status!!.setText("死")
                 status!!.setTextColor(ContextCompat.getColor(MyApplication.INSTANCE, R.color.color_redA))

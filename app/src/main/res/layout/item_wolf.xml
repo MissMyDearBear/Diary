@@ -21,7 +21,7 @@
     <TextView
         android:id="@+id/tv_identity"
         android:textSize="18sp"
-        android:textColor="@color/color_redA"
+        android:textColor="@color/color_purpleA"
         tools:text="平民"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
