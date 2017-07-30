@@ -1,7 +1,6 @@
 package cjx.com.diary.view.activity
 
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
@@ -27,9 +26,10 @@ import kotlinx.android.synthetic.main.view_title_bar.*
  */
 class WolfKillActivity : BaseActivity() {
     var count = 10
-    val role: Array<String> = arrayOf("平民", "狼人", "预言家", "女巫", "猎人","白狼王","白痴神")
+    val role: Array<String> = arrayOf("平民", "狼人", "预言家", "女巫", "猎人", "白狼王", "白痴神")
     val roleList: ArrayList<Role> = ArrayList()
-     var adapter: MyAdapter ?= null
+    var adapter: MyAdapter? = null
+    var isLocked: Boolean = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_wolf_kill)
@@ -41,11 +41,21 @@ class WolfKillActivity : BaseActivity() {
         var manager = GridLayoutManager(mActivity, 3)
 
         recycle_view.layoutManager = manager
-        adapter= MyAdapter(roleList)
+        adapter = MyAdapter(roleList)
         adapter!!.setOnItemClickListener({ adapter, view, position ->
-            showSelectIdentityDialog(position)
+            if (!isLocked) {
+                showSelectIdentityDialog(position)
+            }
         })
-        recycle_view.adapter=adapter
+        recycle_view.adapter = adapter
+        tv_lock.setOnClickListener {
+            if (isLocked) {
+                tv_lock.setText("锁定")
+            } else {
+                tv_lock.setText("解锁")
+            }
+            isLocked = !isLocked
+        }
         initRoleList()
 
     }
@@ -84,33 +94,36 @@ class WolfKillActivity : BaseActivity() {
     class MyAdapter(data: MutableList<Role>?) : BaseQuickAdapter<Role, BaseViewHolder>(R.layout.item_wolf, data) {
         override fun convert(helper: BaseViewHolder?, item: Role?) {
             //To change body of created functions use File | Settings | File Templates.
-            helper!!.setText(R.id.tv_position,item!!.position.toString()+"号玩家")
-            helper!!.setText(R.id.tv_identity,item!!.roleName)
-            var status:TextView=helper.getView(R.id.tv_status)
-            if(item!!.isAlive){
+            helper!!.setText(R.id.tv_position, item!!.position.toString() + "号玩家")
+            helper!!.setText(R.id.tv_identity, item!!.roleName)
+            var status: TextView = helper.getView(R.id.tv_status)
+            if (item!!.isAlive) {
                 status!!.setText("生")
-                status!!.setTextColor(ContextCompat.getColor(MyApplication.INSTANCE,R.color.color_greenA))
-            }else{
+                status!!.setTextColor(ContextCompat.getColor(MyApplication.INSTANCE, R.color.color_greenA))
+            } else {
                 status!!.setText("死")
-                status!!.setTextColor(ContextCompat.getColor(MyApplication.INSTANCE,R.color.color_redA))
+                status!!.setTextColor(ContextCompat.getColor(MyApplication.INSTANCE, R.color.color_redA))
             }
-            status.setOnClickListener { item.isAlive=!item.isAlive
-            this.notifyItemChanged(helper.layoutPosition)}
+            status.setOnClickListener {
+                item.isAlive = !item.isAlive
+                this.notifyItemChanged(helper.layoutPosition)
+            }
         }
 
     }
 
-    fun showSelectIdentityDialog( position:Int){
-        val builder:AlertDialog.Builder=AlertDialog.Builder(mActivity)
+    fun showSelectIdentityDialog(position: Int) {
+        val builder: AlertDialog.Builder = AlertDialog.Builder(mActivity)
         builder.setTitle("请选择身份")
-        builder.setSingleChoiceItems(role,android.R.layout.simple_list_item_1, { dialog, which ->
-           val mRole:Role=roleList[position]
-            mRole.roleName=role[which]
+        builder.setSingleChoiceItems(role, android.R.layout.simple_list_item_1, { dialog, which ->
+            val mRole: Role = roleList[position]
+            mRole.roleName = role[which]
             adapter!!.notifyItemChanged(position)
             dialog.dismiss()
         })
         builder.create().show()
     }
+
     companion object {
         fun action(context: Context) {
             val intent: Intent = Intent(context, WolfKillActivity::class.java)

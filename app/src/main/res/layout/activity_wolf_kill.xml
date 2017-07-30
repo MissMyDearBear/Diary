@@ -8,16 +8,28 @@
     <include layout="@layout/view_title_bar" />
 
     <TextView style="@style/Divider_Horizontal_2px" />
-
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:padding="10dp"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
     <TextView
-        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
         android:id="@+id/tv_count"
         style="@style/style_front_grayA_14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
         tools:text="9人局" />
-
+    <TextView
+        android:id="@+id/tv_lock"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="锁定"/>
+</RelativeLayout>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycle_view"
         android:layout_width="match_parent"

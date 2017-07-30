@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="2dp"
     android:padding="10dp"
+    android:id="@+id/ll_content"
     android:background="@color/color_grayG"
     android:orientation="vertical">
 
@@ -27,12 +28,14 @@
         android:layout_gravity="center_horizontal" />
 
     <TextView
+        android:layout_marginTop="5dp"
         android:id="@+id/tv_status"
         android:textSize="20sp"
         android:textColor="@color/color_greenA"
         tools:text="死亡"
-        android:padding="3dp"
-        android:layout_width="match_parent"
+        android:padding="5dp"
+        android:layout_gravity="right"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="right"/>
 
