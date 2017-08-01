@@ -10,9 +10,9 @@ class Witch : Role() {
         get() = "女巫"
         set(value) {}
     //是否有解药
-    var hasAntidote: Boolean = true
+    override var hasAntidote: Boolean = true
     //是否有毒药
-    var hasPoison: Boolean = true
+    override var hasPoison: Boolean = true
 
     var canSave: Boolean = true
     var canPoison: Boolean = true

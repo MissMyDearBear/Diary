@@ -51,8 +51,10 @@ class WolfKillActivity : BaseActivity() {
         tv_lock.setOnClickListener {
             if (isLocked) {
                 tv_lock.setText("锁定")
+                tv_lock!!.setTextColor(ContextCompat.getColor(mActivity, R.color.color_blueA))
             } else {
                 tv_lock.setText("解锁")
+                tv_lock!!.setTextColor(ContextCompat.getColor(mActivity, R.color.color_redA))
             }
             isLocked = !isLocked
         }
@@ -97,6 +99,8 @@ class WolfKillActivity : BaseActivity() {
             helper!!.setText(R.id.tv_position, item!!.position.toString() + "号玩家")
             helper!!.setText(R.id.tv_identity, item!!.roleName)
             var status: TextView = helper.getView(R.id.tv_status)
+            var antidote: TextView = helper.getView(R.id.tv_antidote)
+            var poison: TextView = helper.getView(R.id.tv_poison)
             if (item!!.isAlive) {
                 status!!.setText("生")
                 status!!.setTextColor(ContextCompat.getColor(MyApplication.INSTANCE, R.color.color_greenB))
@@ -104,8 +108,18 @@ class WolfKillActivity : BaseActivity() {
                 status!!.setText("死")
                 status!!.setTextColor(ContextCompat.getColor(MyApplication.INSTANCE, R.color.color_redA))
             }
+            antidote.visibility = if (item.hasAntidote) View.VISIBLE else View.GONE
+            poison.visibility = if (item.hasPoison) View.VISIBLE else View.GONE
             status.setOnClickListener {
                 item.isAlive = !item.isAlive
+                this.notifyItemChanged(helper.layoutPosition)
+            }
+            antidote.setOnClickListener {
+                item.hasAntidote = !item.hasAntidote
+                this.notifyItemChanged(helper.layoutPosition)
+            }
+            poison.setOnClickListener {
+                item.hasPoison = !item.hasPoison
                 this.notifyItemChanged(helper.layoutPosition)
             }
         }
@@ -118,6 +132,13 @@ class WolfKillActivity : BaseActivity() {
         builder.setSingleChoiceItems(role, android.R.layout.simple_list_item_1, { dialog, which ->
             val mRole: Role = roleList[position]
             mRole.roleName = role[which]
+            if (mRole.roleName.equals("女巫")) {
+                mRole.hasAntidote = true
+                mRole.hasPoison = true
+            } else {
+                mRole.hasAntidote = false
+                mRole.hasPoison = false
+            }
             adapter!!.notifyItemChanged(position)
             dialog.dismiss()
         })

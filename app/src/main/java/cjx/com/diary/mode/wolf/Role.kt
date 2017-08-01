@@ -10,6 +10,10 @@ open class Role {
     open var isAlive: Boolean = true
     //是否可以发言
     open var canSpeak: Boolean = true
+    //是否有解药
+    open var hasAntidote: Boolean = false
+    //是否有毒药
+    open var hasPoison: Boolean = false
     //投票的号数
     open var voteNumber: Int = 0
     //玩家序号
