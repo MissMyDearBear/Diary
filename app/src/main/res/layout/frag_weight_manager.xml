@@ -53,7 +53,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
         android:orientation="horizontal"
         android:padding="10dp">
 
@@ -71,5 +70,15 @@
             android:layout_marginLeft="10dp"
             android:hint="单位kg" />
     </LinearLayout>
-
+     <TextView
+         android:id="@+id/tv_update"
+         android:layout_margin="10dp"
+         android:layout_gravity="right"
+         android:padding="5dp"
+         android:textSize="16sp"
+         android:textColor="@color/color_blueA"
+         android:layout_marginBottom="20dp"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="更新数据"/>
 </LinearLayout>

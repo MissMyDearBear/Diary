@@ -32,11 +32,17 @@ class WeightManagerFragment : BaseFragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         tv_title.text = "体重管理"
-        tv_extend.text = "更新数据"
+        tv_extend.text = "重置数据"
         iv_back.visibility = View.GONE
         tv_extend.visibility = View.VISIBLE
-        tv_extend.setOnClickListener { updateData() }
+        tv_extend.setOnClickListener {
+            WeightUtils.clearData()
+            showChart()
+        }
         tv_today.text = "今日(" + DateUtils.getCurrentDate() + ")"
+        tv_update.setOnClickListener {
+            updateData()
+        }
         showChart()
     }
 
@@ -50,16 +56,19 @@ class WeightManagerFragment : BaseFragment() {
     }
 
     private fun showChart() {
-        if(WeightUtils.getMAndNList(WeightUtils.TYPE_MORNING)==null||WeightUtils.getMAndNList(WeightUtils.TYPE_MORNING).size==0)return
+        if (WeightUtils.getMAndNList(WeightUtils.TYPE_MORNING) == null || WeightUtils.getMAndNList(WeightUtils.TYPE_MORNING).size == 0) {
+            chart.clear()
+            return
+        }
         val morningDataSet: LineDataSet = LineDataSet(WeightUtils.getMAndNList(WeightUtils.TYPE_MORNING), "上午体重chart")
         val nightDataSet: LineDataSet = LineDataSet(WeightUtils.getMAndNList(WeightUtils.TYPE_NIGHT), "下午体重chart")
         morningDataSet.color = R.color.color_blueA
         morningDataSet.valueTextColor = R.color.color_blueA
         nightDataSet.color = R.color.color_redA
         nightDataSet.valueTextColor = R.color.color_redA
-        morningDataSet.axisDependency=YAxis.AxisDependency.LEFT
-        nightDataSet.axisDependency=YAxis.AxisDependency.LEFT
-        val dataSets:ArrayList<ILineDataSet> =ArrayList()
+        morningDataSet.axisDependency = YAxis.AxisDependency.LEFT
+        nightDataSet.axisDependency = YAxis.AxisDependency.LEFT
+        val dataSets: ArrayList<ILineDataSet> = ArrayList()
         dataSets.add(morningDataSet)
         dataSets.add(nightDataSet)
         val lineData: LineData = LineData(dataSets)
@@ -67,11 +76,11 @@ class WeightManagerFragment : BaseFragment() {
         des.text = "体重（单位kg）"
         chart.description = des
         chart.data = lineData
-        val xAxis:XAxis=chart.xAxis
-        xAxis.granularity=1f
-        xAxis.valueFormatter=WeightUtils.formatter
-        xAxis.textColor=R.color.color_orangeB
-        xAxis.position=XAxis.XAxisPosition.BOTTOM
+        val xAxis: XAxis = chart.xAxis
+        xAxis.granularity = 1f
+        xAxis.valueFormatter = WeightUtils.formatter
+        xAxis.textColor = R.color.color_orangeB
+        xAxis.position = XAxis.XAxisPosition.BOTTOM
         chart.invalidate()
     }
 }
