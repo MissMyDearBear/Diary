@@ -20,6 +20,7 @@ import cjx.com.diary.common.Const;
 import cjx.com.diary.mode.user.UserBean;
 import cjx.com.diary.util.UserUtils;
 import cjx.com.diary.util.Utils;
+import cjx.com.diary.view.activity.WolfKillActivity;
 
 /**
  * Created by bear on 2017/5/5.
@@ -53,6 +54,8 @@ public class PersonalFragment extends BaseFragment {
     TextView mEmailTv;
     @BindView(R.id.nes_scroll_view)
     NestedScrollView mNsScrollview;
+    @BindView(R.id.iv_wolf_kill)
+    ImageView mWolfIv;
     Unbinder unbinder;
 
     private String mEmail = Const.MY_EMAIL;
@@ -85,6 +88,7 @@ public class PersonalFragment extends BaseFragment {
         mNameTv.setText(mName);
         mHeaderIv.setImageResource(R.drawable.ic_head);
         mGitTv.setText(Const.MY_GIT_HUB);
+        mWolfIv.setOnClickListener((v -> WolfKillActivity.Companion.action(mActivity)));
     }
 
     @Override

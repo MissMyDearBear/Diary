@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_title_bar" />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/chart"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:layout_weight="1" />
+
+    <TextView style="@style/Divider_Horizontal_2px" />
+
+    <TextView
+        android:id="@+id/tv_today"
+        style="@style/style_front_grayA_14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:textSize="15sp"
+        tools:text="今日体重（2017-07-24）" />
+
+    <TextView style="@style/Divider_Horizontal_2px" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            style="@style/style_front_grayB_14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="上午：" />
+
+        <EditText
+            android:id="@+id/et_morning"
+            style="@style/style_front_grayA_14"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:hint="单位kg" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            style="@style/style_front_grayB_14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="晚上：" />
+
+        <EditText
+            android:id="@+id/et_night"
+            style="@style/style_front_grayB_14"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:hint="单位kg" />
+    </LinearLayout>
+     <TextView
+         android:id="@+id/tv_update"
+         android:layout_margin="10dp"
+         android:layout_gravity="right"
+         android:padding="5dp"
+         android:textSize="16sp"
+         android:textColor="@color/color_blueA"
+         android:layout_marginBottom="20dp"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="更新数据"/>
+</LinearLayout>

@@ -114,6 +114,21 @@
                     android:layout_weight="1"
                     android:autoLink="web" />
             </LinearLayout>
+            <ImageView
+                android:id="@+id/iv_wolf_kill"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:clickable="true"
+                android:layout_marginTop="2dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/ic_wolf_kill"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+
+            </ImageView>
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

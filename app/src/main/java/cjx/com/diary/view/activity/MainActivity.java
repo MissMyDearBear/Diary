@@ -17,6 +17,7 @@ import cjx.com.diary.view.fragment.FindFragment;
 import cjx.com.diary.view.fragment.HomePageFragment;
 import cjx.com.diary.view.fragment.PersonalFragment;
 import cjx.com.diary.view.fragment.PhotoFragment;
+import cjx.com.diary.view.fragment.WeightManagerFragment;
 
 public class MainActivity extends BaseActivity {
     @BindView(R.id.navigation)
@@ -27,6 +28,8 @@ public class MainActivity extends BaseActivity {
     HomePageFragment homePageFragment;
 
     FindFragment findFragment;
+
+    WeightManagerFragment weightManagerFragment;
 
     PhotoFragment photoFragment;
 
@@ -49,11 +52,14 @@ public class MainActivity extends BaseActivity {
             case R.id.navigation_dashboard:
                 switchFragment(1);
                 return true;
-            case R.id.navigation_photo:
+            case R.id.navigation_weight:
                 switchFragment(2);
                 return true;
-            case R.id.navigation_notifications:
+            case R.id.navigation_photo:
                 switchFragment(3);
+                return true;
+            case R.id.navigation_notifications:
+                switchFragment(4);
                 return true;
         }
         return false;
@@ -92,6 +98,10 @@ public class MainActivity extends BaseActivity {
             findFragment = (FindFragment) FindFragment.newInstance();
             transaction.add(R.id.fl_container, findFragment);
         }
+        if (weightManagerFragment == null) {
+            weightManagerFragment = new WeightManagerFragment();
+            transaction.add(R.id.fl_container, weightManagerFragment);
+        }
         if (photoFragment == null) {
             photoFragment = (PhotoFragment) PhotoFragment.newInstance();
             transaction.add(R.id.fl_container, photoFragment);
@@ -100,7 +110,7 @@ public class MainActivity extends BaseActivity {
             personalFragment = (PersonalFragment) PersonalFragment.newInstance();
             transaction.add(R.id.fl_container, personalFragment);
         }
-        transaction.hide(homePageFragment).hide(findFragment).hide(photoFragment).hide(personalFragment);
+        transaction.hide(homePageFragment).hide(findFragment).hide(weightManagerFragment).hide(photoFragment).hide(personalFragment);
         switch (fragmentIndex) {
             case 0:
                 transaction.show(homePageFragment);
@@ -109,9 +119,12 @@ public class MainActivity extends BaseActivity {
                 transaction.show(findFragment);
                 break;
             case 2:
+                transaction.show(weightManagerFragment);
+                break;
+                case 3:
                 transaction.show(photoFragment);
                 break;
-            case 3:
+            case 4:
                 transaction.show(personalFragment);
                 break;
         }

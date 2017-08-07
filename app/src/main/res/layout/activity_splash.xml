@@ -5,25 +5,26 @@
     android:background="@drawable/bg_splash"
     xmlns:tools="http://schemas.android.com/tools">
 
- <Button
-     android:id="@+id/btn_skip"
-     android:layout_alignParentBottom="true"
-     android:layout_centerHorizontal="true"
-     android:layout_marginBottom="40dp"
-     android:layout_width="wrap_content"
-     android:layout_height="30dp"
-     android:text="立即体验"
-     android:gravity="center"
-     android:textSize="15sp"
-     android:textColor="@color/color_orangeA"
-     android:background="@drawable/bg_btn_rect" />
- <TextView
-     android:textColor="@color/color_orangeB"
-     android:layout_centerHorizontal="true"
-     android:layout_marginBottom="15dp"
-     android:text="Bear Diary"
-     android:textSize="16sp"
-     android:layout_width="wrap_content"
-     android:layout_height="wrap_content"
-     android:layout_above="@id/btn_skip"/>
+    <Button
+        android:id="@+id/btn_skip"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:text="立即体验"
+        android:gravity="center"
+        android:textSize="15sp"
+        android:textColor="@color/color_orangeA"
+        android:background="@drawable/bg_btn_rect" />
+
+    <TextView
+        android:textColor="@color/color_orangeB"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:text="Bear Diary"
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/btn_skip" />
 </RelativeLayout>
