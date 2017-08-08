@@ -44,6 +44,7 @@
             android:id="@+id/et_morning"
             style="@style/style_front_grayA_14"
             android:layout_width="70dp"
+            android:inputType="numberDecimal"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:hint="单位kg" />
@@ -66,8 +67,10 @@
             android:id="@+id/et_night"
             style="@style/style_front_grayB_14"
             android:layout_width="70dp"
+            android:inputType="numberDecimal"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            tools:text="10.5"
             android:hint="单位kg" />
     </LinearLayout>
      <TextView
