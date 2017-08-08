@@ -107,7 +107,10 @@ public class WeightUtils {
         return rList;
     }
 
-    public static void clearData(){
-       MyApplication.INSTANCE.getDaoSession().getBodyWeightBeanDao().deleteAll();
+    public static void clearData() {
+        BodyWeightBeanDao dao = MyApplication.INSTANCE.getDaoSession().getBodyWeightBeanDao();
+        if (dao != null && dao.count() > 0) {
+            MyApplication.INSTANCE.getDaoSession().getBodyWeightBeanDao().deleteAll();
+        }
     }
 }
