@@ -306,11 +306,11 @@ public class HomePageFragment extends BaseFragment {
         protected void convert(BaseViewHolder baseViewHolder, Diary diary) {
             baseViewHolder.setText(R.id.tv_title, diary.title);
             baseViewHolder.setText(R.id.tv_date, diary.createDate);
-
             ExpandedView expandedView=baseViewHolder.getView(R.id.expand_view);
             expandedView.setContentTextSize(14);
             expandedView.setContentText(diary.content,3);
             expandedView.setExpandedTextColor(0xFF0FBBE9);
+            expandedView.setExpandedTextGravity(ExpandedView.LEFT);
 
         }
     }

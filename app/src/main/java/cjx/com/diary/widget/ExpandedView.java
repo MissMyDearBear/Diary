@@ -3,8 +3,10 @@ package cjx.com.diary.widget;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
 import android.widget.LinearLayout;
@@ -88,6 +90,21 @@ public class ExpandedView extends LinearLayout {
      * 收起
      */
     private String collapText = "收起";
+    /**
+     * 「居左」
+     * 展开收起的位置
+     */
+    public static final int LEFT = 0x100;
+    /**
+     * 「居中」
+     * 展开收起的位置
+     */
+    public static final int CENTER = 0x101;
+    /**
+     * 「居右」
+     * 展开收起的位置
+     */
+    public static final int RIGHT = 0x102;
 
 
     public ExpandedView(Context context) {
@@ -125,7 +142,7 @@ public class ExpandedView extends LinearLayout {
         expandedLinesCount = expandedCount;
         contentTv.setText(text);
         //延迟计算，防止拉到contentTv的text的count为零
-        contentTv.postDelayed(() -> setExpandedView(rootLl,contentTv,expandTv,expandedLinesCount),50);
+        contentTv.postDelayed(() -> setExpandedView(rootLl, contentTv, expandTv, expandedLinesCount), 50);
     }
 
 
@@ -177,12 +194,31 @@ public class ExpandedView extends LinearLayout {
             if (isDefaultExpand) {
                 textView.performClick();
             }
-        }else{
+        } else {
             unfoldedTv.setVisibility(GONE);
             textView.setHeight(startHeight);
         }
     }
 
+    public void setExpandedTextGravity(int position) {
+        int gravity = -1;
+        switch (position) {
+            case LEFT:
+                gravity = Gravity.LEFT;
+                break;
+            case CENTER:
+                gravity = Gravity.CENTER_HORIZONTAL;
+                break;
+            case RIGHT:
+                gravity = Gravity.RIGHT;
+                break;
+        }
+        if (gravity != -1) {
+            LinearLayout.LayoutParams lp = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            lp.gravity = gravity;
+            expandTv.setLayoutParams(lp);
+        }
+    }
 
     public void setContentTextColor(int contentTextColor) {
         this.contentTextColor = contentTextColor;
@@ -191,7 +227,7 @@ public class ExpandedView extends LinearLayout {
 
     public void setContentTextSize(int contentTextSize) {
         this.contentTextSize = contentTextSize;
-        contentTv.setTextSize(COMPLEX_UNIT_SP,contentTextSize);
+        contentTv.setTextSize(COMPLEX_UNIT_SP, contentTextSize);
     }
 
     public void setExpandedTextColor(int expandedTextColor) {
@@ -201,14 +237,15 @@ public class ExpandedView extends LinearLayout {
 
     public void setExpandedTextSize(int expandedTextSize) {
         this.expandedTextSize = expandedTextSize;
-        expandTv.setTextSize(COMPLEX_UNIT_SP,expandedTextSize);
+        expandTv.setTextSize(COMPLEX_UNIT_SP, expandedTextSize);
     }
 
     /**
      * 需在setContentText方法之前调用有用
+     *
      * @param expandedCollapIconRes
      */
-    public void setExpandedIconRes(int expandedCollapIconRes,int expandedExpandIconRes) {
+    public void setExpandedIconRes(int expandedCollapIconRes, int expandedExpandIconRes) {
         this.expandedCollapIconRes = expandedCollapIconRes;
         this.expandedExpandIconRes = expandedExpandIconRes;
     }
@@ -228,6 +265,7 @@ public class ExpandedView extends LinearLayout {
 
     /**
      * 设置是否默认展开
+     *
      * @param defaultExpand
      */
     public void setDefaultExpand(boolean defaultExpand) {
