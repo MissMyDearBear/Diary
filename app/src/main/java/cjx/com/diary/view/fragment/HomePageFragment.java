@@ -41,6 +41,7 @@ import cjx.com.diary.util.DiaryUtils;
 import cjx.com.diary.util.DpAndPxUtils;
 import cjx.com.diary.util.Utils;
 import cjx.com.diary.view.activity.DiaryDetailActivity;
+import cjx.com.diary.widget.ExpandedView;
 
 /**
  * @author: bear
@@ -304,8 +305,13 @@ public class HomePageFragment extends BaseFragment {
         @Override
         protected void convert(BaseViewHolder baseViewHolder, Diary diary) {
             baseViewHolder.setText(R.id.tv_title, diary.title);
-            baseViewHolder.setText(R.id.tv_content, diary.content);
             baseViewHolder.setText(R.id.tv_date, diary.createDate);
+
+            ExpandedView expandedView=baseViewHolder.getView(R.id.expand_view);
+            expandedView.setContentTextSize(14);
+            expandedView.setContentText(diary.content,3);
+            expandedView.setExpandedTextColor(0xFF0FBBE9);
+
         }
     }
 }

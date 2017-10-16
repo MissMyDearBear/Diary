@@ -17,16 +17,10 @@
         android:textSize="16sp"
         tools:text="我的日记" />
 
-    <TextView
-        android:id="@+id/tv_content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:maxLines="2"
-        android:ellipsize="end"
-        android:textColor="@color/color_grayA"
-        android:textSize="14sp"
-        tools:text="我的日记内容" />
+<cjx.com.diary.widget.ExpandedView
+    android:id="@+id/expand_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>
 
     <TextView
         android:id="@+id/tv_date"
