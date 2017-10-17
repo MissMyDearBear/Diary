@@ -73,11 +73,6 @@ public class ExpandedView extends LinearLayout {
     private int expandedLinesCount = 3;
 
     /**
-     * 默认是否展开
-     */
-    private boolean isDefaultExpand = false;
-
-    /**
      * 是否展开
      */
     private boolean isExpand = false;
@@ -133,20 +128,28 @@ public class ExpandedView extends LinearLayout {
     }
 
     /**
-     * 注意调用此方法时需要把前面扩展的属性都赋值完毕，否则在此方法之后设置的属性将无效
-     *
+     * 设置内容
      * @param text          内容
      * @param expandedCount 首次展示的行数
      */
     public void setContentText(@NotNull String text, int expandedCount) {
+        setContentText(text,expandedCount,false);
+    }
+
+    /**
+     * 设置内容
+     * @param text          内容
+     * @param expandedCount 首次展示的行数
+     */
+    public void setContentText(@NotNull String text, int expandedCount,boolean isDefaultExpand) {
         expandedLinesCount = expandedCount;
         contentTv.setText(text);
         //延迟计算，防止拉到contentTv的text的count为零
-        contentTv.postDelayed(() -> setExpandedView(rootLl, contentTv, expandTv, expandedLinesCount), 50);
+        contentTv.postDelayed(() -> setExpandedView(rootLl, contentTv, expandTv, expandedLinesCount,isDefaultExpand), 50);
     }
 
 
-    private void setExpandedView(@NotNull View rootView, @NotNull TextView textView, @NotNull TextView unfoldedTv, int expandCount) {
+    private void setExpandedView(@NotNull View rootView, @NotNull TextView textView, @NotNull TextView unfoldedTv, int expandCount,boolean isDefaultExpand) {
         int tvLines = textView.getLineCount();
         final int startHeight = tvLines * textView.getLineHeight();
         if (tvLines > expandCount) {
@@ -262,16 +265,6 @@ public class ExpandedView extends LinearLayout {
     public TextView getExpandTv() {
         return expandTv;
     }
-
-    /**
-     * 设置是否默认展开
-     *
-     * @param defaultExpand
-     */
-    public void setDefaultExpand(boolean defaultExpand) {
-        isDefaultExpand = defaultExpand;
-    }
-
     public boolean isExpand() {
         return isExpand;
     }
