@@ -28,7 +28,17 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <!--添加scheme配置-->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data
+                    android:host="bear"
+                    android:scheme="diary" />
+            </intent-filter>
         </activity>
+
         <activity
             android:name=".view.activity.LoginActivity"
             android:label="@string/activity_login"
