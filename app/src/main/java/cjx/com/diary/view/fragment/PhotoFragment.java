@@ -81,7 +81,7 @@ public class PhotoFragment extends BaseFragment {
             getData();
         });
         adapter = new MyAdapter(mList);
-        adapter.setOnItemClickListener((baseQuickAdapter, view1, i) -> ImageDetailActivity.action(mActivity, mList.get(i).abs, mList.get(i).image_url));
+        adapter.setOnItemClickListener((baseQuickAdapter, view1, i) -> ImageDetailActivity.action(mActivity,  mList.get(i).image_url));
         adapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
         adapter.setOnLoadMoreListener(() -> {
             mSwpRecycleView.setRefreshing(false);

@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/color_grayC</item>
         <item name="colorPrimaryDark">@color/colorBlack</item>
         <item name="colorAccent">@color/color_blueA</item>
+        <item name="android:windowAnimationStyle">@style/activity_fade_in_out</item>
         <item name="android:textColorSecondary">@color/color_grayA</item>
     </style>
 
@@ -39,5 +40,12 @@
 
     <style name="ToolBar_Title" parent="Base.TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textSize">15sp</item>
+    </style>
+    <!--初步设置activity进入和退出的动画-->
+    <style name="activity_fade_in_out" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:activityCloseExitAnimation">@anim/alpha_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/alpha_out</item>
+        <item name="android:activityOpenExitAnimation">@anim/alpha_in</item>
+        <item name="android:activityOpenEnterAnimation">@anim/alpha_in</item>
     </style>
 </resources>

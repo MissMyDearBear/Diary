@@ -50,6 +50,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".view.activity.ImageDetailActivity"
+            android:theme="@style/activity_fade_in_out"
             android:screenOrientation="portrait" />
         <activity
             android:name=".view.activity.WolfKillActivity"
