@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import cjx.com.diary.R;
-import cjx.com.diary.util.DpAndPxUtils;
 
 /**
  * description:
@@ -92,7 +91,7 @@ public class DragLinearLayout extends LinearLayout {
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
         childOriginPos.x = mView.getLeft();
-        childOriginPos.y = mView.getRight();
+        childOriginPos.y = mView.getTop();
 
     }
 
