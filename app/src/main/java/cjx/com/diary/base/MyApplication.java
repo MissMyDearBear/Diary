@@ -7,6 +7,7 @@ import org.greenrobot.greendao.database.Database;
 import cjx.com.diary.db.MyOpenHelper;
 import cjx.com.diary.mode.diary.DaoMaster;
 import cjx.com.diary.mode.diary.DaoSession;
+import cjx.com.diary.util.Utils;
 
 
 /**
@@ -26,7 +27,7 @@ public class MyApplication extends Application {
         DaoMaster.DevOpenHelper help = new MyOpenHelper(this, ENCRYPTED ? "bear-db-encrypted" : "bear-db");
         Database db = ENCRYPTED ? help.getEncryptedWritableDb("admin") : help.getWritableDb();
         DaoMaster master=new DaoMaster(db);
-        System.out.print("当前数据库版本号-->"+master.getSchemaVersion());
+        Utils.logOut("当前数据库版本号-->"+master.getSchemaVersion());
         mDaoSession = master.newSession();
     }
 

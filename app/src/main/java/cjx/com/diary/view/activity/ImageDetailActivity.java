@@ -1,9 +1,11 @@
 package cjx.com.diary.view.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,10 +28,11 @@ public class ImageDetailActivity extends BaseActivity {
     @BindView(R.id.iv_photo)
     ImageView mPhotoIv;
 
-    public static void action(Context context,String url) {
+    public static void action(Activity context, String url) {
         Intent intent = new Intent(context, ImageDetailActivity.class);
         intent.putExtra("url", url);
         context.startActivity(intent);
+        context.overridePendingTransition(R.anim.alpha_in,R.anim.alpha_out);
     }
 
     String url;
@@ -45,6 +48,7 @@ public class ImageDetailActivity extends BaseActivity {
             if (Math.abs(yvel) >= 50) {
                 mDrag.postDelayed(() -> {
                     finish();
+                    mActivity.overridePendingTransition(R.anim.alpha_in,R.anim.alpha_out);
                 }, 60);
             }
         });

@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import cjx.com.diary.R;
+import cjx.com.diary.util.Utils;
 
 /**
  * description:
@@ -23,6 +24,10 @@ public class DragLinearLayout extends LinearLayout {
     private Point childOriginPos = new Point();
 
     private View mView;
+
+
+    private final int screenHeight = Utils.getScreenHeightOrWidth(Utils.SCREEN_HEIGHT);
+    private final int screenWidth = Utils.getScreenHeightOrWidth(Utils.SCREEN_WIDTH);
 
 
     public DragLinearLayout(Context context) {
@@ -72,6 +77,12 @@ public class DragLinearLayout extends LinearLayout {
                 }
 
             }
+
+            @Override
+            public void onViewPositionChanged(View changedView, int left, int top, int dx, int dy) {
+                super.onViewPositionChanged(changedView, left, top, dx, dy);
+                
+            }
         });
     }
 
@@ -90,10 +101,9 @@ public class DragLinearLayout extends LinearLayout {
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
-        childOriginPos.x = mView.getLeft();
-        childOriginPos.y = mView.getTop();
-
-    }
+            childOriginPos.x = mView.getLeft();
+            childOriginPos.y = mView.getTop();
+}
 
     @Override
     public void computeScroll() {
@@ -115,7 +125,7 @@ public class DragLinearLayout extends LinearLayout {
 
     }
 
-    public interface CallBack {
-        void onViewRelease(View releasedChild, float xvel, float yvel);
-    }
+public interface CallBack {
+    void onViewRelease(View releasedChild, float xvel, float yvel);
+}
 }

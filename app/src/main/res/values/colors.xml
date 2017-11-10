@@ -37,4 +37,6 @@
     <color name="color_divider_gray">#e5e5e5</color>
     <!--线框颜色(搜索框等)-->
     <color name="color_box_line">#fbfbfb</color>
+    <color name="color_transparent">#00ffffff</color>
+    <color name="color_transparent_half">#2affffff</color>
 </resources>
