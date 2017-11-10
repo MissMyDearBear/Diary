@@ -38,7 +38,6 @@ import cjx.com.diary.mode.diary.Diary;
 import cjx.com.diary.thirdtools.rx.rxbus.RxBus;
 import cjx.com.diary.thirdtools.rx.rxbus.RxBusAction;
 import cjx.com.diary.util.DiaryUtils;
-import cjx.com.diary.util.DpAndPxUtils;
 import cjx.com.diary.util.Utils;
 import cjx.com.diary.view.activity.DiaryDetailActivity;
 import cjx.com.diary.widget.ExpandedView;

@@ -1,11 +1,10 @@
 package cjx.com.diary.base;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,6 +20,10 @@ import cjx.com.diary.R;
 public abstract class BaseActivity extends AppCompatActivity implements BaseView{
     public BaseActivity mActivity;
 
+    static {
+        //用于控制5.0以下的系统可以使用Vector Drawable
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+    }
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

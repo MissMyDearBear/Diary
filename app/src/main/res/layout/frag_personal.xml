@@ -38,7 +38,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="44dp"
                 android:layout_marginTop="15dp"
-                android:background="@drawable/ripple_white_gray"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingLeft="15dp"
@@ -48,7 +47,7 @@
                     style="@style/style_front_grayA_14"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/ic_website"
+                    android:drawableLeft="@drawable/ic_website_draw"
                     android:drawablePadding="5dp"
                     android:text="主页" />
 
@@ -65,7 +64,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="44dp"
                 android:layout_marginTop="2px"
-                android:background="@drawable/ripple_white_gray"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingLeft="15dp"
@@ -75,7 +73,7 @@
                     style="@style/style_front_grayA_14"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/ic_email_black"
+                    android:drawableLeft="@drawable/ic_email_draw"
                     android:drawablePadding="5dp"
                     android:text="邮箱" />
 
@@ -92,7 +90,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="44dp"
                 android:layout_marginTop="2px"
-                android:background="@drawable/ripple_white_gray"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingLeft="15dp"
@@ -102,7 +99,7 @@
                     style="@style/style_front_grayA_14"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/ic_email_black"
+                    android:drawableLeft="@drawable/ic_email_draw"
                     android:drawablePadding="5dp"
                     android:text="Github" />
 

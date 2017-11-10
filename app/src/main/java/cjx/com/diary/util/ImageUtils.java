@@ -1,7 +1,7 @@
 package cjx.com.diary.util;
 
-import cjx.com.diary.thirdtools.glide.GlideImp;
 import cjx.com.diary.thirdtools.ImageInterface;
+import cjx.com.diary.thirdtools.glide.GlideImp;
 
 /**
  * @author: bear

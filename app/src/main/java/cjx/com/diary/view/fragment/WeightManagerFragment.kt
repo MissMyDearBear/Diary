@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import cjx.com.diary.R
 import cjx.com.diary.base.BaseFragment
 import cjx.com.diary.mode.weight.BodyWeightBean
-import cjx.com.diary.util.*
+import cjx.com.diary.util.DateUtils
+import cjx.com.diary.util.Utils
+import cjx.com.diary.util.WeightUtils
 import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
