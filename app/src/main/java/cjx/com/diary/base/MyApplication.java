@@ -5,8 +5,8 @@ import android.app.Application;
 import org.greenrobot.greendao.database.Database;
 
 import cjx.com.diary.db.MyOpenHelper;
-import cjx.com.diary.mode.diary.DaoMaster;
-import cjx.com.diary.mode.diary.DaoSession;
+import cjx.com.diary.mode.weight.DaoMaster;
+import cjx.com.diary.mode.weight.DaoSession;
 import cjx.com.diary.util.Utils;
 
 

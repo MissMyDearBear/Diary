@@ -3,8 +3,8 @@ package cjx.com.diary.db;
 import org.greenrobot.greendao.database.Database;
 
 import cjx.com.diary.base.MyApplication;
-import cjx.com.diary.mode.diary.DaoMaster;
-import cjx.com.diary.mode.diary.DaoSession;
+import cjx.com.diary.mode.weight.DaoMaster;
+import cjx.com.diary.mode.weight.DaoSession;
 
 
 /**

@@ -12,7 +12,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import cjx.com.diary.mode.diary.DaoMaster;
+import cjx.com.diary.mode.weight.DaoMaster;
+
 
 /**
  * description: greenDao升级帮助
