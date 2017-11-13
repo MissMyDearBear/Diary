@@ -17,6 +17,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -99,7 +100,7 @@ public class HomePageFragment extends BaseFragment {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                if(dy> 0){
+                if (dy > 0) {
                     closeSearchView();
                 }
             }
@@ -110,8 +111,8 @@ public class HomePageFragment extends BaseFragment {
     /**
      * 收起searchView
      */
-    private void closeSearchView(){
-        if(null!=mSearchView&&!mSearchView.isIconified()){
+    private void closeSearchView() {
+        if (null != mSearchView && !mSearchView.isIconified()) {
             mSearchView.setIconified(true);
         }
     }
@@ -129,29 +130,29 @@ public class HomePageFragment extends BaseFragment {
         inflater.inflate(R.menu.toolbar_menu, menu);
         MenuItem searchItem = menu.findItem(R.id.toolbar_search);
         mSearchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-        SearchView.SearchAutoComplete autoComplete= (SearchView.SearchAutoComplete) mSearchView.findViewById(R.id.search_src_text);
+        SearchView.SearchAutoComplete autoComplete = (SearchView.SearchAutoComplete) mSearchView.findViewById(R.id.search_src_text);
         autoComplete.setTextSize(15);
         mSearchView.setIconified(true);
         mSearchView.setSubmitButtonEnabled(true);
         mSearchView.setQueryHint("请输入标题");
 
         mSearchView.setOnCloseListener(() -> {
-            key="";
+            key = "";
             onRefreshData();
             return false;
         });
         mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                key =query;
+                key = query;
                 onRefreshData();
                 return true;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                if(TextUtils.isEmpty(newText)){
-                    key=newText;
+                if (TextUtils.isEmpty(newText)) {
+                    key = newText;
                     onRefreshData();
                     return true;
                 }
@@ -173,12 +174,12 @@ public class HomePageFragment extends BaseFragment {
 
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
-        if (menu!=null){
-            if(menu.getClass().getSimpleName().equals("MenuBuilder")){
+        if (menu != null) {
+            if (menu.getClass().getSimpleName().equals("MenuBuilder")) {
                 try {
-                    Method m=menu.getClass().getDeclaredMethod("setOptionalIconsVisible", Boolean.TYPE);
-                     m.setAccessible(true);
-                     m.invoke(menu,true);
+                    Method m = menu.getClass().getDeclaredMethod("setOptionalIconsVisible", Boolean.TYPE);
+                    m.setAccessible(true);
+                    m.invoke(menu, true);
                 } catch (NoSuchMethodException e) {
                     e.printStackTrace();
                 } catch (IllegalAccessException e) {
@@ -305,12 +306,7 @@ public class HomePageFragment extends BaseFragment {
         protected void convert(BaseViewHolder baseViewHolder, Diary diary) {
             baseViewHolder.setText(R.id.tv_title, diary.title);
             baseViewHolder.setText(R.id.tv_date, diary.createDate);
-            ExpandedView expandedView=baseViewHolder.getView(R.id.expand_view);
-            expandedView.setContentTextSize(14);
-            expandedView.setContentText(diary.content,3);
-            expandedView.setExpandedTextColor(0xFF0FBBE9);
-            expandedView.setExpandedTextGravity(ExpandedView.LEFT);
-
+            baseViewHolder.setText(R.id.tv_content, diary.content);
         }
     }
 }
