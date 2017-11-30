@@ -19,6 +19,7 @@
         <activity
             android:name=".view.activity.MainActivity"
             android:label="@string/activity_main"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".view.activity.SplashActivity"
@@ -31,8 +32,10 @@
             <!--添加scheme配置-->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data
                     android:host="bear"
                     android:scheme="diary" />
@@ -47,9 +50,6 @@
             android:name=".view.activity.DiaryDetailActivity"
             android:label="@string/activity_diary_detail"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".view.activity.ImageDetailActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".view.activity.WolfKillActivity"

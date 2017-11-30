@@ -24,9 +24,9 @@ import cjx.com.diary.base.BaseFragment;
 import cjx.com.diary.common.MyObserver;
 import cjx.com.diary.mode.BaiDuImageBean;
 import cjx.com.diary.util.ImageUtils;
-import cjx.com.diary.view.activity.ImageDetailActivity;
 import cjx.com.diary.widget.CustomLoadMoreView;
 import cjx.com.diary.widget.SwipeRefreshRecyclerView;
+import cjx.com.diary.widget.imagedetail.ImageHelper;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
@@ -80,7 +80,6 @@ public class PhotoFragment extends BaseFragment {
             getData();
         });
         adapter = new MyAdapter(mList);
-        adapter.setOnItemClickListener((baseQuickAdapter, view1, i) -> ImageDetailActivity.action(mActivity,  mList.get(i).image_url));
         adapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
         adapter.setOnLoadMoreListener(() -> {
             mSwpRecycleView.setRefreshing(false);
@@ -140,6 +139,7 @@ public class PhotoFragment extends BaseFragment {
             ImageView imageView = baseViewHolder.getView(R.id.iv_photo);
             ImageUtils.getInstance().displayImage(mActivity, imageView, imagesResult.thumbnail_url);
             baseViewHolder.setText(R.id.tv_name, imagesResult.abs);
+            baseViewHolder.itemView.setOnClickListener(v -> ImageHelper.goToImageDetail(mActivity,imageView,imagesResult.image_url));
         }
     }
 
