@@ -55,27 +55,7 @@ public class ImageHelper {
         array.put(3, iv.getHeight());
         iv.setVisibility(View.INVISIBLE);
         ImageHelper.addFragment(mActivity, mActivity.getWindow().getDecorView(), array, url,
-                () -> {
-                    AlphaAnimation mShowAction = new AlphaAnimation(0f, 1f);
-                    mShowAction.setDuration(400);
-                    mShowAction.setAnimationListener(new Animation.AnimationListener() {
-                        @Override
-                        public void onAnimationStart(Animation animation) {
-
-                        }
-
-                        @Override
-                        public void onAnimationEnd(Animation animation) {
-                            iv.setVisibility(View.VISIBLE);
-                        }
-
-                        @Override
-                        public void onAnimationRepeat(Animation animation) {
-
-                        }
-                    });
-                    iv.startAnimation(mShowAction);
-                }
+                () -> iv.setVisibility(View.VISIBLE)
         );
 
     }
