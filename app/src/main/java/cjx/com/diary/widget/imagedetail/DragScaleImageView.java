@@ -67,9 +67,13 @@ public class DragScaleImageView extends android.support.v7.widget.AppCompatImage
         int action = event.getActionMasked();
         int x = (int) event.getX();
         int y = (int) event.getY();
+        int downX = 0, upX = 0, downY = 0, upY = 0;
         switch (action) {
             case MotionEvent.ACTION_DOWN:
+                downX = (int) getX();
+                downY = (int) getY();
                 AnimatorSet setDown = new AnimatorSet();
+                setDown.setDuration(50);
                 setDown.playTogether(
                         ObjectAnimator.ofFloat(this, "scaleY", 1f, 0.8f),
                         ObjectAnimator.ofFloat(this, "scaleX", 1f, 0.8f)
@@ -86,8 +90,15 @@ public class DragScaleImageView extends android.support.v7.widget.AppCompatImage
                 ((View) this.getParent()).getBackground().setAlpha(0);
                 break;
             case MotionEvent.ACTION_UP:
-                //抬起的时候，需要回到上个页面跳转过来的位置，这里使用属性动画化来实现
-                comeBackLastPageImageState();
+                upX = (int) getX();
+                upY = (int) getY();
+                int distance = Math.max(Math.abs(upX - downX), Math.abs(upY - downY));
+                if (distance < 5) {
+                    dismissImage();
+                } else {
+                    //抬起的时候，需要回到上个页面跳转过来的位置，这里使用属性动画化来实现
+                    comeBackLastPageImageState();
+                }
 
                 break;
         }
@@ -127,10 +138,7 @@ public class DragScaleImageView extends android.support.v7.widget.AppCompatImage
                         @Override
                         public void onAnimationEnd(Animator animation) {
                             super.onAnimationEnd(animation);
-                            ImageHelper.finishImageShow(appCompatActivity);
-                            if (mCallBack != null) {
-                                mCallBack.onFinished();
-                            }
+                            dismissImage();
                         }
 
                     });
@@ -144,6 +152,13 @@ public class DragScaleImageView extends android.support.v7.widget.AppCompatImage
             setUp.setInterpolator(new DecelerateInterpolator());
             setUp.setDuration(100);
             setUp.start();
+        }
+    }
+
+    public void dismissImage() {
+        ImageHelper.finishImageShow(appCompatActivity);
+        if (mCallBack != null) {
+            mCallBack.onFinished();
         }
     }
 

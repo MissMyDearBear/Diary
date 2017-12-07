@@ -58,6 +58,11 @@ public class ImageDetailFrag extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ImageUtils.getInstance().displayImage(this.getContext(), mImageView, imageUrl);
+        relativeLayout.setOnClickListener(v -> {
+            if (mImageView != null) {
+                mImageView.dismissImage();
+            }
+        });
     }
 
     @Override
