@@ -39,4 +39,6 @@
     <color name="color_box_line">#fbfbfb</color>
     <color name="color_transparent">#00ffffff</color>
     <color name="color_transparent_half">#2affffff</color>
+
+    <color name="color_content_bg">#f5f5f5</color>
 </resources>
