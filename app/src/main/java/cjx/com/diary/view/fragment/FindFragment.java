@@ -31,6 +31,8 @@ import cjx.com.diary.R;
 import cjx.com.diary.base.BaseFragment;
 import cjx.com.diary.mode.QiuBaiBean;
 import cjx.com.diary.presenter.impl.FindPresenterImp;
+import cjx.com.diary.util.Utils;
+import cjx.com.diary.util.miscreenshot.ScreenShotHelper;
 
 /**
  * Created by bear on 2017/4/27.
@@ -55,6 +57,7 @@ public class FindFragment extends BaseFragment {
     @BindView(R.id.recycle_view)
     RecyclerView recycleView;
     Unbinder unbinder;
+    private View scrollView;
 
     private FindPresenterImp mPresenter;
 
@@ -71,8 +74,8 @@ public class FindFragment extends BaseFragment {
         return contView;
     }
 
-    public void setRefresh(boolean refresh){
-        if(mSwl!=null){
+    public void setRefresh(boolean refresh) {
+        if (mSwl != null) {
             mSwl.setRefreshing(refresh);
         }
     }
@@ -82,6 +85,17 @@ public class FindFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         mBackIv.setVisibility(View.GONE);
         mTitleTv.setText("趣闻");
+
+        mExtendTv.setVisibility(View.VISIBLE);
+        mExtendTv.setText("保存截图");
+        mExtendTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                screenShot();
+            }
+        });
+
+
         mSwl.setOnRefreshListener(() -> {
             mPresenter.getQiuBai();
         });
@@ -89,6 +103,11 @@ public class FindFragment extends BaseFragment {
         mAdapter = new MyAdapter(mData);
         recycleView.setAdapter(mAdapter);
         mPresenter.getQiuBai();
+    }
+
+    private void screenShot() {
+        scrollView = ScreenShotHelper.getCanScrollView((ViewGroup) getView());
+        ScreenShotHelper.screenShot(mActivity, scrollView, (bitmap, filePath) -> mActivity.runOnUiThread(() -> Utils.showToast(mActivity, "保存成功！")));
     }
 
     public void onRefresh(List<QiuBaiBean.DataBean.ItemBean> tem) {

@@ -16,7 +16,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 
 
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -26,6 +25,7 @@ import java.util.List;
 import java.util.Locale;
 
 import cjx.com.diary.R;
+import cjx.com.diary.util.permission.PermissionConst;
 
 /**
  * description: bitmap处理工具
@@ -80,6 +80,10 @@ public class BitmapUtils {
         if (only_bitmap == null) {
             if (callBack != null)
                 callBack.onResult(null, "");
+            return;
+        }
+        //存储权限需要询问用户
+        if (!PermissionConst.canUseThisPermission((Activity) context, "存储", android.Manifest.permission.WRITE_EXTERNAL_STORAGE, PermissionConst.REQUEST_PERMISSION_STORY_WRITE)) {
             return;
         }
         final ProgressDialog dialog = new ProgressDialog(context);
@@ -211,16 +215,19 @@ public class BitmapUtils {
                             context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse("file://" + other_fileAbsolutePath)));
                         }
                         dialog.dismiss();
-                        callBack.onResult(only_bitmap, fileReturnPath);
+                        if (callBack != null)
+                            callBack.onResult(only_bitmap, fileReturnPath);
 
                     } catch (Exception e) {
                         e.printStackTrace();
                         dialog.dismiss();
-                        callBack.onResult(only_bitmap, fileReturnPath);
+                        if (callBack != null)
+                            callBack.onResult(only_bitmap, fileReturnPath);
                     }
                 } else {
                     dialog.dismiss();
-                    callBack.onResult(null, "");
+                    if (callBack != null)
+                        callBack.onResult(null, "");
                 }
             }
         });
@@ -260,10 +267,9 @@ public class BitmapUtils {
     }
 
     /**
-     *
      * @param mRecyclerView recyclerView
-     * @param shotHeight 当前数据能够渲染出来的页面总长度
-     * @param callBack 回调
+     * @param shotHeight    当前数据能够渲染出来的页面总长度
+     * @param callBack      回调
      */
     public static void screenShotRecycleView(final RecyclerView mRecyclerView, int shotHeight, ScreenRecyclerView callBack) {
         if (mRecyclerView == null) {
