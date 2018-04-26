@@ -14,7 +14,6 @@ import java.util.List;
 
 import cjx.com.diary.mode.weight.DaoMaster;
 
-
 /**
  * description: greenDao升级帮助
  * author: bear .

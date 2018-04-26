@@ -7,7 +7,6 @@ import org.greenrobot.greendao.database.Database;
 
 import cjx.com.diary.mode.weight.DaoMaster;
 
-
 /**
  * description: GreenDao帮助类
  * author: bear .
