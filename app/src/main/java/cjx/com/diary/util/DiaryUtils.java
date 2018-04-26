@@ -7,9 +7,9 @@ import java.util.Collections;
 import java.util.List;
 
 import cjx.com.diary.base.MyApplication;
-import cjx.com.diary.mode.diary.DaoSession;
 import cjx.com.diary.mode.diary.Diary;
 import cjx.com.diary.mode.diary.DiaryDao;
+import cjx.com.diary.mode.weight.DaoSession;
 
 /**
  * @author: bear

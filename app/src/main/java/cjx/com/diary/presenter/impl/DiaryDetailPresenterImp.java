@@ -4,7 +4,6 @@ import cjx.com.diary.mode.diary.Diary;
 import cjx.com.diary.presenter.DiaryDetailPresenter;
 import cjx.com.diary.thirdtools.rx.rxbus.RxBus;
 import cjx.com.diary.thirdtools.rx.rxbus.RxBusAction;
-import cjx.com.diary.util.DateUtils;
 import cjx.com.diary.util.DiaryUtils;
 
 /**

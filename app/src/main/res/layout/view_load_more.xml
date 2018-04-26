@@ -16,14 +16,14 @@
             android:layout_height="wrap_content"
             style="?android:attr/progressBarStyleSmall"
             android:layout_marginRight="@dimen/dp_4"
-            android:indeterminateDrawable="@drawable/sample_footer_loading_progress" />
+             />
 
         <TextView
             android:id="@+id/loading_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dp_4"
-            android:text="@string/loading"
+            android:text="加载中"
             android:textColor="#0dddb8"
             android:textSize="@dimen/sp_14" />
     </LinearLayout>
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textColor="#0dddb8"
-            android:text="@string/load_failed" />
+            android:text="加载失败" />
 
     </FrameLayout>
 
@@ -55,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/load_end"
+            android:text="加载结束"
             android:textColor="@android:color/darker_gray" />
     </FrameLayout>
 </FrameLayout>

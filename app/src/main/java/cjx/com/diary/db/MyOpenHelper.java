@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import org.greenrobot.greendao.database.Database;
 
-import cjx.com.diary.mode.diary.DaoMaster;
+import cjx.com.diary.mode.weight.DaoMaster;
 
 /**
  * description: GreenDao帮助类

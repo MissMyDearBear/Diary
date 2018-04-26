@@ -1,8 +1,8 @@
 package cjx.com.diary.util;
 
 import cjx.com.diary.base.MyApplication;
-import cjx.com.diary.mode.diary.DaoSession;
 import cjx.com.diary.mode.user.UserBean;
+import cjx.com.diary.mode.weight.DaoSession;
 
 /**
  * @author: bear

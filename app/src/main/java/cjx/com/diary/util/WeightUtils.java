@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cjx.com.diary.base.MyApplication;
-import cjx.com.diary.mode.diary.DaoSession;
 import cjx.com.diary.mode.weight.BodyWeightBean;
 import cjx.com.diary.mode.weight.BodyWeightBeanDao;
+import cjx.com.diary.mode.weight.DaoSession;
 
 /**
  * description: 体重管理
