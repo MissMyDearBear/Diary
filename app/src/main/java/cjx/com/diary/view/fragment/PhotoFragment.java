@@ -1,7 +1,5 @@
 package cjx.com.diary.view.fragment;
 
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -26,12 +24,8 @@ import cjx.com.diary.base.BaseFragment;
 import cjx.com.diary.common.MyObserver;
 import cjx.com.diary.mode.BaiDuImageBean;
 import cjx.com.diary.util.ImageUtils;
-import cjx.com.diary.util.UserUtils;
 import cjx.com.diary.util.Utils;
 import cjx.com.diary.util.miscreenshot.ScreenShotHelper;
-import cjx.com.diary.util.miscreenshot.ScrollableViewRECUtil;
-import cjx.com.diary.util.screen.BitmapUtils;
-import cjx.com.diary.util.screen.ScreenShotUtils;
 import cjx.com.diary.widget.CustomLoadMoreView;
 import cjx.com.diary.widget.SwipeRefreshRecyclerView;
 import cjx.com.diary.widget.imagedetail.ImageHelper;
