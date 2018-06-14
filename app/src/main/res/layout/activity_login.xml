@@ -27,7 +27,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="账号"
-                    android:inputType="number"
                     android:maxLines="1"
                     android:padding="16dp" />
             </android.support.design.widget.TextInputLayout>

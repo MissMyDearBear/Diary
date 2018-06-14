@@ -1,0 +1,16 @@
+package bear.com.domain.userCase;
+
+import bear.com.domain.repository.UserRepository;
+
+/**
+ * description:
+ * author: bear .
+ * Created date:  2018/6/12.
+ */
+public abstract class BaseUserCase {
+    protected UserRepository mUserRepository;
+
+    public void setmUserRepository(UserRepository mUserRepository) {
+        this.mUserRepository = mUserRepository;
+    }
+}

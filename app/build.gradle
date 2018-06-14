@@ -1,22 +1,23 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'com.jakewharton.butterknife'
-apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'org.greenrobot.greendao'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '26.0.2'
+    compileSdkVersion project.ext.compileSdkVersion
+    buildToolsVersion project.ext.buildToolsVersion
     defaultConfig {
         applicationId "cjx.com.diary"
         minSdkVersion 15
-        targetSdkVersion 25
+        targetSdkVersion 27
         versionCode 11
         versionName "1.1"
         vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
+        debug{
+
+        }
         greendao {
             schemaVersion 1
 //            这个地方是自动生成的配置文件存放在哪个位置的
@@ -27,41 +28,44 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
     compileOptions {
         targetCompatibility 1.8
         sourceCompatibility 1.8
     }
-    packagingOptions {
-        exclude 'META-INF/rxjava.properties'
-    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    api project(":data")
+    api project(":device")
+    api project(":domain")
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:'+project.ext.support_version
+    implementation 'com.android.support:support-v4:'+project.ext.support_version
+    implementation 'com.android.support:design:'+project.ext.support_version
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.android.support:support-vector-drawable:25.3.1'
 
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:support-v4:25.3.1'
-    compile 'com.android.support:design:25.3.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:support-vector-drawable:25.3.1'
-    compile 'com.jakewharton:butterknife:8.5.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
-    compile 'com.github.bumptech.glide:glide:3.8.0'
-    compile 'com.squareup.retrofit2:retrofit:2.2.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.2.0'
-    compile 'com.squareup.retrofit2:retrofit-adapters:2.2.0'
-    compile 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation 'com.github.bumptech.glide:glide:3.8.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.2.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.2.0'
+    implementation 'com.squareup.retrofit2:retrofit-adapters:2.2.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
 // Because RxAndroid releases are few and far between, it is recommended you also
 // explicitly depend on RxJava's latest version for bug fixes and new features.
-    compile 'io.reactivex.rxjava2:rxjava:2.1.0'
-    compile 'com.hwangjr.rxbus:rxbus:1.0.5'
-    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:latest.release'
-    compile 'org.greenrobot:greendao:3.2.2'
-    compile 'net.zetetic:android-database-sqlcipher:3.5.1@aar'
-    compile 'com.zzhoujay.markdown:markdown:1.0.4'
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.0'
+    implementation 'com.hwangjr.rxbus:rxbus:1.0.5'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:latest.release'
+    implementation 'org.greenrobot:greendao:3.2.2'
+    implementation 'net.zetetic:android-database-sqlcipher:3.5.1@aar'
+    implementation 'com.zzhoujay.markdown:markdown:1.0.4'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.2'
 }
 repositories {
     mavenCentral()

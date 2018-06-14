@@ -21,6 +21,7 @@ import cjx.com.diary.common.Const;
 import cjx.com.diary.mode.user.UserBean;
 import cjx.com.diary.util.UserUtils;
 import cjx.com.diary.util.Utils;
+import cjx.com.diary.view.activity.LoginActivity;
 import cjx.com.diary.view.activity.WolfKillActivity;
 
 /**
@@ -81,9 +82,9 @@ public class PersonalFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         mBackIv.setVisibility(View.GONE);
         mTitleTv.setText("关于我");
-        mExtendTv.setVisibility(View.GONE);
-        mExtendTv.setText("分享");
-        mExtendTv.setOnClickListener((view1) -> Utils.showToast(mActivity, "分享"));
+        mExtendTv.setVisibility(View.VISIBLE);
+        mExtendTv.setText("框架示例");
+        mExtendTv.setOnClickListener((view1) -> LoginActivity.action(mActivity));
         mWebsiteTv.setText(Const.MY_WEBSITE);
         mEmailTv.setText(mEmail);
         mNameTv.setText(mName);

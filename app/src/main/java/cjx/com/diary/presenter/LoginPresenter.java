@@ -21,4 +21,7 @@ public interface LoginPresenter extends BasePresenter{
      * @param context 上下文
      */
     void jumpToRegister(Context context);
+
+
+    boolean logout(String uid);
 }
