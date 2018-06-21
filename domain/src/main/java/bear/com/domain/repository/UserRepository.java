@@ -12,5 +12,7 @@ import bear.com.domain.model.User;
  */
 public interface UserRepository {
   User getUserInfo(Map map);
-  boolean isRemoveUser(String uid);
+  Response isRemoveUser(String uid);
+  Response registerUser(Map map);
+  void removeAllUser();
 }

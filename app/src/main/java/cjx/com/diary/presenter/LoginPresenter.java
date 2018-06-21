@@ -2,6 +2,7 @@ package cjx.com.diary.presenter;
 
 import android.content.Context;
 
+import bear.com.domain.repository.Response;
 import cjx.com.diary.base.BasePresenter;
 
 /**
@@ -23,5 +24,5 @@ public interface LoginPresenter extends BasePresenter{
     void jumpToRegister(Context context);
 
 
-    boolean logout(String uid);
+    Response logout(String uid);
 }

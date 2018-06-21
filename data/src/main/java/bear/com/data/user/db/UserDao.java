@@ -7,6 +7,8 @@ import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
+import java.util.List;
+
 import bear.com.data.user.db.model.UserModel;
 
 /**
@@ -16,8 +18,13 @@ import bear.com.data.user.db.model.UserModel;
  */
 @Dao
 public interface UserDao {
-    @Query("SELECT * FROM UserModel WHERE uid > :uid")
+    @Query("SELECT * FROM UserModel")
+    List<UserModel> getAll();
+    @Query("SELECT * FROM UserModel WHERE uid = :uid")
     UserModel getUserInfoByUid(String uid);
+
+    @Query("SELECT * FROM UserModel WHERE account = :account LIMIT 1" )
+    UserModel getUserInfoByAccount(String account);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertUsers(UserModel... users);

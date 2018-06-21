@@ -13,10 +13,11 @@ import bear.com.data.user.db.model.UserModel;
  * author: bear .
  * Created date:  2018/6/14.
  */
-@Database(entities = {UserModel.class}, version = 1)
-public abstract class DiaryDataBase extends RoomDatabase{
+@Database(entities = {UserModel.class}, version = 1, exportSchema = false)
+public abstract class DiaryDataBase extends RoomDatabase {
     private static DiaryDataBase INSTANCE;
     private static final Object sLock = new Object();
+
     public abstract UserDao userDao();
 
     public static DiaryDataBase getInstance(Context context) {

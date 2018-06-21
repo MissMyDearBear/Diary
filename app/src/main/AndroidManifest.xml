@@ -55,6 +55,10 @@
             android:name=".view.activity.WolfKillActivity"
             android:label="狼人杀助手"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.activity.RegisterActivity"
+            android:label="注册"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

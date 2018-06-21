@@ -4,6 +4,7 @@ import android.text.TextUtils;
 
 import java.util.Map;
 
+import bear.com.data.user.db.database.DiaryDataBase;
 import bear.com.data.user.db.model.UserModel;
 
 /**
@@ -16,12 +17,6 @@ public class RouteImpl implements Route {
     public UserModel login(Map map) {
         String account = map.get("account").toString();
         String psd = map.get("psd").toString();
-        if (TextUtils.equals(account, "user") && TextUtils.equals(
-                psd, "qqqqqq11")) {
-            UserModel userModel = new UserModel("user_001", "Bear",
-                    "user", "qqqqqq11", "12345678901");
-            return userModel;
-        }
 
         return null;
     }

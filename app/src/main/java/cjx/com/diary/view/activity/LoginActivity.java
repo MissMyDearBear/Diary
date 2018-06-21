@@ -14,8 +14,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cjx.com.diary.R;
-import cjx.com.diary.api.ApiService;
-import cjx.com.diary.api.HttpInterface;
 import cjx.com.diary.base.BaseActivity;
 import cjx.com.diary.presenter.impl.LoginPresenterImpl;
 import cjx.com.diary.util.Utils;
@@ -37,7 +35,6 @@ public class LoginActivity extends BaseActivity {
     TextView tvExtend;
 
     private LoginPresenterImpl mLoginPresenter;
-    private HttpInterface api;
 
     public static void action(Context context) {
         context.startActivity(new Intent(context, LoginActivity.class));
@@ -54,7 +51,6 @@ public class LoginActivity extends BaseActivity {
 
         mLoginPresenter = new LoginPresenterImpl();
         mLoginPresenter.bindView(LoginActivity.this, null);
-        api = ApiService.getApiService();
 
     }
 
@@ -65,16 +61,14 @@ public class LoginActivity extends BaseActivity {
                 String account = mAccountAct.getText().toString();
                 String psd = mPsdEt.getText().toString();
                 mLoginPresenter.login(account, psd);
-//                api.search(account)
-//                        .subscribeOn(Schedulers.newThread())
-//             Utils.showToast((Context) mView,user.toString());
                 break;
             case R.id.btn_register:
                 mLoginPresenter.jumpToRegister(mActivity);
                 break;
             case R.id.tv_extend:
-                if(mLoginPresenter.logout("user_001")){
+                if(mLoginPresenter.logout("user_001").isOk()){
                     Utils.showToast(mActivity,"退出登录成功");
+                    finish();
                 }else{
                     Utils.showToast(mActivity,"操作失败");
                 }

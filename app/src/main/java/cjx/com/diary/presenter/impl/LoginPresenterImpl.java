@@ -1,5 +1,6 @@
 package cjx.com.diary.presenter.impl;
 
+import android.app.Activity;
 import android.content.Context;
 
 import java.util.HashMap;
@@ -10,11 +11,13 @@ import bear.com.data.user.api.RouteImpl;
 import bear.com.data.user.converter.UserModelconverterImpl;
 import bear.com.data.user.db.database.DiaryDataBase;
 import bear.com.domain.model.User;
+import bear.com.domain.repository.Response;
 import bear.com.domain.userCase.LoginCase;
 import bear.com.domain.userCase.LogoutCase;
 import cjx.com.diary.base.BaseView;
 import cjx.com.diary.presenter.LoginPresenter;
 import cjx.com.diary.util.Utils;
+import cjx.com.diary.view.activity.RegisterActivity;
 
 /**
  * Created by bear on 2017/4/17.
@@ -30,8 +33,8 @@ public class LoginPresenterImpl extends MyPresenterImpl implements LoginPresente
         super.bindView(view, o);
         mLoginCase = new LoginCase();
         mLogoutCase = new LogoutCase();
-        mLoginCase.setmUserRepository(new UserRepositoryImpl(DiaryDataBase.getInstance((Context) view), new RouteImpl(), new UserModelconverterImpl()));
-        mLogoutCase.setmUserRepository(new UserRepositoryImpl(DiaryDataBase.getInstance((Context) view), new RouteImpl(), new UserModelconverterImpl()));
+        mLoginCase.setUserRepository(new UserRepositoryImpl(DiaryDataBase.getInstance((Context) view), new RouteImpl(), new UserModelconverterImpl()));
+        mLogoutCase.setUserRepository(new UserRepositoryImpl(DiaryDataBase.getInstance((Context) view), new RouteImpl(), new UserModelconverterImpl()));
     }
 
     @Override
@@ -40,21 +43,22 @@ public class LoginPresenterImpl extends MyPresenterImpl implements LoginPresente
         map.put("account", account);
         map.put("psd", psd);
         User user = mLoginCase.execute(map);
-        if(user!=null){
-        Utils.showToast((Context) mView,user.toString());
-        }else{
-            Utils.showToast((Context) mView,"账号密码错误");
+        if (user != null) {
+            ((Activity) mView).finish();
+            Utils.showToast((Context) mView, user.toString());
+        } else {
+            Utils.showToast((Context) mView, "账号密码错误");
         }
 
     }
 
     @Override
     public void jumpToRegister(Context context) {
-        Utils.showToast(context, "注册");
+        RegisterActivity.action(context);
     }
 
     @Override
-    public boolean logout(String uid) {
-        return  mLogoutCase.execute(uid);
+    public Response logout(String uid) {
+        return mLogoutCase.execute(uid);
     }
 }
