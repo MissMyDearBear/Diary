@@ -1,11 +1,10 @@
-package bear.com.data.user.api;
+package bear.com.data.repository.api;
 
 import android.text.TextUtils;
 
 import java.util.Map;
 
-import bear.com.data.user.db.database.DiaryDataBase;
-import bear.com.data.user.db.model.UserModel;
+import bear.com.data.repository.db.model.UserModel;
 
 /**
  * description:

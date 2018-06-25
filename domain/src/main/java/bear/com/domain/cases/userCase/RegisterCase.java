@@ -1,4 +1,4 @@
-package bear.com.domain.userCase;
+package bear.com.domain.cases.userCase;
 
 import java.util.Map;
 

@@ -1,4 +1,4 @@
-package bear.com.data.user.db;
+package bear.com.data.repository.db;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
@@ -9,7 +9,7 @@ import android.arch.persistence.room.Update;
 
 import java.util.List;
 
-import bear.com.data.user.db.model.UserModel;
+import bear.com.data.repository.db.model.UserModel;
 
 /**
  * description:

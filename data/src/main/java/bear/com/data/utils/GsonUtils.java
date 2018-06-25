@@ -1,4 +1,4 @@
-package cjx.com.diary.util;
+package bear.com.data.utils;
 
 import android.text.TextUtils;
 

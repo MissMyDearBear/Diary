@@ -1,12 +1,12 @@
-package bear.com.data.user.db.database;
+package bear.com.data.repository.db.database;
 
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
-import bear.com.data.user.db.UserDao;
-import bear.com.data.user.db.model.UserModel;
+import bear.com.data.repository.db.UserDao;
+import bear.com.data.repository.db.model.UserModel;
 
 /**
  * description:

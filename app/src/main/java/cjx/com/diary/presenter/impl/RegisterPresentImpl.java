@@ -4,12 +4,12 @@ import android.content.Context;
 
 import java.util.HashMap;
 
-import bear.com.data.user.UserRepositoryImpl;
-import bear.com.data.user.api.RouteImpl;
-import bear.com.data.user.converter.UserModelconverterImpl;
-import bear.com.data.user.db.database.DiaryDataBase;
+import bear.com.data.repository.UserRepositoryImpl;
+import bear.com.data.repository.api.RouteImpl;
+import bear.com.data.repository.converter.UserModelconverterImpl;
+import bear.com.data.repository.db.database.DiaryDataBase;
 import bear.com.domain.repository.Response;
-import bear.com.domain.userCase.RegisterCase;
+import bear.com.domain.cases.userCase.RegisterCase;
 import cjx.com.diary.base.BaseView;
 import cjx.com.diary.presenter.RegisterPresenter;
 

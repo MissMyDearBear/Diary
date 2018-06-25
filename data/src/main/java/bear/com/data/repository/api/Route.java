@@ -1,8 +1,8 @@
-package bear.com.data.user.api;
+package bear.com.data.repository.api;
 
 import java.util.Map;
 
-import bear.com.data.user.db.model.UserModel;
+import bear.com.data.repository.db.model.UserModel;
 
 /**
  * description: API接口定义

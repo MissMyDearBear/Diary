@@ -1,14 +1,14 @@
-package bear.com.data.user;
+package bear.com.data.repository;
 
 import android.text.TextUtils;
 
 import java.util.Map;
 import java.util.UUID;
 
-import bear.com.data.user.api.Route;
-import bear.com.data.user.converter.UserModelConverter;
-import bear.com.data.user.db.database.DiaryDataBase;
-import bear.com.data.user.db.model.UserModel;
+import bear.com.data.repository.api.Route;
+import bear.com.data.repository.converter.UserModelConverter;
+import bear.com.data.repository.db.database.DiaryDataBase;
+import bear.com.data.repository.db.model.UserModel;
 import bear.com.domain.model.User;
 import bear.com.domain.repository.Response;
 import bear.com.domain.repository.UserRepository;

@@ -24,12 +24,12 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import java.util.ArrayList;
 import java.util.List;
 
+import bear.com.domain.model.News;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import cjx.com.diary.R;
 import cjx.com.diary.base.BaseFragment;
-import cjx.com.diary.mode.QiuBaiBean;
 import cjx.com.diary.presenter.impl.FindPresenterImp;
 import cjx.com.diary.util.Utils;
 import cjx.com.diary.util.miscreenshot.ScreenShotHelper;
@@ -62,7 +62,7 @@ public class FindFragment extends BaseFragment {
     private FindPresenterImp mPresenter;
 
     private MyAdapter mAdapter;
-    List<QiuBaiBean.DataBean.ItemBean> mData = new ArrayList<>();
+    List<News> mData = new ArrayList<>();
 
     @Nullable
     @Override
@@ -110,7 +110,7 @@ public class FindFragment extends BaseFragment {
         ScreenShotHelper.screenShot(mActivity, scrollView, (bitmap, filePath) -> mActivity.runOnUiThread(() -> Utils.showToast(mActivity, "保存成功！")));
     }
 
-    public void onRefresh(List<QiuBaiBean.DataBean.ItemBean> tem) {
+    public void onRefresh(List<News> tem) {
         if (mActivity == null || mActivity.isFinishing()) return;
         mSwl.setRefreshing(false);
         if (null != tem && tem.size() > 0) {
@@ -121,13 +121,13 @@ public class FindFragment extends BaseFragment {
     }
 
 
-    private class MyAdapter extends BaseQuickAdapter<QiuBaiBean.DataBean.ItemBean, BaseViewHolder> {
-        public MyAdapter(List<QiuBaiBean.DataBean.ItemBean> data) {
+    private class MyAdapter extends BaseQuickAdapter<News, BaseViewHolder> {
+        public MyAdapter(List<News> data) {
             super(R.layout.item_find_images, data);
         }
 
         @Override
-        protected void convert(BaseViewHolder baseViewHolder, QiuBaiBean.DataBean.ItemBean s) {
+        protected void convert(BaseViewHolder baseViewHolder, News s) {
             ImageView mImageView = baseViewHolder.getView(R.id.image);
             Glide.with(mActivity).load(s.image_url).asBitmap().centerCrop().into(new BitmapImageViewTarget(mImageView) {
                 @Override

@@ -1,6 +1,6 @@
-package bear.com.data.user.converter;
+package bear.com.data.repository.converter;
 
-import bear.com.data.user.db.model.UserModel;
+import bear.com.data.repository.db.model.UserModel;
 import bear.com.domain.model.User;
 
 /**
