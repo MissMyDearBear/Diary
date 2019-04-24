@@ -5,7 +5,6 @@ apply plugin: 'org.greenrobot.greendao'
 
 android {
     compileSdkVersion project.ext.compileSdkVersion
-    buildToolsVersion project.ext.buildToolsVersion
     defaultConfig {
         applicationId "cjx.com.diary"
         minSdkVersion 15
