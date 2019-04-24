@@ -13,6 +13,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import cjx.com.diary.R;
 import cjx.com.diary.base.BaseFragment;
+import cjx.com.diary.base.BaseView;
 import cjx.com.diary.mode.diary.Diary;
 import cjx.com.diary.presenter.impl.DiaryDetailPresenterImp;
 import cjx.com.diary.util.DateUtils;
@@ -46,7 +47,7 @@ public class DiaryPreviewFrag extends BaseFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPresenter = new DiaryDetailPresenterImp();
-        mPresenter.bindView(mActivity, null);
+        mPresenter.bindView((BaseView) getActivity(), null);
 
     }
 
@@ -62,12 +63,12 @@ public class DiaryPreviewFrag extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        TextView saveTv=((DiaryDetailActivity)mActivity).getRightTv();
+        TextView saveTv=((DiaryDetailActivity)getActivity()).getRightTv();
         saveTv.setText("保存");
         saveTv.setOnClickListener((view1)->{
             Diary diary = getCurrentDiary();
             if(mPresenter.update(diary)){
-                Utils.showToast(mActivity,"修改成功！");
+                Utils.showToast(getContext(),"修改成功！");
             }
         });
         Diary diary=mPresenter.query(id);

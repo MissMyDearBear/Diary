@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import cjx.com.diary.base.MyApplication;
+import cjx.com.diary.base.DiaryApplication;
 import cjx.com.diary.mode.diary.Diary;
 import cjx.com.diary.mode.diary.DiaryDao;
 import cjx.com.diary.mode.weight.DaoSession;
@@ -26,7 +26,7 @@ public class DiaryUtils {
     public static List<Diary> getDiaryList() {
         List<Diary> list = new ArrayList<>();
         try {
-            DaoSession dao = MyApplication.INSTANCE.getDaoSession();
+            DaoSession dao = DiaryApplication.INSTANCE.getDaoSession();
             list.addAll(dao.getDiaryDao().loadAll());
             Collections.reverse(list);
         } catch (Exception e) {
@@ -42,7 +42,7 @@ public class DiaryUtils {
      */
     public static boolean addDiary(Diary diary) {
         boolean isAddSuccess = false;
-        DaoSession dao = MyApplication.INSTANCE.getDaoSession();
+        DaoSession dao = DiaryApplication.INSTANCE.getDaoSession();
         DiaryDao diaryDao = dao.getDiaryDao();
         List<Diary> tem = diaryDao.queryBuilder().where(DiaryDao.Properties.Uid.eq(diary.uid)).list();
         if (tem == null || tem.size() == 0) {
@@ -62,7 +62,7 @@ public class DiaryUtils {
     public static boolean delete(Diary diary) {
         boolean isDeleted;
         try {
-            DaoSession dao = MyApplication.INSTANCE.getDaoSession();
+            DaoSession dao = DiaryApplication.INSTANCE.getDaoSession();
             DiaryDao diaryDao = dao.getDiaryDao();
             diaryDao.delete(diary);
             isDeleted = true;
@@ -82,7 +82,7 @@ public class DiaryUtils {
     public static boolean update(Diary diary) {
         boolean isUpdate;
         try {
-            DaoSession dao = MyApplication.INSTANCE.getDaoSession();
+            DaoSession dao = DiaryApplication.INSTANCE.getDaoSession();
             DiaryDao diaryDao = dao.getDiaryDao();
             diaryDao.update(diary);
             isUpdate = true;
@@ -100,7 +100,7 @@ public class DiaryUtils {
      * @return
      */
     public static Diary queryDiaryByUid(String uid) {
-        DaoSession dao = MyApplication.INSTANCE.getDaoSession();
+        DaoSession dao = DiaryApplication.INSTANCE.getDaoSession();
         DiaryDao diaryDao = dao.getDiaryDao();
         List<Diary> diary = diaryDao.queryBuilder().where(DiaryDao.Properties.Uid
                 .eq(uid)).list();
@@ -121,7 +121,7 @@ public class DiaryUtils {
         if (TextUtils.isEmpty(title)) {
             return getDiaryList();
         }
-        DaoSession dao = MyApplication.INSTANCE.getDaoSession();
+        DaoSession dao = DiaryApplication.INSTANCE.getDaoSession();
         DiaryDao diaryDao = dao.getDiaryDao();
         List<Diary> list = diaryDao.queryBuilder().where(DiaryDao.Properties.Title
                 .like("%"+title+"%")).orderDesc(DiaryDao.Properties.CreateDate).list();

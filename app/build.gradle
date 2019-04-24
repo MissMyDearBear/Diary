@@ -5,7 +5,6 @@ apply plugin: 'org.greenrobot.greendao'
 
 android {
     compileSdkVersion project.ext.compileSdkVersion
-    buildToolsVersion project.ext.buildToolsVersion
     defaultConfig {
         applicationId "cjx.com.diary"
         minSdkVersion 15
@@ -68,6 +67,7 @@ dependencies {
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.2'
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+    implementation 'android.arch.lifecycle:extensions:1.1.1'
 }
 repositories {
     mavenCentral()

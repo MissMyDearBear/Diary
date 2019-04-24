@@ -63,14 +63,14 @@ public class LoginActivity extends BaseActivity {
                 mLoginPresenter.login(account, psd);
                 break;
             case R.id.btn_register:
-                mLoginPresenter.jumpToRegister(mActivity);
+                mLoginPresenter.jumpToRegister(this);
                 break;
             case R.id.tv_extend:
                 if(mLoginPresenter.logout("user_001").isOk()){
-                    Utils.showToast(mActivity,"退出登录成功");
+                    Utils.showToast(this,"退出登录成功");
                     finish();
                 }else{
-                    Utils.showToast(mActivity,"操作失败");
+                    Utils.showToast(this,"操作失败");
                 }
                 break;
         }

@@ -2,7 +2,7 @@ package cjx.com.diary.db;
 
 import org.greenrobot.greendao.database.Database;
 
-import cjx.com.diary.base.MyApplication;
+import cjx.com.diary.base.DiaryApplication;
 import cjx.com.diary.mode.weight.DaoMaster;
 import cjx.com.diary.mode.weight.DaoSession;
 
@@ -16,7 +16,7 @@ public class GreenDao implements DBInterface{
     private DaoSession mDaoSession;
 
     private GreenDao() {
-        DaoMaster.DevOpenHelper help = new DaoMaster.DevOpenHelper(MyApplication.INSTANCE, ENCRYPTED ? "bear-db-encrypted" : "bear-db");
+        DaoMaster.DevOpenHelper help = new DaoMaster.DevOpenHelper(DiaryApplication.INSTANCE, ENCRYPTED ? "bear-db-encrypted" : "bear-db");
         Database db = ENCRYPTED ? help.getEncryptedWritableDb("super-secret") : help.getWritableDb();
         mDaoSession = new DaoMaster(db).newSession();
     }

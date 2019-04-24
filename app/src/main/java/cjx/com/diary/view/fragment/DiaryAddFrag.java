@@ -17,6 +17,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import cjx.com.diary.R;
 import cjx.com.diary.base.BaseFragment;
+import cjx.com.diary.base.BaseView;
 import cjx.com.diary.mode.diary.Diary;
 import cjx.com.diary.presenter.impl.DiaryDetailPresenterImp;
 import cjx.com.diary.util.DateUtils;
@@ -49,7 +50,7 @@ public class DiaryAddFrag extends BaseFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPresenter = new DiaryDetailPresenterImp();
-        mPresenter.bindView(mActivity, null);
+        mPresenter.bindView((BaseView) getContext(), null);
 
     }
 
@@ -69,7 +70,7 @@ public class DiaryAddFrag extends BaseFragment {
 
     private void initAddView() {
         mDateTv.setVisibility(View.GONE);
-        TextView saveTv = ((DiaryDetailActivity) mActivity).getRightTv();
+        TextView saveTv = ((DiaryDetailActivity) getActivity()).getRightTv();
         saveTv.setText("保存");
         saveTv.setOnClickListener((view) -> {
             if (TextUtils.isEmpty(getTitle())) {
@@ -83,8 +84,8 @@ public class DiaryAddFrag extends BaseFragment {
             diary.createDate = DateUtils.getCurrentTime();
             diary.uid = UUID.randomUUID().toString();
             if (mPresenter.save(diary)) {
-                Utils.showToast(mActivity, "添加成功！");
-                mActivity.finish();
+                Utils.showToast(getContext(), "添加成功！");
+                getActivity().finish();
             }
         });
     }

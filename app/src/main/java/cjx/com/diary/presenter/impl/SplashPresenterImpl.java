@@ -6,7 +6,7 @@ import org.greenrobot.greendao.query.QueryBuilder;
 
 import java.util.List;
 
-import cjx.com.diary.base.MyApplication;
+import cjx.com.diary.base.DiaryApplication;
 import cjx.com.diary.mode.user.UserBean;
 import cjx.com.diary.mode.user.UserBeanDao;
 import cjx.com.diary.presenter.SplashPresenter;
@@ -29,7 +29,7 @@ public class SplashPresenterImpl extends MyPresenterImpl implements SplashPresen
         userBean.setEmail("2280885690@qq.com");
         userBean.setMobile("13700000000");
         userBean.setName("AlenBear");
-        UserBeanDao dao = MyApplication.INSTANCE.getDaoSession().getUserBeanDao();
+        UserBeanDao dao = DiaryApplication.INSTANCE.getDaoSession().getUserBeanDao();
         UserBeanDao.dropTable(dao.getDatabase(), true);
         UserBeanDao.createTable(dao.getDatabase(), true);
         QueryBuilder queryBuilder = dao.queryBuilder();

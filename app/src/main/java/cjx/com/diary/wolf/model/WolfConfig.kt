@@ -1,4 +1,4 @@
-package cjx.com.diary.mode.wolf
+package cjx.com.diary.wolf.model
 
 /**
  * description:

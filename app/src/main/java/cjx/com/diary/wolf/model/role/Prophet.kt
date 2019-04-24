@@ -1,11 +1,11 @@
-package cjx.com.diary.mode.wolf
+package cjx.com.diary.wolf.model.role
 
 /**
  * description:预言家
  * author: bear .
  * Created date:  2017/7/27.
  */
-class Prophet:Role(){
+class Prophet: Role(){
     override var roleName: String
         get() = "预言家"
         set(value) {}

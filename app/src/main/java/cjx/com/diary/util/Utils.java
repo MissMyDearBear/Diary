@@ -7,7 +7,7 @@ import android.widget.Toast;
 
 import java.util.UUID;
 
-import cjx.com.diary.base.MyApplication;
+import cjx.com.diary.base.DiaryApplication;
 
 /**
  * @author: bear
@@ -50,7 +50,7 @@ public class Utils {
     public static int getScreenHeightOrWidth(int type) {
         int result = -1;
         DisplayMetrics metrics = new DisplayMetrics();
-        WindowManager wm = (WindowManager) MyApplication.INSTANCE.getSystemService(Context.WINDOW_SERVICE);
+        WindowManager wm = (WindowManager) DiaryApplication.INSTANCE.getSystemService(Context.WINDOW_SERVICE);
         wm.getDefaultDisplay().getMetrics(metrics);
         switch (type) {
             case SCREEN_WIDTH:

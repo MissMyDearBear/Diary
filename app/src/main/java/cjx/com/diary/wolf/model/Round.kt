@@ -1,6 +1,8 @@
-package cjx.com.diary.mode.wolf
+package cjx.com.diary.wolf.model
 
 import android.text.TextUtils
+import cjx.com.diary.wolf.model.role.Hunter
+import cjx.com.diary.wolf.model.role.Role
 
 /**
  * description:回合
@@ -89,7 +91,7 @@ class Round {
          if(isPlaceNight()){
              content.append("昨晚是平安夜")
          }else{
-            for(role:Role in dieList){
+            for(role: Role in dieList){
                 content.append("昨天死的是").append(role.position)
                         .append("号玩家")
 

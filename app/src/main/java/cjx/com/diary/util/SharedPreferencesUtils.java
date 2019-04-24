@@ -3,7 +3,7 @@ package cjx.com.diary.util;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import cjx.com.diary.base.MyApplication;
+import cjx.com.diary.base.DiaryApplication;
 
 /**
  * description:sp 工具类
@@ -14,7 +14,7 @@ public class SharedPreferencesUtils {
     private static final String SP_SPLASH="sp_splash";
 
     private static SharedPreferences getSp(String spName){
-        return MyApplication.INSTANCE.getSharedPreferences(spName, Context.MODE_PRIVATE);
+        return DiaryApplication.INSTANCE.getSharedPreferences(spName, Context.MODE_PRIVATE);
     }
 
     /**

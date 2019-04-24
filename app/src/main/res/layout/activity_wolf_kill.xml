@@ -8,32 +8,53 @@
     <include layout="@layout/view_title_bar" />
 
     <TextView style="@style/Divider_Horizontal_2px" />
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:padding="10dp"
-    android:layout_height="wrap_content"
-    android:gravity="center_vertical"
-    android:orientation="horizontal">
-    <TextView
-        android:layout_centerHorizontal="true"
-        android:id="@+id/tv_count"
-        style="@style/style_front_grayA_14"
-        android:layout_width="wrap_content"
+
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="9人局" />
-    <TextView
-        android:id="@+id/tv_lock"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:textSize="14sp"
-        android:textColor="@color/color_blueA"
-        android:layout_alignParentRight="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="锁定"/>
-</RelativeLayout>
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tv_count"
+            style="@style/style_front_grayA_14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="9人局" />
+
+        <TextView
+            android:id="@+id/tv_cur_night"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            tools:text="第一晚" />
+
+        <TextView
+            android:id="@+id/tv_lock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="锁定"
+            android:textColor="@color/color_blueA"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycle_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_margin="16dp"
+        android:textColor="@color/colorWhite"
+        android:background="@drawable/selector_btn_blue_corner_4"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:text="@string/wolf_btn_dawn"/>
 </LinearLayout>

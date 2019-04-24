@@ -8,7 +8,7 @@ import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-import cjx.com.diary.base.MyApplication;
+import cjx.com.diary.base.DiaryApplication;
 import cjx.com.diary.mode.weight.BodyWeightBean;
 import cjx.com.diary.mode.weight.BodyWeightBeanDao;
 import cjx.com.diary.mode.weight.DaoSession;
@@ -27,7 +27,7 @@ public class WeightUtils {
     public static List<BodyWeightBean> getWeightList() {
         List<BodyWeightBean> list = new ArrayList<>();
         try {
-            DaoSession daoSession = MyApplication.INSTANCE.getDaoSession();
+            DaoSession daoSession = DiaryApplication.INSTANCE.getDaoSession();
             BodyWeightBeanDao dao = daoSession.getBodyWeightBeanDao();
             if (dao != null && dao.count() > 0) {
                 list.addAll(dao.loadAll());
@@ -40,7 +40,7 @@ public class WeightUtils {
 
     public static void insert(BodyWeightBean bodyWeightBean) {
         try {
-            DaoSession daoSession = MyApplication.INSTANCE.getDaoSession();
+            DaoSession daoSession = DiaryApplication.INSTANCE.getDaoSession();
             BodyWeightBeanDao dao = daoSession.getBodyWeightBeanDao();
             if (dao != null) {
                 List<BodyWeightBean> tem = dao.queryBuilder().where(BodyWeightBeanDao.Properties.CreatedDate.eq(bodyWeightBean.createdDate)).list();
@@ -65,7 +65,7 @@ public class WeightUtils {
 
     private static void upDate(BodyWeightBean bodyWeightBean) {
         try {
-            DaoSession daoSession = MyApplication.INSTANCE.getDaoSession();
+            DaoSession daoSession = DiaryApplication.INSTANCE.getDaoSession();
             BodyWeightBeanDao dao = daoSession.getBodyWeightBeanDao();
             if (dao != null) {
                 dao.update(bodyWeightBean);
@@ -108,9 +108,9 @@ public class WeightUtils {
     }
 
     public static void clearData() {
-        BodyWeightBeanDao dao = MyApplication.INSTANCE.getDaoSession().getBodyWeightBeanDao();
+        BodyWeightBeanDao dao = DiaryApplication.INSTANCE.getDaoSession().getBodyWeightBeanDao();
         if (dao != null && dao.count() > 0) {
-            MyApplication.INSTANCE.getDaoSession().getBodyWeightBeanDao().deleteAll();
+            DiaryApplication.INSTANCE.getDaoSession().getBodyWeightBeanDao().deleteAll();
         }
     }
 }

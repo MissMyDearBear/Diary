@@ -1,13 +1,11 @@
 package cjx.com.diary.util.miscreenshot;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.support.v4.view.ViewCompat;
 import android.view.View;
 import android.view.ViewGroup;
 
-import cjx.com.diary.base.MyApplication;
 import cjx.com.diary.util.Utils;
 import cjx.com.diary.util.screen.BitmapUtils;
 

@@ -1,6 +1,6 @@
 package cjx.com.diary.util;
 
-import cjx.com.diary.base.MyApplication;
+import cjx.com.diary.base.DiaryApplication;
 import cjx.com.diary.mode.user.UserBean;
 import cjx.com.diary.mode.weight.DaoSession;
 
@@ -14,7 +14,7 @@ import cjx.com.diary.mode.weight.DaoSession;
 
 public class UserUtils {
     public static UserBean getAccountInfo(){
-        DaoSession dao = MyApplication.INSTANCE.getDaoSession();
+        DaoSession dao = DiaryApplication.INSTANCE.getDaoSession();
         if(dao==null||dao.getUserBeanDao()==null||dao.getUserBeanDao().loadAll().size()==0)
             return null;
        return dao.getUserBeanDao().load((long) 1);

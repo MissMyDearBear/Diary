@@ -52,7 +52,7 @@ class WeightManagerFragment : BaseFragment() {
 
     fun updateData() {
         if (et_morning.text.isNullOrEmpty() && et_night.text.isNullOrEmpty()) {
-            Utils.showToast(mActivity, "请输入要更新的数据")
+            Utils.showToast(context, "请输入要更新的数据")
             return
         }
         WeightUtils.insert(BodyWeightBean(et_morning.text.toString(), et_night.text.toString(), DateUtils.getCurrentDate()))

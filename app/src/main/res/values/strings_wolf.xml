@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="wolf_title">狼人杀法官助手</string>
+    <string name="wolf_setting">配置</string>
+    <string name="wolf_count">%d人局</string>
+    <string name="wolf_lock">锁定</string>
+    <string name="wolf_unlock">解锁</string>
+    <string name="wolf_setting_dialog_title">设置</string>
+    <string name="wolf_setting_dialog_hint">请设置人数</string>
+    <string name="wolf_setting_dialog_btn_ok">ok</string>
+    <string name="wolf_setting_dialog_btn_cancel">cancel</string>
+    <string name="wolf_item_title">%d号玩家</string>
+    <string name="wolf_item_active">生</string>
+    <string name="wolf_item_unactive">死</string>
+    <string name="wolf_btn_dawn">天亮了</string>
+    <string name="wolf_label_day">第%d天</string>
+    <string-array name="role_names">
+        <item>平民</item>
+        <item>狼人</item>
+        <item>预言家</item>
+        <item>女巫</item>
+        <item>猎人</item>
+        <item>白狼王</item>
+        <item>白痴神</item>
+        <item>守卫</item>
+    </string-array>
+
+
+    <!--复盘记录-->
+    <string name="wolf_record_title">第%d天晚上</string>
+    <string name="wolf_record_kill">狼人决定杀%d号玩家</string>
+    <string name="wolf_record_check">预言家查验了%d号玩家的身份</string>
+    <string name="wolf_record_witch_antidote">女巫救了%d号玩家</string>
+    <string name="wolf_record_witch_poison">女巫毒了%d号玩家</string>
+    <string name="wolf_record_hunter">猎人射杀了%d号玩家</string>
+    <string name="wolf_record_guard">守卫保护了%d号玩家</string>
+    <string name="wolf_record_police">%d号玩家上警</string>
+    <string name="wolf_record_policeman">%d号玩家成为警长</string>
+</resources>
