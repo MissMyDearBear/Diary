@@ -38,23 +38,23 @@ class WolfKillActivity : BaseActivity() {
         tv_extend.visibility = View.VISIBLE
         tv_extend.setOnClickListener { setPeopleCount() }
         tv_count.text = count.toString() + "人局"
-        var manager = GridLayoutManager(mActivity, 3)
+        var manager = GridLayoutManager(this, 3)
 
         recycle_view.layoutManager = manager
         adapter = MyAdapter(roleList)
-        adapter!!.setOnItemClickListener({ adapter, view, position ->
+        adapter!!.setOnItemClickListener { _, _, position ->
             if (!isLocked) {
                 showSelectIdentityDialog(position)
             }
-        })
+        }
         recycle_view.adapter = adapter
         tv_lock.setOnClickListener {
             if (isLocked) {
                 tv_lock.setText("锁定")
-                tv_lock!!.setTextColor(ContextCompat.getColor(mActivity, R.color.color_blueA))
+                tv_lock!!.setTextColor(ContextCompat.getColor(this, R.color.color_blueA))
             } else {
                 tv_lock.setText("解锁")
-                tv_lock!!.setTextColor(ContextCompat.getColor(mActivity, R.color.color_redA))
+                tv_lock!!.setTextColor(ContextCompat.getColor(this, R.color.color_redA))
             }
             isLocked = !isLocked
         }
@@ -64,18 +64,18 @@ class WolfKillActivity : BaseActivity() {
 
 
     fun setPeopleCount() {
-        val et: EditText = EditText(mActivity)
+        val et: EditText = EditText(this)
         et.inputType = InputType.TYPE_CLASS_NUMBER
         val builder: AlertDialog.Builder = AlertDialog.Builder(this)
         builder.setTitle("设置").setIcon(android.R.drawable.ic_dialog_info).setView(et)
                 .setNegativeButton("Cancel", null)
-        builder.setPositiveButton("ok", { dialog, which ->
+        builder.setPositiveButton("ok") { _, _ ->
             if (et.text.toString().isNotEmpty()) {
                 count = et.text.toString().toInt()
                 tv_count.text = count.toString() + "人局"
                 initRoleList()
             }
-        })
+        }
         builder.show()
     }
 
@@ -127,9 +127,9 @@ class WolfKillActivity : BaseActivity() {
     }
 
     fun showSelectIdentityDialog(position: Int) {
-        val builder: AlertDialog.Builder = AlertDialog.Builder(mActivity)
+        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
         builder.setTitle("请选择身份")
-        builder.setSingleChoiceItems(role, android.R.layout.simple_list_item_1, { dialog, which ->
+        builder.setSingleChoiceItems(role, android.R.layout.simple_list_item_1) { dialog, which ->
             val mRole: Role = roleList[position]
             mRole.roleName = role[which]
             if (mRole.roleName.equals("女巫")) {
@@ -141,7 +141,7 @@ class WolfKillActivity : BaseActivity() {
             }
             adapter!!.notifyItemChanged(position)
             dialog.dismiss()
-        })
+        }
         builder.create().show()
     }
 

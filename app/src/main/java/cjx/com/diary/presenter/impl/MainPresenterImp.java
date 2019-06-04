@@ -20,9 +20,9 @@ public class MainPresenterImp extends MyPresenterImpl implements MainPresenter {
     @Override
     public List<Fragment> getFragmentList() {
         List<Fragment> list=new ArrayList<>();
-        list.add(HomePageFragment.newInstance());
-        list.add(FindFragment.newInstance());
-        list.add(PersonalFragment.newInstance());
+        list.add(HomePageFragment.Companion.newInstance());
+        list.add(FindFragment.Companion.newInstance());
+        list.add(PersonalFragment.Companion.newInstance());
         return list;
     }
 }
