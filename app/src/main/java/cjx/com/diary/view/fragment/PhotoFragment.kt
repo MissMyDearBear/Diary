@@ -75,7 +75,7 @@ class PhotoFragment : BaseFragment() {
     @SuppressLint("CheckResult")
     private fun getData() {
         curCount = mList.size
-        ApiService.getApiService().getBaiDuImage(index - 1, "美女", "全部")
+        ApiService.apiService.getBaiDuImage(index - 1, "美女", "全部")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map { baiDuImageBean -> baiDuImageBean }

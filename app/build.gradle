@@ -7,7 +7,7 @@ android {
     compileSdkVersion project.ext.compileSdkVersion
     defaultConfig {
         applicationId "cjx.com.diary"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 27
         versionCode 11
         versionName "1.1"
@@ -67,6 +67,7 @@ dependencies {
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.2'
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+    implementation project(path: ':flutter')
 }
 repositories {
     mavenCentral()

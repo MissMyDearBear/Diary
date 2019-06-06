@@ -1,1 +1,6 @@
 include ':app', ':domain', ':data', ':device'
+setBinding(new Binding([gradle:this]))
+evaluate(new File(
+        settingsDir.parentFile,
+        'Diary/bear_flutter/.android/include_flutter.groovy'
+))

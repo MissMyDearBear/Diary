@@ -53,7 +53,6 @@ class FindFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         iv_back.visibility = View.GONE
         tv_title.text = "趣闻"
-
         tv_extend.visibility = View.VISIBLE
         tv_extend.text = "保存截图"
         tv_extend.setOnClickListener { screenShot() }
@@ -98,10 +97,6 @@ class FindFragment : BaseFragment() {
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-
-    }
 
     companion object {
 

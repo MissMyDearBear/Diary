@@ -10,7 +10,7 @@ import cjx.com.diary.base.BaseFragment
 import cjx.com.diary.common.Const
 import cjx.com.diary.util.UserUtils
 import cjx.com.diary.view.activity.LoginActivity
-import cjx.com.diary.view.activity.WolfKillActivity
+import cjx.com.diary.wolfflutter.WolfFlutterActivity
 import kotlinx.android.synthetic.main.frag_personal.*
 import kotlinx.android.synthetic.main.view_title_bar.*
 
@@ -47,7 +47,7 @@ class PersonalFragment : BaseFragment() {
         tv_name.text = mName
         iv_header.setImageResource(R.drawable.ic_head)
         tv_git.text = Const.MY_GIT_HUB
-        iv_wolf_kill.setOnClickListener { WolfKillActivity.action(activity!!) }
+        iv_wolf_kill.setOnClickListener { WolfFlutterActivity.action(activity!!) }
     }
 
 

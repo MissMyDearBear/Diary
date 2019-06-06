@@ -63,7 +63,7 @@ class HomePageFragment : BaseFragment() {
             showDeleteDialog(mList[i])
             true
         }
-        mAdapter!!.setOnItemClickListener { baseQuickAdapter, view1, i -> DiaryDetailActivity.previewDiary(activity, mList[i].uid) }
+        mAdapter!!.setOnItemClickListener { baseQuickAdapter, view1, i -> DiaryDetailActivity.previewDiary(context!!, mList[i].uid) }
         recycle_view.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
@@ -242,7 +242,7 @@ class HomePageFragment : BaseFragment() {
      * 添加日记
      */
     private fun add() {
-        DiaryDetailActivity.addDiary(activity)
+        context?.let { DiaryDetailActivity.addDiary(it) }
     }
 
     override fun onDestroyView() {

@@ -1,0 +1,41 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/bear/Desktop/workplace/Diary/bear_flutter/.android/Flutter/src/main/AndroidManifest.xml:2:1-5:12
+INJECTED from /Users/bear/Desktop/workplace/Diary/bear_flutter/.android/Flutter/src/main/AndroidManifest.xml:2:1-5:12
+INJECTED from /Users/bear/Desktop/workplace/Diary/bear_flutter/.android/Flutter/src/main/AndroidManifest.xml:2:1-5:12
+INJECTED from /Users/bear/Desktop/workplace/Diary/bear_flutter/.android/Flutter/src/main/AndroidManifest.xml:2:1-5:12
+INJECTED from /Users/bear/Desktop/workplace/Diary/bear_flutter/.android/Flutter/src/main/AndroidManifest.xml:2:1-5:12
+INJECTED from /Users/bear/Desktop/workplace/Diary/bear_flutter/.android/Flutter/src/main/AndroidManifest.xml:2:1-5:12
+INJECTED from /Users/bear/Desktop/workplace/Diary/bear_flutter/.android/Flutter/src/main/AndroidManifest.xml:2:1-5:12
+	package
+		ADDED from /Users/bear/Desktop/workplace/Diary/bear_flutter/.android/Flutter/src/main/AndroidManifest.xml:3:5-39
+		INJECTED from /Users/bear/Desktop/workplace/Diary/bear_flutter/.android/Flutter/src/main/AndroidManifest.xml
+		INJECTED from /Users/bear/Desktop/workplace/Diary/bear_flutter/.android/Flutter/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/bear/Desktop/workplace/Diary/bear_flutter/.android/Flutter/src/main/AndroidManifest.xml
+		ADDED from /Users/bear/Desktop/workplace/Diary/bear_flutter/.android/Flutter/src/main/AndroidManifest.xml:2:1-5:12
+		INJECTED from /Users/bear/Desktop/workplace/Diary/bear_flutter/.android/Flutter/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/bear/Desktop/workplace/Diary/bear_flutter/.android/Flutter/src/main/AndroidManifest.xml
+		ADDED from /Users/bear/Desktop/workplace/Diary/bear_flutter/.android/Flutter/src/main/AndroidManifest.xml:2:1-5:12
+		INJECTED from /Users/bear/Desktop/workplace/Diary/bear_flutter/.android/Flutter/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/bear/Desktop/workplace/Diary/bear_flutter/.android/Flutter/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from /Users/bear/Desktop/workplace/Diary/bear_flutter/.android/Flutter/src/main/AndroidManifest.xml:4:3-64
+	android:name
+		ADDED from /Users/bear/Desktop/workplace/Diary/bear_flutter/.android/Flutter/src/main/AndroidManifest.xml:4:20-62
+uses-sdk
+INJECTED from /Users/bear/Desktop/workplace/Diary/bear_flutter/.android/Flutter/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/bear/Desktop/workplace/Diary/bear_flutter/.android/Flutter/src/main/AndroidManifest.xml
+INJECTED from /Users/bear/Desktop/workplace/Diary/bear_flutter/.android/Flutter/src/main/AndroidManifest.xml
+INJECTED from /Users/bear/Desktop/workplace/Diary/bear_flutter/.android/Flutter/src/main/AndroidManifest.xml
+INJECTED from /Users/bear/Desktop/workplace/Diary/bear_flutter/.android/Flutter/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/bear/Desktop/workplace/Diary/bear_flutter/.android/Flutter/src/main/AndroidManifest.xml
+		ADDED from /Users/bear/Desktop/workplace/Diary/bear_flutter/.android/Flutter/src/main/AndroidManifest.xml
+		INJECTED from /Users/bear/Desktop/workplace/Diary/bear_flutter/.android/Flutter/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/bear/Desktop/workplace/Diary/bear_flutter/.android/Flutter/src/main/AndroidManifest.xml
+		ADDED from /Users/bear/Desktop/workplace/Diary/bear_flutter/.android/Flutter/src/main/AndroidManifest.xml
+		INJECTED from /Users/bear/Desktop/workplace/Diary/bear_flutter/.android/Flutter/src/main/AndroidManifest.xml

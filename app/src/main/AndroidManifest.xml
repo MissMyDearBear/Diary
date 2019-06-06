@@ -59,6 +59,10 @@
             android:name=".view.activity.RegisterActivity"
             android:label="注册"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".wolfflutter.WolfFlutterActivity"
+            android:label="注册"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

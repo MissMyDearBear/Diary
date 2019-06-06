@@ -10,10 +10,10 @@ import bear.com.data.repository.UserRepositoryImpl;
 import bear.com.data.repository.api.RouteImpl;
 import bear.com.data.repository.converter.UserModelconverterImpl;
 import bear.com.data.repository.db.database.DiaryDataBase;
-import bear.com.domain.model.User;
-import bear.com.domain.repository.Response;
 import bear.com.domain.cases.userCase.LoginCase;
 import bear.com.domain.cases.userCase.LogoutCase;
+import bear.com.domain.model.User;
+import bear.com.domain.repository.Response;
 import cjx.com.diary.base.BaseView;
 import cjx.com.diary.presenter.LoginPresenter;
 import cjx.com.diary.util.Utils;
@@ -54,7 +54,7 @@ public class LoginPresenterImpl extends MyPresenterImpl implements LoginPresente
 
     @Override
     public void jumpToRegister(Context context) {
-        RegisterActivity.action(context);
+        RegisterActivity.Companion.action(context);
     }
 
     @Override
