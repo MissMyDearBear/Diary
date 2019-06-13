@@ -11,8 +11,8 @@ import android.arch.persistence.room.Query
  * Created date:  2019-06-12.
  */
 @Dao
- interface WolfDao {
-    @Query("SELECT * FROM WolfRecordTable WHERE position ==(:day)")
+interface WolfDao {
+    @Query("SELECT * FROM WolfRecordTable WHERE position ==(:day) ORDER by time")
     fun getSomeDayRecords(day: Int): Array<WolfRecord>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -20,4 +20,7 @@ import android.arch.persistence.room.Query
 
     @Query("DELETE  FROM WolfRecordTable")
     fun clear()
+
+    @Query("SELECT MAX(position) FROM WolfRecordTable")
+    fun maxDay(): Int
 }

@@ -84,6 +84,15 @@ class WolfKillActivity : BaseActivity() {
             }
             isLocked = !isLocked
         }
+
+        btn_down.setOnClickListener {
+            val curDay:Int= mViewModel.curDay.value?:1
+            mViewModel.curDay.setValue(curDay+1)
+        }
+
+        btn_record.setOnClickListener {
+            WolfRecordActivity.action(this)
+        }
     }
 
     private fun initViewModel() {
@@ -153,7 +162,7 @@ class WolfKillActivity : BaseActivity() {
                 "授予警长" -> mRole.police = 1
                 else -> mRole.police = -1
             }
-            mViewModel.addRecord(actionName, position)
+            mViewModel.addRecord(actionName, position+1)
             adapter?.notifyItemChanged(position)
             dialog.dismiss()
         }

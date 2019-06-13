@@ -61,11 +61,26 @@ class WolfViewModel : ViewModel() {
         }
         if (!str.isEmpty()) {
             val record = WolfRecord()
-            record.position = curDay.value?:1
+            record.position = curDay.value ?: 1
             record.recordStr = str
+            record.time = System.currentTimeMillis()
             WolfDataBase.instance.wolfDao().insertRecord(record)
         }
-
     }
+
+    fun getRecord(): String {
+        val sb = StringBuilder()
+        val maxDay = WolfDataBase.instance.wolfDao().maxDay()
+        for (i in 1..maxDay) {
+            val recordArray = WolfDataBase.instance.wolfDao().getSomeDayRecords(i)
+            sb.append(DiaryApplication.INSTANCE.resources.getString(R.string.wolf_record_title, i)).append("\n")
+            sb.append("\n")
+            for (record in recordArray) {
+                sb.append(record.recordStr).append("\n")
+            }
+        }
+        return sb.toString()
+    }
+
 
 }

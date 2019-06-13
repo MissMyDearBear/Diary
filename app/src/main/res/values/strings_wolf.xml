@@ -13,6 +13,7 @@
     <string name="wolf_item_active">生</string>
     <string name="wolf_item_unactive">死</string>
     <string name="wolf_btn_dawn">天亮了</string>
+    <string name="wolf_btn_record">记录</string>
     <string name="wolf_label_day">第%d天</string>
     <string-array name="role_names">
         <item>平民</item>

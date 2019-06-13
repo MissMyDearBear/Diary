@@ -19,5 +19,7 @@ class WolfRecord {
     var position: Int = 0 //第几晚
     @ColumnInfo(name = "record")
     var recordStr: String = ""
+    @ColumnInfo(name="time")
+    var time:Long =0L
 
 }

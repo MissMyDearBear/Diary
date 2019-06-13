@@ -61,6 +61,10 @@
             android:name=".view.activity.RegisterActivity"
             android:label="注册"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".wolf.view.activity.WolfRecordActivity"
+            android:label="游戏记录"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
