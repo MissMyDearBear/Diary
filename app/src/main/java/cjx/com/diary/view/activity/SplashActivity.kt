@@ -5,6 +5,7 @@ import cjx.com.diary.R
 import cjx.com.diary.base.BaseActivity
 import cjx.com.diary.presenter.impl.SplashPresenterImpl
 import cjx.com.diary.view.SplashView
+import cjx.com.diary.wolf.view.activity.WolfKillActivity
 import kotlinx.android.synthetic.main.activity_splash.*
 
 /**
@@ -29,7 +30,7 @@ class SplashActivity : BaseActivity(), SplashView {
 
 
     override fun jumpToMainActivity() {
-        MainActivity.action(this)
+        WolfKillActivity.action(this)
         finish()
     }
 

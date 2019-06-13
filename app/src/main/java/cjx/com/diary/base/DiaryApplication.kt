@@ -2,8 +2,6 @@ package cjx.com.diary.base
 
 import android.app.Application
 import android.os.Build
-import cjx.com.diary.db.MyOpenHelper
-import cjx.com.diary.mode.weight.DaoMaster
 import cjx.com.diary.mode.weight.DaoSession
 import com.squareup.leakcanary.LeakCanary
 
@@ -27,11 +25,7 @@ class DiaryApplication : Application() {
             LeakCanary.install(this)
         }
         INSTANCE = this
-        val help = MyOpenHelper(this, "bear-db-encrypted")
-        val db = help.getEncryptedWritableDb("admin")
-        val master = DaoMaster(db)
-        System.out.print("当前数据库版本号-->" + master.schemaVersion)
-        mDiaryDaoSession = master.newSession()
+
 
     }
 

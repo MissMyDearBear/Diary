@@ -34,4 +34,7 @@ class Witch : Role() {
         canPoison = false
         hasPoison=false
     }
+    companion object {
+       const val NAME = "女巫"
+    }
 }

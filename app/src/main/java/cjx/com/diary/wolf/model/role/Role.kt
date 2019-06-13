@@ -25,6 +25,8 @@ open class Role {
     //死亡类型
     open var dieType: String = ""
 
+    var police:Int =-1// 1。警，2.手
+
     //死亡
     open fun die(die: Int) {
         this.isAlive = false

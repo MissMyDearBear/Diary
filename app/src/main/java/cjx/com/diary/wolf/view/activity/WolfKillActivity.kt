@@ -14,8 +14,10 @@ import android.widget.EditText
 import cjx.com.diary.R
 import cjx.com.diary.base.BaseActivity
 import cjx.com.diary.wolf.model.role.Role
+import cjx.com.diary.wolf.model.role.Witch
 import cjx.com.diary.wolf.view.adapter.WolfAdapter
 import cjx.com.diary.wolf.viewmodel.WolfViewModel
+import com.chad.library.adapter.base.BaseQuickAdapter
 import kotlinx.android.synthetic.main.activity_wolf_kill.*
 import kotlinx.android.synthetic.main.view_title_bar.*
 
@@ -30,10 +32,12 @@ class WolfKillActivity : BaseActivity() {
     private val role: Array<String> by lazy {
         resources.getStringArray(R.array.role_names)
     }
+    private val action: Array<String> by lazy {
+        resources.getStringArray(R.array.wolf_action)
+    }
     private val roleList: ArrayList<Role> = ArrayList()
     private var adapter: WolfAdapter? = null
     private var isLocked: Boolean = false
-    private var mCurDay: Int = 1
     private val mViewModel by lazy {
         ViewModelProviders.of(this).get(WolfViewModel::class.java)
     }
@@ -44,6 +48,7 @@ class WolfKillActivity : BaseActivity() {
         initView()
         initViewModel()
         mViewModel.productRoleList(count)
+        mViewModel.resetData()
     }
 
 
@@ -62,6 +67,12 @@ class WolfKillActivity : BaseActivity() {
                 showSelectIdentityDialog(position)
             }
         }
+        adapter?.onItemLongClickListener = object : BaseQuickAdapter.OnItemLongClickListener {
+            override fun onItemLongClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int): Boolean {
+                showActionDialog(position)
+                return true
+            }
+        }
         recycle_view.adapter = adapter
         tv_lock.setOnClickListener {
             if (isLocked) {
@@ -76,13 +87,21 @@ class WolfKillActivity : BaseActivity() {
     }
 
     private fun initViewModel() {
-        mViewModel.mRoleListLiveData.observe(this, Observer { list ->
+        mViewModel.curDay.observe(this, Observer { curDay ->
+            curDay?.let {
+                tv_cur_night.text = resources.getString(R.string.wolf_record_title, it)
+            }
+        })
+
+        mViewModel.roleListLiveData.observe(this, Observer { list ->
             list?.let {
                 roleList.clear()
                 roleList.addAll(it)
                 adapter?.notifyDataSetChanged()
+                mViewModel.resetData()
             }
         })
+
     }
 
     private fun setPeopleCount() {
@@ -106,17 +125,35 @@ class WolfKillActivity : BaseActivity() {
 
     private fun showSelectIdentityDialog(position: Int) {
         val builder: AlertDialog.Builder = AlertDialog.Builder(this)
-        builder.setTitle("请选择身份")
+        builder.setTitle(resources.getString(R.string.wolf_dialog_title))
         builder.setSingleChoiceItems(role, android.R.layout.simple_list_item_1) { dialog, which ->
             val mRole: Role = roleList[position]
             mRole.roleName = role[which]
-            if (mRole.roleName == "女巫") {
+            if (mRole.roleName == Witch.NAME) {
                 mRole.hasAntidote = true
                 mRole.hasPoison = true
             } else {
                 mRole.hasAntidote = false
                 mRole.hasPoison = false
             }
+            adapter?.notifyItemChanged(position)
+            dialog.dismiss()
+        }
+        builder.create().show()
+    }
+
+    private fun showActionDialog(position: Int) {
+        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+        builder.setTitle(resources.getString(R.string.wolf_dialog_title2))
+        builder.setSingleChoiceItems(action, android.R.layout.simple_list_item_1) { dialog, which ->
+            val mRole: Role = roleList[position]
+            val actionName = action[which]
+            when (actionName) {
+                "上警" -> mRole.police = 2
+                "授予警长" -> mRole.police = 1
+                else -> mRole.police = -1
+            }
+            mViewModel.addRecord(actionName, position)
             adapter?.notifyItemChanged(position)
             dialog.dismiss()
         }

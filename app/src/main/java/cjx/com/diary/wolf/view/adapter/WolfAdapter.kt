@@ -20,11 +20,23 @@ class WolfAdapter(data: MutableList<Role>?) : BaseQuickAdapter<Role, BaseViewHol
     override fun convert(helper: BaseViewHolder?, item: Role?) {
         helper?.let {
             item?.let { role ->
+                var policeStr = when (role.police) {
+                    1 -> "警长"
+                    2 -> "上警"
+                    else -> ""
+                }
                 it.setText(R.id.tv_position, mContext.resources.getString(R.string.wolf_item_title, role.position))
                 it.setText(R.id.tv_identity, role.roleName)
-                var status: TextView = it.getView(R.id.tv_status)
-                var antidote: TextView = it.getView(R.id.tv_antidote)
-                var poison: TextView = it.getView(R.id.tv_poison)
+                if (policeStr.isEmpty()) {
+                    it.setVisible(R.id.tv_police, false)
+                } else {
+                    it.setVisible(R.id.tv_police, true)
+                    it.setText(R.id.tv_police, policeStr)
+                }
+
+                val status: TextView = it.getView(R.id.tv_status)
+                val antidote: TextView = it.getView(R.id.tv_antidote)
+                val poison: TextView = it.getView(R.id.tv_poison)
                 if (role.isAlive) {
                     status.text = mContext.getString(R.string.wolf_item_active)
                     status.setTextColor(ContextCompat.getColor(DiaryApplication.INSTANCE, R.color.color_greenB))

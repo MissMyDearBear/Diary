@@ -12,7 +12,7 @@
     <application
         android:name=".base.DiaryApplication"
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/ic_wolf_kill"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -24,11 +24,7 @@
         <activity
             android:name=".view.activity.SplashActivity"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
             <!--添加scheme配置-->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -54,7 +50,13 @@
         <activity
             android:name=".wolf.view.activity.WolfKillActivity"
             android:label="狼人杀助手"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".view.activity.RegisterActivity"
             android:label="注册"

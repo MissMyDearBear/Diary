@@ -68,5 +68,10 @@
             android:textSize="20sp"
             tools:text="死亡" />
     </LinearLayout>
+    <TextView
+        android:id="@+id/tv_police"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="警长"/>
 
 </LinearLayout>

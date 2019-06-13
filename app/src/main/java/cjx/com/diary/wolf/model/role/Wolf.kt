@@ -18,4 +18,8 @@ class Wolf : Role() {
     fun kill(position: Int) {
         killPosition = position
     }
+
+    companion object {
+        const val NAME = "狼人"
+    }
 }

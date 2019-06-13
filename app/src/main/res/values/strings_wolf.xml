@@ -24,6 +24,19 @@
         <item>白痴神</item>
         <item>守卫</item>
     </string-array>
+    <string name="wolf_dialog_title">请选择身份</string>
+    <string name="wolf_dialog_title2">动作</string>
+
+    <string-array name="wolf_action">
+        <item>杀</item>
+        <item>查</item>
+        <item>救</item>
+        <item>毒</item>
+        <item>射杀</item>
+        <item>守卫</item>
+        <item>上警</item>
+        <item>授予警长</item>
+    </string-array>
 
 
     <!--复盘记录-->

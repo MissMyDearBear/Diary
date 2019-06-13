@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'org.greenrobot.greendao'
 
@@ -40,6 +41,8 @@ dependencies {
     api project(":data")
     api project(":device")
     api project(":domain")
+    api "android.arch.persistence.room:runtime:1.1.0"
+    kapt "android.arch.persistence.room:compiler:1.1.0"
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:'+project.ext.support_version
     implementation 'com.android.support:support-v4:'+project.ext.support_version
@@ -68,6 +71,8 @@ dependencies {
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
     implementation 'android.arch.lifecycle:extensions:1.1.1'
+    debugImplementation 'com.amitshekhar.android:debug-db:1.0.1'
+
 }
 repositories {
     mavenCentral()

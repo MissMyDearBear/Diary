@@ -5,15 +5,18 @@ package cjx.com.diary.wolf.model.role
  * author: bear .
  * Created date:  2017/7/27.
  */
-class Hunter: Role(){
+class Hunter : Role() {
     override var roleName: String
         get() = "猎人"
         set(value) {}
-    var canStartSkills:Boolean=false
+    var canStartSkills: Boolean = false
 
-    var killNumber:Int=0
-    fun kill(position: Int){
-        killNumber=position
+    var killNumber: Int = 0
+    fun kill(position: Int) {
+        killNumber = position
     }
 
+    companion object {
+        const val NAME = "猎人"
+    }
 }
