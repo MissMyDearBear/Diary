@@ -13,6 +13,7 @@ import android.view.View
 import android.widget.EditText
 import cjx.com.diary.R
 import cjx.com.diary.base.BaseActivity
+import cjx.com.diary.util.Utils
 import cjx.com.diary.wolf.model.role.Role
 import cjx.com.diary.wolf.model.role.Witch
 import cjx.com.diary.wolf.view.adapter.WolfAdapter
@@ -35,6 +36,8 @@ class WolfKillActivity : BaseActivity() {
     private val action: Array<String> by lazy {
         resources.getStringArray(R.array.wolf_action)
     }
+    private var mLastBackPress: Long = 0
+
     private val roleList: ArrayList<Role> = ArrayList()
     private var adapter: WolfAdapter? = null
     private var isLocked: Boolean = false
@@ -58,6 +61,7 @@ class WolfKillActivity : BaseActivity() {
         tv_extend.visibility = View.VISIBLE
         tv_extend.setOnClickListener { setPeopleCount() }
         tv_count.text = resources.getString(R.string.wolf_count, count)
+        iv_back.visibility=View.GONE
         val manager = GridLayoutManager(this, 3)
 
         recycle_view.layoutManager = manager
@@ -167,6 +171,15 @@ class WolfKillActivity : BaseActivity() {
             dialog.dismiss()
         }
         builder.create().show()
+    }
+    override fun onBackPressed() {
+        val time = System.currentTimeMillis()
+        if (time - mLastBackPress < 2000) {
+            super.onBackPressed()
+        } else {
+            mLastBackPress = time
+            Utils.showToast(this, getString(R.string.tip_exit))
+        }
     }
 
     companion object {

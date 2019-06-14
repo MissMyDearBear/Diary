@@ -15,7 +15,7 @@
 
 
     <!--===================tips========================-->
-    <string name="tip_exit">再按一次退出小熊日记</string>
+    <string name="tip_exit">狼人杀法官助手</string>
 
     <!--===================error========================-->
     <string name="error_login">您输入的账号或密码错误！</string>
