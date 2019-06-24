@@ -2,34 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e7153da5-b7b3-4c10-8c4a-07bbf68f4636" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../app/src/main/java/cjx/com/diary/wolfflutter/WolfFlutterActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../app/src/main/res/layout/activity_wolf_flutter.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/ui/WolfPage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/cjx/com/diary/view/fragment/PersonalFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/cjx/com/diary/view/fragment/PersonalFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.android/Flutter/build/generated/source/buildConfig/debug/com/example/bear_flutter/BuildConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/.android/Flutter/build/generated/source/buildConfig/debug/com/example/bear_flutter/BuildConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.android/Flutter/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.android/Flutter/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.android/Flutter/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/output.json" beforeDir="false" afterPath="$PROJECT_DIR$/.android/Flutter/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/output.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.android/Flutter/build/intermediates/flutter/flutter-x86.jar" beforeDir="false" afterPath="$PROJECT_DIR$/.android/Flutter/build/intermediates/flutter/flutter-x86.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.android/Flutter/build/intermediates/incremental/compileDebugAidl/dependency.store" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.android/Flutter/build/intermediates/incremental/packageDebugAssets/merger.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.android/Flutter/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.android/Flutter/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.android/Flutter/build/intermediates/incremental/packageDebugResources/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.android/Flutter/build/intermediates/incremental/packageDebugResources/merger.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.android/Flutter/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/bear_flutter/BuildConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/.android/Flutter/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/bear_flutter/BuildConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.android/Flutter/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.android/Flutter/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.android/Flutter/build/intermediates/merged_manifests/debug/processDebugManifest/merged/output.json" beforeDir="false" afterPath="$PROJECT_DIR$/.android/Flutter/build/intermediates/merged_manifests/debug/processDebugManifest/merged/output.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.android/Flutter/build/intermediates/res/symbol-table-with-package/debug/package-aware-r.txt" beforeDir="false" afterPath="$PROJECT_DIR$/.android/Flutter/build/intermediates/res/symbol-table-with-package/debug/package-aware-r.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.android/Flutter/build/intermediates/symbols/debug/R.txt" beforeDir="false" afterPath="$PROJECT_DIR$/.android/Flutter/build/intermediates/symbols/debug/R.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/.android/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.android/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.android/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.android/Flutter/build/tmp/flutterBuildX86Jar/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/.android/Flutter/build/tmp/flutterBuildX86Jar/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/widget_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test/widget_test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui/WolfPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/WolfPage.dart" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -43,11 +18,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/main.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+            <state relative-caret-position="336">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/ui/WolfPage.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="163">
+              <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -62,6 +46,7 @@
       <list>
         <option value="$PROJECT_DIR$/lib/main.dart" />
         <option value="$PROJECT_DIR$/test/widget_test.dart" />
+        <option value="$PROJECT_DIR$/lib/ui/WolfPage.dart" />
       </list>
     </option>
   </component>
@@ -77,8 +62,8 @@
     </navigator>
     <panes>
       <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -89,7 +74,13 @@
             <path>
               <item name="bear_flutter" type="b2602c69:ProjectViewProjectNode" />
               <item name="bear_flutter" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bear_flutter" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bear_flutter" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -135,6 +126,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="706" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24959612" />
       <window_info id="Captures" order="1" side_tool="true" />
@@ -151,7 +143,7 @@
       <window_info anchor="bottom" id="Android Profiler" order="3" show_stripe_button="false" />
       <window_info anchor="bottom" id="Logcat" order="4" />
       <window_info anchor="bottom" id="Debug" order="5" />
-      <window_info anchor="bottom" id="Terminal" order="6" weight="0.41285956" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="6" visible="true" weight="0.21996616" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Flutter Performance" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
@@ -177,8 +169,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/main.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        <state relative-caret-position="336">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/ui/WolfPage.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
         </state>
       </provider>
     </entry>
