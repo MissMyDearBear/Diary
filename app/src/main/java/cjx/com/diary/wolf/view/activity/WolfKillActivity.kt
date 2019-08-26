@@ -61,7 +61,7 @@ class WolfKillActivity : BaseActivity() {
         tv_extend.visibility = View.VISIBLE
         tv_extend.setOnClickListener { setPeopleCount() }
         tv_count.text = resources.getString(R.string.wolf_count, count)
-        iv_back.visibility=View.GONE
+        iv_back.visibility = View.GONE
         val manager = GridLayoutManager(this, 3)
 
         recycle_view.layoutManager = manager
@@ -71,11 +71,9 @@ class WolfKillActivity : BaseActivity() {
                 showSelectIdentityDialog(position)
             }
         }
-        adapter?.onItemLongClickListener = object : BaseQuickAdapter.OnItemLongClickListener {
-            override fun onItemLongClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int): Boolean {
-                showActionDialog(position)
-                return true
-            }
+        adapter?.onItemLongClickListener = BaseQuickAdapter.OnItemLongClickListener { adapter, view, position ->
+            showActionDialog(position)
+            true
         }
         recycle_view.adapter = adapter
         tv_lock.setOnClickListener {
@@ -90,8 +88,8 @@ class WolfKillActivity : BaseActivity() {
         }
 
         btn_down.setOnClickListener {
-            val curDay:Int= mViewModel.curDay.value?:1
-            mViewModel.curDay.setValue(curDay+1)
+            val curDay: Int = mViewModel.curDay.value ?: 1
+            mViewModel.curDay.setValue(curDay + 1)
         }
 
         btn_record.setOnClickListener {
@@ -162,16 +160,43 @@ class WolfKillActivity : BaseActivity() {
             val mRole: Role = roleList[position]
             val actionName = action[which]
             when (actionName) {
+                "杀" -> mRole.isKilled = true
+                "查" -> mRole.isChecked = true
+                "救" -> {
+                    mRole.isSaved = true
+                    roleList.map {
+                        if (it is Witch) {
+                            it.canSave = false
+                        }
+                    }
+                }
+                "毒" -> {
+                    mRole.isPositioned = true
+                    roleList.map {
+                        if (it is Witch) {
+                            it.canPoison = false
+                        }
+                    }
+                }
+                "射杀" -> {
+                    mRole.isHunterKilled = true
+                }
+
+                "守卫" -> {
+                    mRole.isProtected = true
+                }
+
                 "上警" -> mRole.police = 2
                 "授予警长" -> mRole.police = 1
                 else -> mRole.police = -1
             }
-            mViewModel.addRecord(actionName, position+1)
+            mViewModel.addRecord(actionName, position + 1)
             adapter?.notifyItemChanged(position)
             dialog.dismiss()
         }
         builder.create().show()
     }
+
     override fun onBackPressed() {
         val time = System.currentTimeMillis()
         if (time - mLastBackPress < 2000) {

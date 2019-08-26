@@ -17,7 +17,7 @@ import com.chad.library.adapter.base.BaseViewHolder
 class WolfAdapter(data: MutableList<Role>?) : BaseQuickAdapter<Role, BaseViewHolder>(R.layout.item_wolf, data) {
 
 
-    override fun convert(helper: BaseViewHolder?, item: Role?) {
+    override fun convert(helper: BaseViewHolder, item: Role?) {
         helper?.let {
             item?.let { role ->
                 var policeStr = when (role.police) {
@@ -37,7 +37,7 @@ class WolfAdapter(data: MutableList<Role>?) : BaseQuickAdapter<Role, BaseViewHol
                 val status: TextView = it.getView(R.id.tv_status)
                 val antidote: TextView = it.getView(R.id.tv_antidote)
                 val poison: TextView = it.getView(R.id.tv_poison)
-                if (role.isAlive) {
+                if (role.aliveStatus()) {
                     status.text = mContext.getString(R.string.wolf_item_active)
                     status.setTextColor(ContextCompat.getColor(DiaryApplication.INSTANCE, R.color.color_greenB))
                 } else {

@@ -24,8 +24,31 @@ open class Role {
     open var roleName: String = ""
     //死亡类型
     open var dieType: String = ""
+    //是否被查验
+    open var isChecked = false
+    //是否被杀
+    open var isKilled = false
+    //是否被守护
+    open var isProtected = false
+    //是否被救
+    open var isSaved = false
 
-    var police:Int =-1// 1。警，2.手
+    open var isPositioned = false
+
+    open var isHunterKilled = false
+
+    var police: Int = -1// 1。警，2.手
+
+
+    fun aliveStatus(): Boolean {
+        if (isKilled) {
+            return isSaved xor isProtected
+        }
+        if (isPositioned || isHunterKilled) {
+            return false
+        }
+        return true
+    }
 
     //死亡
     open fun die(die: Int) {
