@@ -191,7 +191,7 @@ class WolfKillActivity : BaseActivity() {
                 else -> mRole.police = -1
             }
             mViewModel.addRecord(actionName, position + 1)
-            adapter?.notifyItemChanged(position)
+            adapter?.notifyDataSetChanged()
             dialog.dismiss()
         }
         builder.create().show()
