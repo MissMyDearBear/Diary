@@ -7,7 +7,7 @@
     android:layout_margin="2dp"
     android:background="@color/color_grayG"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:padding="2dp">
 
     <TextView
         android:id="@+id/tv_position"
@@ -36,7 +36,6 @@
             android:id="@+id/tv_antidote"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:layout_weight="1"
             android:padding="5dp"
             android:gravity="center_horizontal"
@@ -48,7 +47,6 @@
             android:id="@+id/tv_poison"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:layout_weight="1"
             android:padding="5dp"
             android:gravity="center_horizontal"
@@ -61,17 +59,71 @@
             android:layout_width="0dp"
             android:gravity="center_horizontal"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:layout_weight="1"
             android:padding="5dp"
             android:textColor="@color/color_greenA"
             android:textSize="20sp"
             tools:text="死亡" />
     </LinearLayout>
-    <TextView
-        android:id="@+id/tv_police"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="警长"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_police"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="警长" />
+
+        <TextView
+            android:layout_marginLeft="2dp"
+            android:id="@+id/tv_kill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_redA"
+            android:text="杀" />
+
+        <TextView
+            android:layout_marginLeft="2dp"
+            android:id="@+id/tv_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_orangeA"
+            android:text="查" />
+
+        <TextView
+            android:layout_marginLeft="2dp"
+            android:id="@+id/tv_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_greenA"
+            android:text="救" />
+
+        <TextView
+            android:layout_marginLeft="2dp"
+            android:id="@+id/tv_position2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_purpleA"
+            android:text="毒" />
+
+        <TextView
+            android:layout_marginLeft="2dp"
+            android:id="@+id/tv_protect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_yellowA"
+            android:text="守" />
+
+        <TextView
+            android:layout_marginLeft="2dp"
+            android:id="@+id/tv_hunter_kill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_redB"
+            android:text="猎杀" />
+
+    </LinearLayout>
 </LinearLayout>

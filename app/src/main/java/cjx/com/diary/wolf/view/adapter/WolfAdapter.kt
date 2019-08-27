@@ -44,20 +44,14 @@ class WolfAdapter(data: MutableList<Role>?) : BaseQuickAdapter<Role, BaseViewHol
                     status.text = mContext.getString(R.string.wolf_item_unactive)
                     status.setTextColor(ContextCompat.getColor(DiaryApplication.INSTANCE, R.color.color_redA))
                 }
+                it.setVisible(R.id.tv_kill, item.isKilled)
+                it.setVisible(R.id.tv_check, item.isChecked)
+                it.setVisible(R.id.tv_save, item.isSaved)
+                it.setVisible(R.id.tv_position2, item.isPositioned)
+                it.setVisible(R.id.tv_protect, item.isProtected)
+                it.setVisible(R.id.tv_hunter_kill, item.isHunterKilled)
                 antidote.visibility = if (role.hasAntidote) View.VISIBLE else View.GONE
                 poison.visibility = if (role.hasPoison) View.VISIBLE else View.GONE
-                status.setOnClickListener {
-                    role.isAlive = !role.isAlive
-                    this.notifyItemChanged(helper.layoutPosition)
-                }
-                antidote.setOnClickListener {
-                    role.hasAntidote = !role.hasAntidote
-                    this.notifyItemChanged(helper.layoutPosition)
-                }
-                poison.setOnClickListener {
-                    role.hasPoison = !role.hasPoison
-                    this.notifyItemChanged(helper.layoutPosition)
-                }
             }
         }
     }

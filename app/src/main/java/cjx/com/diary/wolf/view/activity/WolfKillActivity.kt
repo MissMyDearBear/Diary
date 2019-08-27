@@ -71,9 +71,13 @@ class WolfKillActivity : BaseActivity() {
                 showSelectIdentityDialog(position)
             }
         }
-        adapter?.onItemLongClickListener = BaseQuickAdapter.OnItemLongClickListener { adapter, view, position ->
-            showActionDialog(position)
-            true
+        adapter?.onItemLongClickListener = BaseQuickAdapter.OnItemLongClickListener { _, _, position ->
+            if (isLocked) {
+                showActionDialog(position)
+                true
+            } else {
+                false
+            }
         }
         recycle_view.adapter = adapter
         tv_lock.setOnClickListener {
@@ -90,6 +94,15 @@ class WolfKillActivity : BaseActivity() {
         btn_down.setOnClickListener {
             val curDay: Int = mViewModel.curDay.value ?: 1
             mViewModel.curDay.setValue(curDay + 1)
+            roleList.map {
+                it.isKilled = false
+                it.isChecked = false
+                it.isProtected = false
+                it.isSaved = false
+                it.isPositioned = false
+                it.isHunterKilled = false
+            }
+            adapter?.notifyDataSetChanged()
         }
 
         btn_record.setOnClickListener {
@@ -165,17 +178,13 @@ class WolfKillActivity : BaseActivity() {
                 "救" -> {
                     mRole.isSaved = true
                     roleList.map {
-                        if (it is Witch) {
-                            it.canSave = false
-                        }
+                        it.hasAntidote = false
                     }
                 }
                 "毒" -> {
                     mRole.isPositioned = true
                     roleList.map {
-                        if (it is Witch) {
-                            it.canPoison = false
-                        }
+                        it.hasPoison = false
                     }
                 }
                 "射杀" -> {
